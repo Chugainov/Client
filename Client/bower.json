@@ -15,13 +15,14 @@
     "angular-mocks": "latest",
     "angular-ui-router": "latest",
     "angular-route": "latest",
-	"angular-loader": "latest",
+    "angular-loader": "latest",
     "angular-underscore-module": "latest",
     "bootstrap": "latest",
     "jquery": "latest",
     "jquery.cookie": "latest",
     "jquery-ui": "latest",
     "requirejs": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "angular-permission": "~1.1.0"
   }
 }

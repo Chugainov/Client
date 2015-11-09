@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bower.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,11 +66,26 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\common\module.js" />
+    <Content Include="Scripts\common\namespace.js" />
+    <Content Include="Scripts\common\require.js" />
+    <Content Include="Scripts\common\templates\_empty.html" />
+    <Content Include="Scripts\common\templates\_mainLayout.html" />
+    <Content Include="Scripts\routes.js" />
+    <Content Include="Scripts\common\services\authService.js" />
+    <Content Include="Scripts\common\services\_index.js" />
+    <Content Include="Scripts\common\settings\states.js" />
+    <Content Include="Scripts\common\settings\_index.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\namespace.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

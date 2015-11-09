@@ -1,0 +1,5 @@
+D:\Git\Client\Client\bin\Client.dll.config
+D:\Git\Client\Client\bin\Client.dll
+D:\Git\Client\Client\bin\Client.pdb
+D:\Git\Client\Client\obj\Debug\Client.dll
+D:\Git\Client\Client\obj\Debug\Client.pdb
