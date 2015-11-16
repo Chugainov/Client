@@ -1,0 +1,48 @@
+﻿<div class="modal fade" id="basicModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h3>Редактирование</h3>
+            </div>
+            <div class="modal-body">
+                
+                <table>
+                    <tr>
+                        <td><label>Название</label></td>
+                        <td><input type="text" ng-model="credit.Name" required/></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label>Процент</label></td>
+                        <td><input type="text" ng-model="credit.PercentRate" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Минимальная сумма</label></td>
+                        <td><input type="text" ng-model="credit.MinSum" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Максимальная сумма</label></td>
+                        <td><input type="text" ng-model="credit.MaxSum" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Минимальный срок</label></td>
+                        <td><input type="text" ng-model="credit.MinMonthPeriod" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Максимальный срок</label></td>
+                        <td><input type="text" ng-model="credit.MaxMonthPeriod" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Описание</label></td>
+                        <td><textarea ng-model="credit.Description" required /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

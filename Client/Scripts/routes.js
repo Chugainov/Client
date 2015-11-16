@@ -7,12 +7,11 @@
         $stateProvider
         .state('home', {
             url: "/home",
-            //template:'<h1>asdf</h1>'
             templateUrl: "Scripts/common/templates/_mainLayout.html",
         })
-          
-        .state('route2', {
-            url: "/route2",
+
+        .state('credits', {
+            url: "/credits",
             templateUrl: "Scripts/common/templates/_empty.html"
         })
     }]);

@@ -4,10 +4,10 @@
         'angular': '../libs/angular/angular',
         'jquery': '../libs/jquery/dist/jquery',
         'angularUiRouter': '../libs/angular-ui-router/release/angular-ui-router',
-        'bootstrap': '../libs/bootstrap/dist/js/bootstrap.min',
+        'angularUiBootstrap': '../libs/angular-bootstrap/ui-bootstrap-tpls.min',
         'underscoreModule': '../libs/underscore/underscore',
-        'angularPermission': '../libs/angular-permission/dist/angular-permission'
-        
+        'angularPermission': '../libs/angular-permission/dist/angular-permission',
+        'bootstrap': '../libs/bootstrap/dist/js/bootstrap.min'
     },
 
     shim: {
@@ -25,6 +25,12 @@
         },
         'bootstrap': {
             deps: ['jquery']
+        },
+        'angularUiBootstrap': {
+            deps: [
+                'angular',
+                'bootstrap'
+            ]
         },
         'angularUiRouter': {
             deps: [
