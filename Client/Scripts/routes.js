@@ -14,5 +14,10 @@
             url: "/credits",
             templateUrl: "Scripts/common/templates/_empty.html"
         })
+
+        .state('calculation', {
+            url: "/calculation",
+            templateUrl: "Scripts/common/templates/_calculator.html"
+        })
     }]);
 });

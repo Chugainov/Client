@@ -1,0 +1,46 @@
+﻿<div>
+    <table>
+        <tr>
+            <td><label>Выберите кредит</label></td>
+            <td><select ng-model="credit" ng-options="c.Name for c in _credits"></select></td>
+        </tr>
+        <tr>
+            <td><label>Введите срок</label></td>
+            <td><input type="text" ng-model="month" /></td>
+        </tr>
+        <tr>
+            <td><label>Процентная ставка</label></td>
+            <td><input type="text" ng-model="credit.PercentRate" disabled /></td>
+        </tr>
+        <tr>
+            <td><label>Выберите кредит</label></td>
+            <td><select ng-model="type">
+                    <option value="0">--------</option>
+                    <option value="1">Расчет макс суммы</option>
+                </select>
+            </td>
+        </tr>
+        <tr ng-show="type == 1">
+            <td><label>Средняя прибыль за последние 3 месяца</label></td>
+            <td><input type="text" ng-model="incomeSum" /></td>
+        </tr>
+        <tr ng-show="type == 1">
+            <td><label>Платежи по другим кредитам</label></td>
+            <td><input type="text" ng-model="otherCreditSum" /></td>
+        </tr>
+        <tr ng-show="type == 1">
+            <td><label>Платежи за коммунальные услуги</label></td>
+            <td><input type="text" ng-model="utilSum" /></td>
+        </tr>
+        <tr ng-show="type == 1">
+            <td><label>Иные платежи</label></td>
+            <td><input type="text" ng-model="otherSum" /></td>
+        </tr>
+        <tr ng-show="type == 1">
+            <td><label>Максимально возможная сумма</label></td>
+            <td><input type="text" ng-model="maxSum" disabled /></td>
+        </tr>
+    </table>
+    <input type="button" value="Расчитать" ng-click="calc()" ng-show="type == 1" />
+    
+</div>

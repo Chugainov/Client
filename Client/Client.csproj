@@ -68,9 +68,20 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\calculator\directives\kcCalculator.js" />
+    <Content Include="Scripts\calculator\directives\_index.js" />
+    <Content Include="Scripts\calculator\module.js" />
+    <Content Include="Scripts\calculator\namespace.js" />
+    <Content Include="Scripts\calculator\require.js" />
+    <Content Include="Scripts\calculator\services\calculationService.js" />
+    <Content Include="Scripts\calculator\services\_index.js" />
+    <Content Include="Scripts\calculator\settings\settings.js" />
+    <Content Include="Scripts\calculator\settings\_index.js" />
+    <Content Include="Scripts\calculator\templates\calculator.html" />
     <Content Include="Scripts\common\module.js" />
     <Content Include="Scripts\common\namespace.js" />
     <Content Include="Scripts\common\require.js" />
+    <Content Include="Scripts\common\templates\_calculator.html" />
     <Content Include="Scripts\common\templates\_empty.html" />
     <Content Include="Scripts\common\templates\_mainLayout.html" />
     <Content Include="Scripts\manageCredits\controllers\popupController.js" />
@@ -98,7 +109,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\manageRequest\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
