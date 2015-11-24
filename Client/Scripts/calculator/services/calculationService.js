@@ -36,40 +36,27 @@ function (namespace, module) {
             return $http.get(serviceUri, config);
         };
 
+        function _getIncomeReq(data) {
+            var serviceUri = serviceBaseUri + "/income?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
+                "&sum=" + data.Sum + "&othercreditpayments=" + data.OtherCreditSum +
+                "&utilitiespayments=" + data.UtilSum + "&otherpayments=" + data.UtilSum;
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.get(serviceUri, config);
+        };
+
         function _getById(id) {
             return $http.get(serviceBaseUri + 'get/' + id);
         };
 
-        //var _post = function (data) {
-        //    var serviceUri = serviceBaseUri + "post";
-        //    var config = {
-        //        headers: {
-        //            'Accept': 'application/json'
-        //        }
-        //    };
-        //    return $http.post(serviceUri, data, config);
-        //};
-
-        //var _delete = function (id) {
-        //    return $http.delete(serviceBaseUri + 'delete/' + id);
-        //};
-
-        //var _put = function (id, data) {
-        //    var serviceUri = serviceBaseUri + "put/" + id;
-        //    var config = {
-        //        headers: {
-        //            'Accept': 'application/json'
-        //        }
-        //    };
-        //    return $http.put(serviceUri, data, config);
-        //}
-
         creditsServiceFactory.getById = _getById;
+        creditsServiceFactory.getIncomeReq = _getIncomeReq;
         creditsServiceFactory.get = _get;
         creditsServiceFactory.getMaxSum = _getMaxSum;
-        //creditsServiceFactory.post = _post;
-        //creditsServiceFactory.delete = _delete;
-        //creditsServiceFactory.put = _put;
+
 
         return creditsServiceFactory;
     };

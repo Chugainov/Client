@@ -25,12 +25,7 @@
 
                 function _loadData() {
                     $scope._credits = [];
-                    $scope.credit;
-                    $scope.month;
-                    $scope.incomeSum;
-                    $scope.otherCreditSum;
-                    $scope.otherSum;
-                    $scope.utilSum;
+
                     $timeout(function () {
                         creditsService.get().then(function (response) {
                             $scope._credits = response.data;
@@ -41,17 +36,32 @@
                 _loadData();
 
                 $scope.calc = function () {
-                    var data = {
-                        CreditId: $scope.credit.Id,
-                        Month: $scope.month,
-                        IncomeSum: $scope.incomeSum,
-                        OtherCreditSum: $scope.otherCreditSum,
-                        OtherSum: $scope.otherSum,
-                        UtilSum :$scope.utilSum
+                    if ($scope.type == 1) {
+                        var data = {
+                            CreditId: $scope.credit.Id,
+                            Month: $scope.month,
+                            IncomeSum: $scope.incomeSum,
+                            OtherCreditSum: $scope.otherCreditSum,
+                            OtherSum: $scope.otherSum,
+                            UtilSum: $scope.utilSum
+                        }
+                        creditsService.getMaxSum(data).then(function (response) {
+                            $scope.maxSum = Math.round(response.data);
+                        });
+                    };
+                    if ($scope.type == 2) {
+                        var data = {
+                            CreditId: $scope.credit.Id,
+                            Month: $scope.month,
+                            Sum: $scope.sum,
+                            OtherCreditSum: $scope.otherCreditSum,
+                            OtherSum: $scope.otherSum,
+                            UtilSum: $scope.utilSum
+                        }
+                        creditsService.getIncomeReq(data).then(function (response) {
+                            $scope.incomeReq = Math.round(response.data);
+                        });
                     }
-                    creditsService.getMaxSum(data).then(function (response) {
-                        $scope.maxSum = Math.round(response.data);
-                    });
                 }
             };
 

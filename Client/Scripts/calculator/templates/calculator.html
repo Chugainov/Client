@@ -13,34 +13,64 @@
             <td><input type="text" ng-model="credit.PercentRate" disabled /></td>
         </tr>
         <tr>
-            <td><label>Выберите кредит</label></td>
-            <td><select ng-model="type">
+            <td><label>Выберите расчет</label></td>
+            <td>
+                <select ng-model="type">
                     <option value="0">--------</option>
                     <option value="1">Расчет макс суммы</option>
+                    <option value="2">Расчет необходимой прибыли</option>
                 </select>
             </td>
         </tr>
-        <tr ng-show="type == 1">
-            <td><label>Средняя прибыль за последние 3 месяца</label></td>
-            <td><input type="text" ng-model="incomeSum" /></td>
-        </tr>
-        <tr ng-show="type == 1">
-            <td><label>Платежи по другим кредитам</label></td>
-            <td><input type="text" ng-model="otherCreditSum" /></td>
-        </tr>
-        <tr ng-show="type == 1">
-            <td><label>Платежи за коммунальные услуги</label></td>
-            <td><input type="text" ng-model="utilSum" /></td>
-        </tr>
-        <tr ng-show="type == 1">
-            <td><label>Иные платежи</label></td>
-            <td><input type="text" ng-model="otherSum" /></td>
-        </tr>
-        <tr ng-show="type == 1">
-            <td><label>Максимально возможная сумма</label></td>
-            <td><input type="text" ng-model="maxSum" disabled /></td>
-        </tr>
     </table>
-    <input type="button" value="Расчитать" ng-click="calc()" ng-show="type == 1" />
-    
+    <div ng-show="type == 1">
+        <table>
+            <tr>
+                <td><label>Средняя прибыль за последние 3 месяца</label></td>
+                <td><input type="number" ng-model="incomeSum" /></td>
+            </tr>
+            <tr >
+                <td><label>Платежи по другим кредитам</label></td>
+                <td><input type="number" ng-model="otherCreditSum" /></td>
+            </tr>
+            <tr>
+                <td><label>Платежи за коммунальные услуги</label></td>
+                <td><input type="number" ng-model="utilSum" /></td>
+            </tr>
+            <tr >
+                <td><label>Иные платежи</label></td>
+                <td><input type="number" ng-model="otherSum" /></td>
+            </tr>
+            <tr >
+                <td><label>Максимально возможная сумма</label></td>
+                <td><input type="number" ng-model="maxSum" disabled /></td>
+            </tr>
+        </table>
+        <input type="button" value="Расчитать" ng-click="calc()" />
+    </div>
+    <div ng-show="type == 2">
+        <table>
+            <tr>
+                <td><label>Необходимая сумма</label></td>
+                <td><input type="number" ng-model="sum" /></td>
+            </tr>
+            <tr>
+                <td><label>Платежи по другим кредитам</label></td>
+                <td><input type="number" ng-model="otherCreditSum" /></td>
+            </tr>
+            <tr>
+                <td><label>Платежи за коммунальные услуги</label></td>
+                <td><input type="number" ng-model="utilSum" /></td>
+            </tr>
+            <tr>
+                <td><label>Иные платежи</label></td>
+                <td><input type="number" ng-model="otherSum" /></td>
+            </tr>
+            <tr>
+                <td><label>Необходимая прибыль</label></td>
+                <td><input type="number" ng-model="incomeReq" disabled /></td>
+            </tr>
+        </table>
+        <input type="button" value="Расчитать" ng-click="calc()" />
+    </div>
 </div>
