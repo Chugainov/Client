@@ -48,6 +48,19 @@ function (namespace, module) {
             return $http.get(serviceUri, config);
         };
 
+        function _getPaymentPlan(data) {
+            var serviceUri = serviceBaseUri + 'paymentsplan';
+            var data = {
+                params: {
+                    creditId: data.CreditId,
+                    sum: data.Sum,
+                    monthPeriod: data.Month,
+                    startDate: new Date()
+                }
+            };
+            return $http.get(serviceUri, data);
+        }
+
         function _getById(id) {
             return $http.get(serviceBaseUri + 'get/' + id);
         };
@@ -56,6 +69,7 @@ function (namespace, module) {
         creditsServiceFactory.getIncomeReq = _getIncomeReq;
         creditsServiceFactory.get = _get;
         creditsServiceFactory.getMaxSum = _getMaxSum;
+        creditsServiceFactory.getPaymentPlan = _getPaymentPlan;
 
 
         return creditsServiceFactory;

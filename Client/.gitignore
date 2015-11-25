@@ -1,1 +1,4 @@
 /libs/*
+bin/
+obj/
+*.user

@@ -19,6 +19,7 @@
                     <option value="0">--------</option>
                     <option value="1">Расчет макс суммы</option>
                     <option value="2">Расчет необходимой прибыли</option>
+                    <option value="3">Расчет плана платежей</option>
                 </select>
             </td>
         </tr>
@@ -69,6 +70,15 @@
             <tr>
                 <td><label>Необходимая прибыль</label></td>
                 <td><input type="number" ng-model="incomeReq" disabled /></td>
+            </tr>
+        </table>
+        <input type="button" value="Расчитать" ng-click="calc()" />
+    </div>
+    <div ng-show="type == 3">
+        <table>
+            <tr>
+                <td><label>Необходимая сумма</label></td>
+                <td><input type="number" ng-model="sum" /></td>
             </tr>
         </table>
         <input type="button" value="Расчитать" ng-click="calc()" />

@@ -62,6 +62,16 @@
                             $scope.incomeReq = Math.round(response.data);
                         });
                     }
+                    if ($scope.type == 3) {
+                        var data = {
+                            CreditId: $scope.credit.Id,
+                            Month: $scope.month,
+                            Sum: $scope.sum
+                        };
+                        creditsService.getPaymentPlan(data).then(function (response) {
+                            $scope.paymentPlan = response.data;
+                        });
+                    }
                 }
             };
 
