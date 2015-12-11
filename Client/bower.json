@@ -23,6 +23,7 @@
     "jquery-ui": "latest",
     "requirejs": "latest",
     "underscore": "latest",
-    "angular-permission": "~1.1.0"
+    "angular-permission": "~1.1.0",
+    "angular-local-storage": "~0.2.3"
   }
 }

@@ -6,7 +6,7 @@
 function (namespace, module) {
     'use strict';
 
-    var factoryId = 'creditsService';
+    var factoryId = 'calculatorService';
     var name = namespace + "." + factoryId;
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
@@ -15,7 +15,7 @@ function (namespace, module) {
         var creditsServiceFactory = {};
 
         function _get() {
-            var serviceUri = creditsBaseUri + "get";
+            var serviceUri = creditsBaseUri;
             var config = {
                 headers: {
                     'Accept': 'application/json'

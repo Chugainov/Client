@@ -1,0 +1,30 @@
+﻿<div>
+    <div><h1>Управление депозитами</h1></div>
+    <div><input type="button" value="Добавить новый" ng-click="open(deposit)" /></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Процентная ставка</td>
+                <td>Минимальная сумма</td>
+                <td>Максимальная сумма</td>
+                <td>Минимальный срок</td>
+                <td>Максимальный срок</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="deposit in _deposits">
+                <td ng-click="open(deposit.Id)">{{deposit.Name}}</td>
+                <td>{{deposit.InterestRate}}</td>
+                <td>{{deposit.MinSum + ' BYR'}}</td>
+                <td>{{deposit.MaxSum + ' BYR'}}</td>
+                <td>{{deposit.MinMonthPeriod + ' м.'}}</td>
+                <td>{{deposit.MaxMonthPeriod + ' м.'}}</td>
+                <td><input type="button" value="del" ng-click="_delete(deposit.Id)"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

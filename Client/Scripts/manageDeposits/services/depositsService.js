@@ -1,17 +1,17 @@
 ﻿define([
     '../namespace',
     '../module'
-    
+
 ],
 function (namespace, module) {
     'use strict';
 
-    var factoryId = 'creditsService';
+    var factoryId = 'depositsService';
     var name = namespace + "." + factoryId;
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
-        var creditsServiceFactory = {};
+        var depositsServiceFactory = {};
 
         function _get() {
             var serviceUri = serviceBaseUri;
@@ -51,13 +51,13 @@ function (namespace, module) {
             return $http.put(serviceUri, data, config);
         }
 
-        creditsServiceFactory.getById = _getById;
-        creditsServiceFactory.get = _get;
-        creditsServiceFactory.post = _post;
-        creditsServiceFactory.delete = _delete;
-        creditsServiceFactory.put = _put;
+        depositsServiceFactory.getById = _getById;
+        depositsServiceFactory.get = _get;
+        depositsServiceFactory.post = _post;
+        depositsServiceFactory.delete = _delete;
+        depositsServiceFactory.put = _put;
 
-        return creditsServiceFactory;
+        return depositsServiceFactory;
     };
 
     module.factory(name, dependencies.concat(service));

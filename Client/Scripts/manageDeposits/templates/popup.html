@@ -5,35 +5,35 @@
     <table>
         <tr>
             <td><label>Название</label></td>
-            <td><input type="text" ng-model="credit.Name" required/></td>
+            <td><input type="text" ng-model="deposit.Name" required /></td>
         </tr>
-                    
+
         <tr>
             <td><label>Процент</label></td>
-            <td><input type="text" ng-model="credit.PercentRate" required /></td>
+            <td><input type="text" ng-model="deposit.InterestRate" required /></td>
         </tr>
         <tr>
             <td><label>Минимальная сумма</label></td>
-            <td><input type="text" ng-model="credit.MinSum" required /></td>
+            <td><input type="text" ng-model="deposit.MinSum" required /></td>
         </tr>
         <tr>
             <td><label>Максимальная сумма</label></td>
-            <td><input type="text" ng-model="credit.MaxSum" required /></td>
+            <td><input type="text" ng-model="deposit.MaxSum" required /></td>
         </tr>
         <tr>
             <td><label>Минимальный срок</label></td>
-            <td><input type="text" ng-model="credit.MinMonthPeriod" required /></td>
+            <td><input type="text" ng-model="deposit.MinMonthPeriod" required /></td>
         </tr>
         <tr>
             <td><label>Максимальный срок</label></td>
-            <td><input type="text" ng-model="credit.MaxMonthPeriod" required /></td>
+            <td><input type="text" ng-model="deposit.MaxMonthPeriod" required /></td>
         </tr>
         <tr>
             <td><label>Описание</label></td>
-            <td><textarea ng-model="credit.Description" required ></textarea></td>
+            <td><textarea ng-model="deposit.Description" required></textarea></td>
         </tr>
     </table>
 
-    <input class="btn btn-primary" value="Ok" type="button" ng-click="ok()"/>
-    <input class="btn btn-warning" value="Отмена" type="button" ng-click="cancel()"/>
+    <input class="btn btn-primary" value="Ok" type="button" ng-click="ok()" />
+    <input class="btn btn-warning" value="Отмена" type="button" ng-click="cancel()" />
 </div>

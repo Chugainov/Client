@@ -4,9 +4,9 @@
 ],
     function (module, namespace) {
         var name = 'kcCalculator';
-        var dependencies = [namespace + '.creditsService'];
+        var dependencies = [namespace + '.calculatorService'];
 
-        var directive = function (creditsService) {
+        var directive = function (calculatorService) {
             var directive = {
                 templateUrl: 'Scripts/calculator/templates/calculator.html',
                 link: link,
@@ -22,12 +22,12 @@
 
 
             function controller($scope, $timeout) {
-
+                $scope.paymentsPlan = false;
                 function _loadData() {
                     $scope._credits = [];
 
                     $timeout(function () {
-                        creditsService.get().then(function (response) {
+                        calculatorService.get().then(function (response) {
                             $scope._credits = response.data;
                         });
                     });
@@ -37,6 +37,7 @@
 
                 $scope.calc = function () {
                     if ($scope.type == 1) {
+                        $scope.paymentsPlan = false;
                         var data = {
                             CreditId: $scope.credit.Id,
                             Month: $scope.month,
@@ -45,11 +46,12 @@
                             OtherSum: $scope.otherSum,
                             UtilSum: $scope.utilSum
                         }
-                        creditsService.getMaxSum(data).then(function (response) {
+                        calculatorService.getMaxSum(data).then(function (response) {
                             $scope.maxSum = Math.round(response.data);
                         });
                     };
                     if ($scope.type == 2) {
+                        $scope.paymentsPlan = false;
                         var data = {
                             CreditId: $scope.credit.Id,
                             Month: $scope.month,
@@ -58,7 +60,7 @@
                             OtherSum: $scope.otherSum,
                             UtilSum: $scope.utilSum
                         }
-                        creditsService.getIncomeReq(data).then(function (response) {
+                        calculatorService.getIncomeReq(data).then(function (response) {
                             $scope.incomeReq = Math.round(response.data);
                         });
                     }
@@ -68,8 +70,9 @@
                             Month: $scope.month,
                             Sum: $scope.sum
                         };
-                        creditsService.getPaymentPlan(data).then(function (response) {
+                        calculatorService.getPaymentPlan(data).then(function (response) {
                             $scope.paymentPlan = response.data;
+                            $scope.paymentsPlan = true;
                         });
                     }
                 }

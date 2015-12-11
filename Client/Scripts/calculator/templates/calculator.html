@@ -83,4 +83,26 @@
         </table>
         <input type="button" value="Расчитать" ng-click="calc()" />
     </div>
+    <div ng-show="paymentsPlan">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Главная сумма</td>
+                    <td>Сумма процента</td>
+                    <td>Пеня</td>
+                    <td>Дата</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="payment in paymentPlan">
+                    <td>{{payment.MainSum}}</td>
+                    <td>{{payment.PercentSum}}</td>
+                    <td>{{payment.DelaySum}}</td>
+                    <td>{{payment.StartDate}}</td>
+                </tr>
+
+            </tbody>
+        </table> 
+    </div>
 </div>

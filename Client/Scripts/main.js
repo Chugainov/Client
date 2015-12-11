@@ -4,9 +4,10 @@
         'angular': '../libs/angular/angular',
         'jquery': '../libs/jquery/dist/jquery',
         'angularUiRouter': '../libs/angular-ui-router/release/angular-ui-router',
+        'angularLocalStorage': '../libs/angular-local-storage/dist/angular-local-storage',
         'angularUiBootstrap': '../libs/angular-bootstrap/ui-bootstrap-tpls.min',
         'underscoreModule': '../libs/underscore/underscore',
-        'angularPermission': '../libs/angular-permission/dist/angular-permission',
+        'angularResource': '../libs/angular-resource/angular-resource',
         'bootstrap': '../libs/bootstrap/dist/js/bootstrap.min'
     },
 
@@ -38,7 +39,13 @@
                 'jquery'
             ]
         },
-        'angularPermission': {
+        'angularResource': {
+            deps: [
+                'angular',
+                'jquery'
+            ]
+        },
+        'angularLocalStorage': {
             deps: [
                 'angular',
                 'jquery'
