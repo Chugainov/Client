@@ -1,0 +1,30 @@
+﻿<div>
+    <div><h1>Управление кредитами</h1></div>
+    <div><input type="button" value="Зарегистрировать работника" ng-click="open()" /></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Отчество</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="acc in _gridOptions.Items">
+                <td>{{acc.Lastname}}</td>
+                <td>{{acc.Firstname}}</td>
+                <td>{{acc.Patronymic}}</td>
+                <td><input type="button" value="del" ng-click="_delete(acc.Id)"></td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table>
+</div>

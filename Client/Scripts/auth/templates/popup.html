@@ -1,0 +1,43 @@
+﻿<div class="modal-header">
+    <h3>Редактирование</h3>
+</div>
+<div class="modal-body">
+    <table>
+        <tr>
+            <td><p>Nickname</p></td>
+            <td><input type="text" ng-model="info.UserName" required /></td>
+        </tr>
+        <tr>
+            <td><p>E-mail</p></td>
+            <td><input type="email" ng-model="info.Email" required /></td>
+        </tr>
+        <tr>
+            <td><p>Фамилия</p></td>
+            <td><input type="text" ng-model="info.LastName" required /></td>
+        </tr>
+        <tr>
+            <td><p>Имя</p></td>
+            <td><input type="text" ng-model="info.FirstName" required /></td>
+        </tr>
+
+        <tr>
+            <td><p>Отчество</p></td>
+            <td><input type="text" ng-model="info.Patronymic" /></td>
+        </tr>
+        <tr>
+            <td><label>Выберите должность</label></td>
+            <td><select ng-model="role" ng-options="c.Display for c in roles"></select></td>
+        </tr>
+        <tr>
+            <td><p>Пароль</p></td>
+            <td><input type="text" ng-model="info.Password" required /></td>
+        </tr>
+        <tr>
+            <td><p>Подтверждение пароля</p></td>
+            <td><input type="text" ng-model="info.ConfirmPassword" required /></td>
+        </tr>
+    </table>
+    <p ng-show="!isValid()" style="color: red">Пароли не совпадают или невалидные данные</p>
+    <input ng-show="isValid()" class="btn btn-primary" value="Зарегистрировать" type="button" ng-click="ok()" />
+    <input class="btn btn-warning" value="Назад" type="button" ng-click="cancel()" />
+</div>

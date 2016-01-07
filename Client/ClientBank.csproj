@@ -69,7 +69,11 @@
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\auth\controllers\authController.js" />
+    <Content Include="Scripts\auth\controllers\popupController.js" />
+    <Content Include="Scripts\auth\templates\popup.html" />
     <Content Include="Scripts\auth\controllers\_index.js" />
+    <Content Include="Scripts\auth\directives\kcReg.js" />
+    <Content Include="Scripts\auth\directives\_index.js" />
     <Content Include="Scripts\auth\module.js" />
     <Content Include="Scripts\auth\namespace.js" />
     <Content Include="Scripts\auth\require.js" />
@@ -98,6 +102,7 @@
     <Content Include="Scripts\common\templates\_deposits.html" />
     <Content Include="Scripts\common\templates\_mainLayout.html" />
     <Content Include="Scripts\common\templates\_payments.html" />
+    <Content Include="Scripts\common\templates\_reg.html" />
     <Content Include="Scripts\manageCredits\controllers\popupController.js" />
     <Content Include="Scripts\manageCredits\controllers\_index.js" />
     <Content Include="Scripts\manageCredits\directives\kcCredits.js" />

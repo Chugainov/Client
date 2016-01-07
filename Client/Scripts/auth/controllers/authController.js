@@ -13,6 +13,7 @@
         var controller = function ($scope, authService, localStorageService) {
             var vm = this;
 
+
             $scope.login = function () {
                 var user = { UserName: $scope.Name, Password: $scope.Password };
                 authService.login(user).then(function (response) {
