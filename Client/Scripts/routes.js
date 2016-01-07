@@ -48,6 +48,16 @@
                     }
                 }
             })
+            .state('request', {
+                url: "/requests",
+                templateUrl: "Scripts/common/templates/_request.html",
+                resolve: {
+                    permissionResource: "authorizationService",
+                    permission: function (permissionResource, $stateParams) {
+                        return permissionResource.permissionCheck([roles.CreditCommitteeMember, roles.CreditDepartmentChief, roles.Operator, roles.Security]);
+                    }
+                }
+            })
 
         .state('deposits', {
             url: "/deposits",

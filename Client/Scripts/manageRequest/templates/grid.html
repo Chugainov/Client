@@ -1,0 +1,135 @@
+﻿<div>
+    <div><h1>Управление заявками</h1></div>
+    
+    <table ng-show="Role == 1">
+        <tr>
+            <td><p>Сумма</p></td>
+            <td><input type="number" ng-model="requestN.Sum" required/></td>
+        </tr>
+        <tr>
+            <td><p>Заработная плата</p></td>
+            <td><input type="number" ng-model="requestN.IncomeSum" required /></td>
+        </tr>
+        <tr>
+            <td><p>Выплаты по другим кредитам</p></td>
+            <td><input type="number" ng-model="requestN.OtherCreditPayments" required /></td>
+        </tr>
+        <tr>
+            <td><p>Выплаты за коммунальные услуги</p></td>
+            <td><input type="number" ng-model="requestN.UtilitiesPayments" required /></td>
+        </tr>
+        <tr>
+            <td><p>Прочие платежи</p></td>
+            <td><input type="number" ng-model="requestN.OtherPayments" required /></td>
+        </tr>
+        <tr>
+            <td><p>Выберите кредит</p></td>
+            <td><select ng-model="credit" ng-options="c.Name for c in _credits" required></select></td>
+        </tr>
+
+        <tr>
+            <td><p>E-mail</p></td>
+            <td><input type="email" ng-model="requestN.Email" required /></td>
+        </tr>
+        <tr>
+            <td><p>Тип документа</p></td>
+            <td><input type="text" disabled value="Паспорт" required /></td>
+        </tr>
+        <tr>
+            <td><p>Номер документа</p></td>
+            <td><input type="text" ng-model="customer.DocumentNumber" required /></td>
+        </tr>
+        <tr>
+            <td><p>Идентификационный номер</p></td>
+            <td><input type="text" ng-model="customer.IdentificationNumber" required /></td>
+            <td><input type="button" value="Set" ng-click="Set()"/></td>
+        </tr>
+        <!--  -->
+        <tr>
+            <td><p>Фамилия</p></td>
+            <td><input type="text" ng-model="customer.LastName" required /></td>
+        </tr>
+        <tr>
+            <td><p>Имя</p></td>
+            <td><input type="text" ng-model="customer.FirstName" required /></td>
+        </tr>
+
+        <tr>
+            <td><p>Отчество</p></td>
+            <td><input type="text" ng-model="customer.Patronymic" /></td>
+        </tr>
+        <tr>
+            <td><p>Дата рождения</p></td>
+            <td class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="customer.DateOfBirth" is-open="opened"
+                       ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td><p>Страна</p></td>
+            <td><input type="text" ng-model="customer.Address.Country" required /></td>
+        </tr>
+        <tr>
+            <td><p>Город</p></td>
+            <td><input type="text" ng-model="customer.Address.City" required /></td>
+        </tr>
+        <tr>
+            <td><p>Улица</p></td>
+            <td><input type="text" ng-model="customer.Address.Street" required /></td>
+        </tr>
+        <tr>
+            <td><p>Дом</p></td>
+            <td><input type="text" ng-model="customer.Address.House" required /></td>
+        </tr>
+        <tr>
+            <td><p>Квартира</p></td>
+            <td><input type="text" ng-model="customer.Address.Flat" /></td>
+        </tr>
+        <!--  -->
+
+        <tr>
+            <td><p>Военный билет</p></td>
+            <td><input type="file" onchange="angular.element(this).scope().loadMilitary(this)" required /></td>
+        </tr>
+        <tr>
+            <td><p>Справка о доходах</p></td>
+            <td><input type="file" onchange="angular.element(this).scope().loadDocs(this)" required /></td>
+        </tr>
+        <tr>
+            <td><p>Цель кредита</p></td>
+            <td><textarea ng-model="requestN.CreditGoal" required></textarea></td>
+        </tr>
+    </table>
+   
+     <div><input type="button" value="Добавить заявку" ng-show="Role == 1" ng-click="add()" /></div>
+    <table class="table" ng-show="Role != 1">
+        <thead>
+            <tr>
+                <td>Имя клиента</td>
+                <td>Кредит</td>
+                <td>Запрашиваемая сумма</td>
+                <td>Срок</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
+                <td ng-click="open(deposit.Id)">{{request.CustomerName}}</td>
+                <td>{{request.CreditName}}</td>
+                <td>{{request.Sum + ' BYR'}}</td>
+                <td>{{request.MonthCount + ' мес.'}}</td>
+            </tr>
+
+        </tbody>
+        <tfoot ng-show="Role != 1">
+            <uib-pagination total-items="_gridOptions.TotalItemCount" ng-show="Role != 1"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table>
+</div>
