@@ -33,10 +33,22 @@
                         requestService.getCredits().then(function (response) {
                             $scope._credits = response.data;
                         });
-                        if ($scope.Role != 1) {
-                            requestService.getUnconfirmed($scope._currentPage).then(function (response) {
-                                $scope._gridOptions = response.data;
-                            });
+                        switch ($scope.Role) {
+                            case 3:
+                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                    $scope._gridOptions = response.data;
+                                });
+                                break;
+                            case 4:
+                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                    $scope._gridOptions = response.data;
+                                });
+                                break;
+                            case 5:
+                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                    $scope._gridOptions = response.data;
+                                });
+                                break;
                         }
                         
                     });

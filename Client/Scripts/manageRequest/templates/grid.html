@@ -118,8 +118,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
-                <td ng-click="open(deposit.Id)">{{request.CustomerName}}</td>
-                <td>{{request.CreditName}}</td>
+                <td ng-click="open(request.Id)">{{request.Customer.Firsname}}</td>
+                <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
                 <td>{{request.MonthCount + ' мес.'}}</td>
             </tr>
@@ -132,4 +132,4 @@
                             rotate="false" ng-change="pageChanged()"></uib-pagination>
         </tfoot>
     </table>
-</div>
+</>
