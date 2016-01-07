@@ -1,0 +1,4 @@
+﻿define([
+    './authController',
+    './regController'
+], function () { })

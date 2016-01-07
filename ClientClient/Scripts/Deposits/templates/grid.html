@@ -1,6 +1,6 @@
 ﻿<div>
-    <div><h1>Управление кредитами</h1></div>
-    <div><input type="button" value="Добавить новый" ng-click="open(credit)" /></div>
+    <div><h1>Управление депозитами</h1></div>
+    <div><p>Уважаемый Клиент, нажмите на название депозита, для его описания</p></div>
     <table class="table">
         <thead>
             <tr>
@@ -10,19 +10,17 @@
                 <td>Максимальная сумма</td>
                 <td>Минимальный срок</td>
                 <td>Максимальный срок</td>
-                <td></td>
             </tr>
         </thead>
         <tbody>
 
-            <tr ng-repeat="credit in _gridOptions.Items">
-                <td ng-click="open(credit.Id)">{{credit.Name}}</td>
-                <td>{{credit.PercentRate}}</td>
-                <td>{{credit.MinSum + ' BYR'}}</td>
-                <td>{{credit.MaxSum + ' BYR'}}</td>
-                <td>{{credit.MinMonthPeriod + ' мес.'}}</td>
-                <td>{{credit.MaxMonthPeriod + ' мес.'}}</td>
-                <td><input type="button" value="del" ng-click="_delete(credit.Id)"></td>
+            <tr ng-repeat="deposit in _gridOptions.Items">
+                <td ng-click="open(deposit.Id)">{{deposit.Name}}</td>
+                <td>{{deposit.InterestRate}}</td>
+                <td>{{deposit.MinSum + ' BYR'}}</td>
+                <td>{{deposit.MaxSum + ' BYR'}}</td>
+                <td>{{deposit.MinMonthPeriod + ' м.'}}</td>
+                <td>{{deposit.MaxMonthPeriod + ' м.'}}</td>
             </tr>
 
         </tbody>
@@ -32,5 +30,5 @@
                             class="pagination-sm" boundary-links="true"
                             rotate="false" ng-change="pageChanged()"></uib-pagination>
         </tfoot>
-    </table> 
+    </table>
 </div>

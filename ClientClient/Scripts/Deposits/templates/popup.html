@@ -1,0 +1,33 @@
+﻿<div class="modal-header">
+    <h3>Описание депозита</h3>
+</div>
+<div class="modal-body">
+    <table>
+        <tr>
+            <td><label>Название</label></td>
+            <td>{{deposit.Name}}</td>
+        </tr>
+
+        <tr>
+            <td><label>Процент</label></td>
+            <td>{{deposit.InterestRate}}</td>
+        </tr>
+        <tr>
+            <td><label>Минимальная сумма</label></td>
+            <td>{{deposit.MinSum}}</td>
+        </tr>
+        <tr>
+            <td><label>Максимальная сумма</label></td>
+            <td>{{deposit.MaxSum}}/></td>
+        </tr>
+        <tr>
+            <td><label>Минимальный срок</label></td>
+            <td>{{deposit.MinMonthPeriod}}</td>
+        </tr>
+        <tr>
+            <td><label>Максимальный срок</label></td>
+            <td>{{deposit.MaxMonthPeriod}}</td>
+        </tr>
+    </table>
+    <input class="btn btn-warning" value="Назад" type="button" ng-click="cancel()" />
+</div>

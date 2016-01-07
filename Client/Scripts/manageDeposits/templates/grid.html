@@ -15,7 +15,7 @@
         </thead>
         <tbody>
 
-            <tr ng-repeat="deposit in _deposits">
+            <tr ng-repeat="deposit in _gridOptions.Items">
                 <td ng-click="open(deposit.Id)">{{deposit.Name}}</td>
                 <td>{{deposit.InterestRate}}</td>
                 <td>{{deposit.MinSum + ' BYR'}}</td>
@@ -26,5 +26,11 @@
             </tr>
 
         </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
     </table>
 </div>

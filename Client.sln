@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{7CAC6FAB-6964-46FE-9B8E-02269F90A484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBank", "Client\ClientBank.csproj", "{7CAC6FAB-6964-46FE-9B8E-02269F90A484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientClient", "ClientClient\ClientClient.csproj", "{04A87446-2E49-4A88-8AF9-F7F31C51A873}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7CAC6FAB-6964-46FE-9B8E-02269F90A484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAC6FAB-6964-46FE-9B8E-02269F90A484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAC6FAB-6964-46FE-9B8E-02269F90A484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A87446-2E49-4A88-8AF9-F7F31C51A873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A87446-2E49-4A88-8AF9-F7F31C51A873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A87446-2E49-4A88-8AF9-F7F31C51A873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A87446-2E49-4A88-8AF9-F7F31C51A873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
