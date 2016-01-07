@@ -1,0 +1,38 @@
+﻿<div class="modal-header">
+    <h3>Описание кредита</h3>
+</div>
+<div class="modal-body">
+    <table>
+        <tr>
+            <td><label>Название</label></td>
+            <td>{{credit.Name}}</td>
+        </tr>
+                    
+        <tr>
+            <td><label>Процент</label></td>
+            <td>{{credit.PercentRate}}</td>
+        </tr>
+        <tr>
+            <td><label>Минимальная сумма</label></td>
+            <td>{{credit.MinSum}}</td>
+        </tr>
+        <tr>
+            <td><label>Максимальная сумма</label></td>
+            <td>{{credit.MaxSum}}</td>
+        </tr>
+        <tr>
+            <td><label>Минимальный срок</label></td>
+            <td>  {{credit.MinMonthPeriod}}</td>
+        </tr>
+        <tr>
+            <td><label>Максимальный срок</label></td>
+            <td>  {{credit.MaxMonthPeriod}}</p></td>
+        </tr>
+        <tr>
+            <td><label>Описание</label></td>
+            <td>{{credit.Description}}</td>
+        </tr>
+    </table>
+
+    <input class="btn btn-warning" value="Отмена" type="button" ng-click="cancel()"/>
+</div>

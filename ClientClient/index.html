@@ -1,0 +1,24 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Client</title>
+    <link href="libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <ul class="nav nav-tabs">
+            <li><a ui-sref="home">Главная</a></li>
+            <li><a ui-sref="credits">Информация о кредитах</a></li>
+            <li><a ui-sref="deposits">Информация о депозитах</a></li>
+            <li><a ui-sref="calculation">Кредитный калькулятор</a></li>
+            <li><a ui-sref="auth">Login</a></li>
+            <li><a ui-sref="reg">Sign up</a></li>
+            <li><a >Logout</a></li>
+        </ul>
+    </div>
+    <div ui-view></div>
+
+    <script src="libs/requirejs/require.js" data-main="Scripts/main.js"></script>
+</body>
+</html>

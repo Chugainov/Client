@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{04A87446-2E49-4A88-8AF9-F7F31C51A873}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientClient</RootNamespace>
+    <AssemblyName>ClientClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\auth\controllers\authController.js" />
+    <Content Include="Scripts\auth\controllers\regController.js" />
+    <Content Include="Scripts\auth\controllers\_index.js" />
+    <Content Include="Scripts\auth\module.js" />
+    <Content Include="Scripts\auth\namespace.js" />
+    <Content Include="Scripts\auth\require.js" />
+    <Content Include="Scripts\auth\services\authService.js" />
+    <Content Include="Scripts\auth\services\_index.js" />
+    <Content Include="Scripts\auth\settings\authSettings.js" />
+    <Content Include="Scripts\auth\settings\_index.js" />
+    <Content Include="Scripts\auth\templates\auth.html" />
+    <Content Include="Scripts\calculator\directives\kcCalculator.js" />
+    <Content Include="Scripts\calculator\directives\_index.js" />
+    <Content Include="Scripts\calculator\module.js" />
+    <Content Include="Scripts\calculator\namespace.js" />
+    <Content Include="Scripts\calculator\require.js" />
+    <Content Include="Scripts\calculator\services\calculationService.js" />
+    <Content Include="Scripts\calculator\services\_index.js" />
+    <Content Include="Scripts\calculator\settings\settings.js" />
+    <Content Include="Scripts\calculator\settings\_index.js" />
+    <Content Include="Scripts\calculator\templates\calculator.html" />
+    <Content Include="Scripts\common\module.js" />
+    <Content Include="Scripts\common\namespace.js" />
+    <Content Include="Scripts\common\require.js" />
+    <Content Include="Scripts\common\templates\_auth.html" />
+    <Content Include="Scripts\common\templates\_calculator.html" />
+    <Content Include="Scripts\common\templates\_credits.html" />
+    <Content Include="Scripts\common\templates\_deposits.html" />
+    <Content Include="Scripts\common\templates\_mainLayout.html" />
+    <Content Include="Scripts\common\templates\_payments.html" />
+    <Content Include="Scripts\common\templates\_reg.html" />
+    <Content Include="Scripts\Credits\controllers\popupController.js" />
+    <Content Include="Scripts\Credits\controllers\_index.js" />
+    <Content Include="Scripts\Credits\directives\kcCredits.js" />
+    <Content Include="Scripts\Credits\directives\_index.js" />
+    <Content Include="Scripts\Credits\module.js" />
+    <Content Include="Scripts\Credits\namespace.js" />
+    <Content Include="Scripts\Credits\require.js" />
+    <Content Include="Scripts\Credits\services\creditsService.js" />
+    <Content Include="Scripts\Credits\services\_index.js" />
+    <Content Include="Scripts\Credits\settings\_index.js" />
+    <Content Include="Scripts\Credits\templates\grid.html" />
+    <Content Include="Scripts\Credits\settings\settings.js" />
+    <Content Include="Scripts\Credits\templates\popup.html" />
+    <Content Include="Scripts\Deposits\controllers\popupController.js" />
+    <Content Include="Scripts\Deposits\controllers\_index.js" />
+    <Content Include="Scripts\Deposits\directives\kcDeposits.js" />
+    <Content Include="Scripts\Deposits\directives\_index.js" />
+    <Content Include="Scripts\Deposits\module.js" />
+    <Content Include="Scripts\Deposits\namespace.js" />
+    <Content Include="Scripts\Deposits\require.js" />
+    <Content Include="Scripts\Deposits\services\depositsService.js" />
+    <Content Include="Scripts\Deposits\services\_index.js" />
+    <Content Include="Scripts\Deposits\settings\settings.js" />
+    <Content Include="Scripts\Deposits\settings\_index.js" />
+    <Content Include="Scripts\Deposits\templates\grid.html" />
+    <Content Include="Scripts\Deposits\templates\popup.html" />
+    <Content Include="Scripts\paymentPlan\directives\kcPayments.js" />
+    <Content Include="Scripts\paymentPlan\directives\_index.js" />
+    <Content Include="Scripts\paymentPlan\module.js" />
+    <Content Include="Scripts\paymentPlan\namespace.js" />
+    <Content Include="Scripts\paymentPlan\require.js" />
+    <Content Include="Scripts\paymentPlan\services\paymentsService.js" />
+    <Content Include="Scripts\paymentPlan\services\_index.js" />
+    <Content Include="Scripts\paymentPlan\settings\settings.js" />
+    <Content Include="Scripts\paymentPlan\settings\_index.js" />
+    <Content Include="Scripts\paymentPlan\templates\grid.html" />
+    <Content Include="Scripts\routes.js" />
+    <Content Include="Scripts\common\services\authService.js" />
+    <Content Include="Scripts\common\services\_index.js" />
+    <Content Include="Scripts\common\settings\states.js" />
+    <Content Include="Scripts\common\settings\_index.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\namespace.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60849</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:37532/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:37532/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
