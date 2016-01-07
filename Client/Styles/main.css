@@ -1,0 +1,9 @@
+﻿.btn-add {
+    position: fixed!important;
+    right: 20px;
+    bottom: 20px;
+}
+.modal .form-group {
+    margin-top: 0!important;
+    padding-bottom: 0!important;
+}
