@@ -12,7 +12,6 @@
         $scope.roles = [
             { Display: "Admin", Id: 0 },
             { Display: "Operator", Id: 1 },
-            { Display: "User", Id: 2 },
             { Display: "Security", Id: 3 },
             { Display: "CreditCommitteeMember", Id: 4 },
             { Display: "CreditDepartmentChief", Id: 5 },
@@ -27,7 +26,7 @@
         };
 
         $scope.ok = function () {
-            $scope.info.Role = role.Id;
+            $scope.info.Role = $scope.role.Id;
             authService.register($scope.info);
             $uibModalInstance.close();
         };
