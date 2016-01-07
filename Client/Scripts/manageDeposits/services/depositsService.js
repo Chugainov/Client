@@ -13,14 +13,14 @@ function (namespace, module) {
         var serviceBaseUri = settings.baseURI;
         var depositsServiceFactory = {};
 
-        function _get() {
+        function _get(page) {
             var serviceUri = serviceBaseUri;
-            var config = {
-                headers: {
-                    'Accept': 'application/json'
+            var data = {
+                params: {
+                    page: page
                 }
             };
-            return $http.get(serviceUri, config);
+            return $http.get(serviceUri, data);
         };
 
         function _getById(id) {

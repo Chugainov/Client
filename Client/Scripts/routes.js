@@ -38,6 +38,17 @@
             }
         })
 
+            .state('reg', {
+                url: "/registration",
+                templateUrl: "Scripts/common/templates/_reg.html",
+                resolve: {
+                    permissionResource: "authorizationService",
+                    permission: function (permissionResource, $stateParams) {
+                        return permissionResource.permissionCheck([roles.Admin]);
+                    }
+                }
+            })
+
         .state('deposits', {
             url: "/deposits",
             resolve: {

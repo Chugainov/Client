@@ -1,0 +1,34 @@
+﻿<div>
+    <div><h1>Управление депозитами</h1></div>
+    <div><p>Уважаемый Клиент, нажмите на название депозита, для его описания</p></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Процентная ставка</td>
+                <td>Минимальная сумма</td>
+                <td>Максимальная сумма</td>
+                <td>Минимальный срок</td>
+                <td>Максимальный срок</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="deposit in _gridOptions.Items">
+                <td ng-click="open(deposit.Id)">{{deposit.Name}}</td>
+                <td>{{deposit.InterestRate}}</td>
+                <td>{{deposit.MinSum + ' BYR'}}</td>
+                <td>{{deposit.MaxSum + ' BYR'}}</td>
+                <td>{{deposit.MinMonthPeriod + ' м.'}}</td>
+                <td>{{deposit.MaxMonthPeriod + ' м.'}}</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table>
+</div>

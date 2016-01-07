@@ -1,49 +1,50 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
-    <h4 class="modal-title">Edit credit</h4>
+    <h4 class="modal-title" ng-if="credit.Id">Редактирование</h4>
+    <h4 class="modal-title" ng-if="!credit.Id">Добавить кредит</h4>
 </div>
 <div class="modal-body">
     <form>
         <fieldset>
 
             <div class="form-group is-empty">
-                <label for="inputName" class="control-label">Name</label>
+                <label for="inputName" class="control-label">Название</label>
                 <input type="text" class="form-control input-sm" id="inputName" ng-model="credit.Name" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputPercent" class="control-label">Percent</label>
+                <label for="inputPercent" class="control-label">Процентная ставка</label>
                 <input type="text" class="form-control input-sm" id="inputPercent" ng-model="credit.PercentRate" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputMinSum" class="control-label">Min sum</label>
+                <label for="inputMinSum" class="control-label">Минимальная сумма</label>
                 <input type="text" class="form-control input-sm" id="inputMinSum" ng-model="credit.MinSum" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputMaxSum" class="control-label">Max sum</label>
+                <label for="inputMaxSum" class="control-label">Максимальная сумма</label>
                 <input type="text" class="form-control input-sm" id="inputMaxSum" ng-model="credit.MaxSum" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputMinMonthPeriod" class="control-label">Min period (month)</label>
+                <label for="inputMinMonthPeriod" class="control-label">Минимальный срок (в месяцах)</label>
                 <input type="text" class="form-control input-sm" id="inputMinMonthPeriod" ng-model="credit.MinMonthPeriod" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputMaxMonthPeriod" class="control-label">Min period (month)</label>
+                <label for="inputMaxMonthPeriod" class="control-label">Максимальный срок (в месяцах)</label>
                 <input type="text" class="form-control input-sm" id="inputMaxMonthPeriod" ng-model="credit.MaxMonthPeriod" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="inputDescription" class="control-label">Description</label>
+                <label for="inputDescription" class="control-label">Описание</label>
                 <textarea class="form-control input-sm" id="inputDescription" ng-model="credit.Description" required>
                 </textarea>
                 <span class="material-input"></span>
@@ -53,6 +54,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Отмена</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">Применить</button>
 </div>

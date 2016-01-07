@@ -23,22 +23,28 @@
 
             function controller($scope, $uibModal, $timeout) {
 
-                function _loadData() {
-                    $scope._deposits = [];
+
+                function _loadData(page) {
+                    $scope._gridOptions = [];
+                    $scope._currentPage = page;
 
                     $timeout(function () {
                         depositsService.get().then(function (response) {
-                            $scope._deposits = response.data;
+                            $scope._gridOptions = response.data;
                         });
                     });
                 };
 
                 $scope._delete = function (id) {
-                    depositsService.delete(id).success(function () { _loadData(); });
+                    depositsService.delete(id).success(function () { _loadData($scope._currentPage); });
 
                 };
 
-                _loadData();
+                _loadData(1);
+
+                $scope.pageChanged = function () {
+                    _loadData($scope._currentPage);
+                }
 
                 $scope.animationsEnabled = true;
 
@@ -56,7 +62,7 @@
                     });
 
                     modalInstance.result.then(function () {
-                        $timeout(function () { _loadData(); });
+                        $timeout(function () { _loadData($scope._currentPage); });
 
                     }, function () {
                         //TODO:

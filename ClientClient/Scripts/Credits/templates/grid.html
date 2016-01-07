@@ -1,0 +1,34 @@
+﻿<div>
+    <div><h1>Информация о кредитах</h1></div>
+    <div><p>Уважаемый Клиент, нажмите на название кредита, для его описания</p></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Процентная ставка</td>
+                <td>Минимальная сумма</td>
+                <td>Максимальная сумма</td>
+                <td>Минимальный срок</td>
+                <td>Максимальный срок</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="credit in _gridOptions.Items">
+                <td ng-click="open(credit.Id)">{{credit.Name}}</td>
+                <td>{{credit.PercentRate}}</td>
+                <td>{{credit.MinSum + ' BYR'}}</td>
+                <td>{{credit.MaxSum + ' BYR'}}</td>
+                <td>{{credit.MinMonthPeriod + ' мес.'}}</td>
+                <td>{{credit.MaxMonthPeriod + ' мес.'}}</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table> 
+</div>

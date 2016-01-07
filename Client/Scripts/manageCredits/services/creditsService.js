@@ -13,7 +13,7 @@ function (namespace, module) {
         var serviceBaseUri = settings.baseURI;
         var creditsServiceFactory = {};
 
-        function _get() {
+        function _getAll() {
             var serviceUri = serviceBaseUri;
             var config = {
                 headers: {
@@ -21,6 +21,16 @@ function (namespace, module) {
                 }
             };
             return $http.get(serviceUri, config);
+        };
+
+        function _get(page) {
+            var serviceUri = serviceBaseUri;
+            var data = {
+                params: {
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
         };
 
         function _getById(id) {

@@ -1,9 +1,36 @@
-﻿.btn-add {
+﻿td {
+    vertical-align: middle!important;
+}
+table.custom-table > tbody > tr > td:first-child {
+    text-decoration: underline!important;
+}
+table.custom-table > tbody > tr > td:first-child:hover {
+    cursor: pointer
+}
+tr.table-head {
+    height: 65px;
+}
+.btn-add {
     position: fixed!important;
     right: 20px;
     bottom: 20px;
 }
-.modal .form-group {
+.form-group {
     margin-top: 0!important;
     padding-bottom: 0!important;
+}
+.form-group select {
+    padding: 0;
+}
+.custom-nav > li:hover{
+    color: #fff;
+    cursor: pointer!important;
+}
+.pagination .active a {
+    background-color: #f44336!important;
+    border-color: #f44336!important;
+    outline:none;
+}
+.opacity-header {
+    color: #ABB1B9;
 }

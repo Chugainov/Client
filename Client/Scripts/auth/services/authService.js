@@ -13,6 +13,25 @@ function (namespace, module) {
         var serviceBaseUri = settings.baseURI;
         var authServiceFactory = {};
 
+        var _register = function (data) {
+            var serviceUri = serviceBaseUri + "register";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, data, config);
+        };
+
+        function _getAll(page) {
+            var serviceUri = serviceBaseUri + "GetAll";
+            var data = {
+                params: {
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
+        }
 
         function _getRole(data) {
             var serviceUri = serviceBaseUri + "getrole";
@@ -58,7 +77,8 @@ function (namespace, module) {
         authServiceFactory.login = _login;
         authServiceFactory.getRole = _getRole;
         authServiceFactory.logout = _logout;
-
+        authServiceFactory.getAll = _getAll;
+        authServiceFactory.register = _register;
         return authServiceFactory;
     };
 
