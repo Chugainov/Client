@@ -136,6 +136,7 @@
                      <table class="table table-striped table-hover">
                          <thead>
                              <tr class="table-head">
+                                 <td>Всего</td>
                                  <td>Сумма по основному долгу</td>
                                  <td>Сумма по процентам</td>
                                  <td>Дата платежа</td>
@@ -143,6 +144,7 @@
                          </thead>
                          <tbody>
                              <tr ng-repeat="payment in paymentPlan">
+                                 <td>{{payment.MainSum + payment.PercentSum | number:0}}</td>
                                  <td>{{payment.MainSum | number:0}}</td>
                                  <td>{{payment.PercentSum | number:0}}</td>
                                  <td>{{payment.StartDate | date:"MMMM d, y"}}</td>
