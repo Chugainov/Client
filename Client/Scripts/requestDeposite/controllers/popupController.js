@@ -4,20 +4,38 @@
 ], function (module, namespace, app) {
     var name = namespace + '.popupController';
 
-    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestDepositeService', 'request'];
+    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestDepositeService'];
 
-    var controller = function ($uibModalInstance, $scope, requestDepositeService, request) {
-        $scope.request = request;
-        $scope.Role = role;
-        requestService.getDeposits().then(function (response) {
-            $scope.deposits = response.data.Items;
+    var controller = function ($uibModalInstance, $scope, requestDepositeService) {
+
+        requestDepositeService.getDeposits().then(function (response) {
+            $scope._deposits = response.data;
         });
 
-        
+        $scope.openCalendar1 = function ($event) {
+            $scope.opened1 = true;
+        };
+        $scope.openCalendar2 = function ($event) {
+            $scope.opened2 = true;
+        };
+        $scope.openCalendar3 = function ($event) {
+            $scope.opened3 = true;
+        };
+        $scope.Set = function () {
+            requestDepositeService.getCustomer($scope.customer.IdentificationNumber).then(function (responce) {
+                $scope.customer = responce.data;
+            })
+        };
+        $scope.add = function () {
+            $scope.requestN.Customer = $scope.customer;
+            $scope.requestN.Customer.DocumentType = 0;
+            $scope.requestN.Currency = 0;
+            $scope.requestN.DepositId = $scope.deposit.Id;
+            requestDepositeService.add($scope.requestN);
+        };
 
         $scope.ok = function () {
-            $scope.decision.CreditRequestId = request.Id;
-            requestService.setStatus($scope.decision);
+            $scope.add();
             $uibModalInstance.close();
         };
 

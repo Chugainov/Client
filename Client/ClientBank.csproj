@@ -94,7 +94,7 @@
     <Content Include="Scripts\calculator\settings\settings.js" />
     <Content Include="Scripts\calculator\settings\_index.js" />
     <Content Include="Scripts\calculator\templates\calculator.html" />
-    <Content Include="Scripts\common\directives\filereader.js" />
+    <Content Include="Scripts\common\directives\payController.js" />
     <Content Include="Scripts\common\directives\_index.js" />
     <Content Include="Scripts\common\module.js" />
     <Content Include="Scripts\common\namespace.js" />
@@ -106,6 +106,7 @@
     <Content Include="Scripts\common\templates\_giveCredits.html" />
     <Content Include="Scripts\common\templates\_giveDeposits.html" />
     <Content Include="Scripts\common\templates\_mainLayout.html" />
+    <Content Include="Scripts\common\templates\_pay.html" />
     <Content Include="Scripts\common\templates\_payments.html" />
     <Content Include="Scripts\common\templates\_reg.html" />
     <Content Include="Scripts\common\templates\_request.html" />
@@ -136,6 +137,7 @@
     <Content Include="Scripts\manageDeposits\templates\grid.html" />
     <Content Include="Scripts\manageDeposits\templates\popup.html" />
     <Content Include="Scripts\manageRequest\controllers\popupController.js" />
+    <Content Include="Scripts\manageRequest\controllers\popupGiveController.js" />
     <Content Include="Scripts\manageRequest\controllers\_index.js" />
     <Content Include="Scripts\manageRequest\directives\kcGiveCredits.js" />
     <Content Include="Scripts\manageRequest\directives\kcRequest.js" />
@@ -175,7 +177,7 @@
     <Content Include="Scripts\requestDeposite\templates\grid.html" />
     <Content Include="Scripts\requestDeposite\templates\popup.html" />
     <Content Include="Scripts\routes.js" />
-    <Content Include="Scripts\common\services\authService.js" />
+    <Content Include="Scripts\common\services\payService.js" />
     <Content Include="Scripts\common\services\_index.js" />
     <Content Include="Scripts\common\settings\states.js" />
     <Content Include="Scripts\common\settings\_index.js" />

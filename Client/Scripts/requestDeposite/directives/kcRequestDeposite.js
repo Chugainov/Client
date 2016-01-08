@@ -49,19 +49,9 @@
                 };
                
 
-                $scope.openCalendar = function ($event) {
-                    $scope.opened = true;
-                };
+                
 
-                $scope.add = function () {
-                    $scope.requestN.Customer = $scope.customer;
-                    $scope.requestN.Customer.DocumentType = 0;
-                    $scope.requestN.MilitaryId = $scope.military;
-                    $scope.requestN.IncomeCertificate = $scope.docs;
-                    $scope.requestN.Currency = 0;
-                    $scope.requestN.CreditId = $scope.credit.Id;
-                    requestService.add($scope.requestN);
-                };
+               
 
                 $scope.pageChanged = function () {
                     _loadData($scope._currentPage);

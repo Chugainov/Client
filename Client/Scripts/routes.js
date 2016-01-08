@@ -46,7 +46,18 @@
                 }
             }
         })
-
+        .state('pay', {
+            url: "/payment",
+            templateUrl: "Scripts/common/templates/_pay.html",
+            
+            controller: "Client.common.payController",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Cashier]);
+                }
+            }
+        })
         .state('credits', {
             url: "/credits",
             templateUrl: "Scripts/common/templates/_credits.html",

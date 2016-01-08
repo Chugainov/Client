@@ -1,4 +1,5 @@
 ﻿<div>
+    <button ng-click="open()">Выдать депозит</button>
     <table class="table">
         <thead>
             <tr>
@@ -10,8 +11,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
-                <td ng-click="open(request)">{{request.Customer.Firstname}}</td>
+            <tr ng-repeat="request in _gridOptions.Items">
+                <td>{{request.Customer.Firstname}}</td>
                 <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
                 <td>{{request.MonthCount + ' мес.'}}</td>
@@ -25,4 +26,4 @@
                             rotate="false" ng-change="pageChanged()"></uib-pagination>
         </tfoot>
     </table>
-    </>
+    </div>

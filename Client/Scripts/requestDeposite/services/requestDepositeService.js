@@ -12,7 +12,7 @@ function (namespace, module) {
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
         
-        var depositUri = settings.depositURI;
+        var depositUri = settings.depositeURI;
         var customerUri = settings.customerURI;
         var requestDepositeServiceFactory = {};
 
