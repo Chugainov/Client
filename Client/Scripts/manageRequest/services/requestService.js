@@ -36,6 +36,16 @@ function (namespace, module) {
             return $http.post(serviceUri, page, config);
         };
 
+        function _getUnconfirmedByChief(page) {
+            var serviceUri = serviceBaseUri + "/GetUnconfirmedByChief";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, page, config);
+        };
+
         function _getRole(data) {
             var serviceUri = authUri + "getrole";
             var data = {
@@ -45,7 +55,7 @@ function (namespace, module) {
                 }
             };
             return $http.get(serviceUri, data);
-        }
+        } 
 
         function _getById(id) {
             return $http.get(serviceBaseUri + '/' + id);
@@ -72,7 +82,17 @@ function (namespace, module) {
         };
 
         var _add = function (data) {
-            var serviceUri = serviceBaseUri+"/add";
+            var serviceUri = serviceBaseUri + "/add";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, data, config);
+        };
+
+        var _setStatus = function (data) {
+            var serviceUri = serviceBaseUri + "/SetStatus";
             var config = {
                 headers: {
                     'Accept': 'application/json'
@@ -98,7 +118,9 @@ function (namespace, module) {
         requestServiceFactory.getById = _getById;
         requestServiceFactory.getRole = _getRole;
         requestServiceFactory.getUnconfirmed = _getUnconfirmed;
+        requestServiceFactory.getUnconfirmedByChief = _getUnconfirmedByChief;
         requestServiceFactory.add = _add;
+        requestServiceFactory.setStatus = _setStatus;
         requestServiceFactory.delete = _delete;
         requestServiceFactory.getCredits = _getCredits;
         requestServiceFactory.put = _put;
