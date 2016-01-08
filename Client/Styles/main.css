@@ -15,12 +15,27 @@ tr.table-head {
     right: 20px;
     bottom: 20px;
 }
+.login .form-group {
+    padding-bottom: 7px!important;
+    margin: 28px 0 0 0!important;
+}
 .form-group {
     margin-top: 0!important;
     padding-bottom: 0!important;
 }
 .form-group select {
     padding: 0;
+}
+.date-input label {
+    display: block;
+}
+.date-input input {
+    display: inline-block;
+    width:90%;
+}
+.date-input span {
+    display: inline-block;
+    height: 10px;
 }
 .custom-nav > li:hover{
     color: #fff;

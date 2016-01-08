@@ -1,0 +1,3 @@
+﻿define([
+    './kcRequest'
+], function () { })

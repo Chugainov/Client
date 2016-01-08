@@ -15,6 +15,8 @@
      './calculator/require',
      './auth/namespace',
      './auth/require',
+     './manageRequest/namespace',
+     './manageRequest/require',
      './paymentPlan/namespace',
      './paymentPlan/require'
 ], function (angular, namespace, common ) {
@@ -23,5 +25,5 @@
     var name = namespace;
 
     return angular.module(name, [common, 'ui.router','LocalStorageModule', 'ngResource', 'ui.bootstrap','Client.manageDeposits',
-                                 'Client.manageCredits', 'Client.calculator', 'Client.auth']);
+                                 'Client.manageCredits', 'Client.calculator', 'Client.auth', 'Client.manageRequest']);
 });

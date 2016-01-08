@@ -1,4 +1,4 @@
 ﻿define([
-    './settings/_index'
-    //'./services/_index'
+    './settings/_index',
+    './directives/_index'
 ], function () {})
