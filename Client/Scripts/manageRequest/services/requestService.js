@@ -26,6 +26,26 @@ function (namespace, module) {
             return $http.get(serviceUri, config);
         };
 
+        function _getConfirmed(page) {
+            var serviceUri = serviceBaseUri + "/GetConfirmed";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, page, config);
+        };
+
+        function _getConfirmedByChief(page) {
+            var serviceUri = serviceBaseUri + "/GetConfirmedByChief";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, page, config);
+        };
+
         function _getUnconfirmed(page) {
             var serviceUri = serviceBaseUri + "/GetUnconfirmed";
             var config = {
@@ -117,6 +137,8 @@ function (namespace, module) {
 
         requestServiceFactory.getById = _getById;
         requestServiceFactory.getRole = _getRole;
+        requestServiceFactory.getConfirmed = _getConfirmed;
+        requestServiceFactory.getConfirmedByChief = _getConfirmedByChief;
         requestServiceFactory.getUnconfirmed = _getUnconfirmed;
         requestServiceFactory.getUnconfirmedByChief = _getUnconfirmedByChief;
         requestServiceFactory.add = _add;
