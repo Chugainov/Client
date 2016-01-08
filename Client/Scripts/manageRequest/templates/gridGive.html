@@ -18,7 +18,7 @@
                 <td>{{request.Customer.Firstname}}</td>
                 <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
-                <td>{{request.MonthCount + ' мес.'}}</td>
+                <td>{{request.MonthCount|date:"longDate"  + ' мес.'}}</td>
                 <td><button ng-click="open(request.Id)">Выдать</button></td>
             </tr>
 
@@ -44,8 +44,8 @@
             <tr ng-repeat="credit in _gridOptions.Items">
                 <td>{{credit.ContractNumber}}</td>
                 <td>{{credit.CreditSum + ' BYR'}}</td>
-                <td>{{credit.StartDate  }}</td>
-                <td>{{credit.EndDate }}</td>
+                <td>{{credit.StartDate|date:"longDate"  }}</td>
+                <td>{{credit.EndDate|date:"longDate"  }}</td>
             </tr>
 
         </tbody>

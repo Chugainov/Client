@@ -12,7 +12,7 @@
         
 
         $scope.ok = function () {
-            requestService.giveCredit({id: id});
+            requestService.giveCredit(id);
             $uibModalInstance.close();
         };
 
