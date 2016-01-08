@@ -7,6 +7,10 @@
             <td><input type="number" ng-model="requestN.Sum" required/></td>
         </tr>
         <tr>
+            <td><p>Количество месяцев</p></td>
+            <td><input type="number" ng-model="requestN.MonthCount" required /></td>
+        </tr>
+        <tr>
             <td><p>Заработная плата</p></td>
             <td><input type="number" ng-model="requestN.IncomeSum" required /></td>
         </tr>
@@ -106,6 +110,7 @@
     </table>
    
      <div><input type="button" value="Добавить заявку" ng-show="Role == 1" ng-click="add()" /></div>
+    <div><input type="button" value="{{status}}" ng-show="Role != 1" ng-click="setStatus()" /></div>
     <table class="table" ng-show="Role != 1">
         <thead>
             <tr>
@@ -118,7 +123,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
-                <td ng-click="open(request.Id)">{{request.Customer.Firsname}}</td>
+                <td ng-click="open(request)">{{request.Customer.Firstname}}</td>
                 <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
                 <td>{{request.MonthCount + ' мес.'}}</td>

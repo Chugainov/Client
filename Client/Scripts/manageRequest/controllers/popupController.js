@@ -4,32 +4,24 @@
 ], function (module, namespace, app) {
     var name = namespace + '.popupController';
 
-    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestService', 'id'];
+    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestService', 'request', 'role'];
 
-    var controller = function ($uibModalInstance, $scope, requestService, id) {
-        if (typeof (id) !== 'undefined') {
-            requestService.getById(id).then(function (response) {
-                $scope.deposit = response.data;
-            });
-        } else {
-            $scope.deposit = {
-                Name: '',
-                Description: '',
-                InterestRate: '',
-                MinSum: '',
-                MaxSum: '',
-                MinMonthPeriod: '',
-                MaxMonthPeriod: ''
-            };
+    var controller = function ($uibModalInstance, $scope, requestService, request, role) {
+        $scope.request = request;
+        $scope.Role = role;
+
+        $scope.isValid = function () {
+            if (typeof ($scope.decision) == "undefined") return false;
+            if (typeof ($scope.decision.CreditRequestStatusInfo) == "undefined") return false;
+            if ($scope.decision.CreditRequestStatusInfo == "Accepted") return true;
+            if (typeof ($scope.decision.Message) == "undefined") return false;
+            if ($scope.decision.Message == "") return false;
+            return true;
         };
 
-
         $scope.ok = function () {
-            if (typeof (id) === 'undefined') {
-                requestService.post($scope.deposit);
-            } else {
-                requestService.put(id, $scope.deposit);
-            };
+            $scope.decision.CreditRequestId = request.Id;
+            requestService.setStatus($scope.decision);
             $uibModalInstance.close();
         };
 

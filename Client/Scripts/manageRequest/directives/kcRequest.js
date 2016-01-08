@@ -22,36 +22,63 @@
             
 
             function controller($scope, $uibModal, $timeout) {
-
+                $scope.status = 'Посмотреть обработанные';
+                $scope.unconfirmed = true;
                 function _loadData(page) {
                     $scope.requestN = {};
                     $scope.customer = {};
                     $scope._gridOptions = [];
                     $scope._currentPage = page;
-                    
-                    $timeout(function () {
-                        requestService.getCredits().then(function (response) {
-                            $scope._credits = response.data;
+                    if ($scope.unconfirmed) {
+                        $timeout(function () {
+                            requestService.getCredits().then(function (response) {
+                                $scope._credits = response.data;
+                            });
+                            switch ($scope.Role) {
+                                case 3:
+                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                                case 4:
+                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                                case 5:
+                                    requestService.getUnconfirmedByChief($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                            }
+
                         });
-                        switch ($scope.Role) {
-                            case 3:
-                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
-                                    $scope._gridOptions = response.data;
-                                });
-                                break;
-                            case 4:
-                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
-                                    $scope._gridOptions = response.data;
-                                });
-                                break;
-                            case 5:
-                                requestService.getUnconfirmed($scope._currentPage).then(function (response) {
-                                    $scope._gridOptions = response.data;
-                                });
-                                break;
-                        }
-                        
-                    });
+                    };
+                    if (!$scope.unconfirmed) {
+                        $timeout(function () {
+                            requestService.getCredits().then(function (response) {
+                                $scope._credits = response.data;
+                            });
+                            switch ($scope.Role) {
+                                case 3:
+                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                                case 4:
+                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                                case 5:
+                                    requestService.getUnconfirmedByChief($scope._currentPage).then(function (response) {
+                                        $scope._gridOptions = response.data;
+                                    });
+                                    break;
+                            }
+
+                        });
+                    }
                 };
 
                 $scope.Set = function () {
@@ -92,22 +119,19 @@
                     switch (response.data.Role) {
                         case 'CreditCommitteeMember':
                             $scope.Role = 4;
-                            _loadData(1);
                             break;
                         case 'CreditDepartmentChief':
                             $scope.Role = 5;
-                            _loadData(1);
                             break;
                         case 'Operator':
                             $scope.Role = 1;
-                            _loadData(1);
                             break;
                         case 'Security':
                             $scope.Role = 3;
-                            _loadData(1);
+                            
                             break;
                     };
-
+                    _loadData(1);
                 });
 
                 $scope.openCalendar = function ($event) {
@@ -130,15 +154,18 @@
 
                 $scope.animationsEnabled = true;
 
-                $scope.open = function (id) {
+                $scope.open = function (request) {
 
                     var modalInstance = $uibModal.open({
                         animation: $scope.animationsEnabled,
                         templateUrl: 'scripts/manageRequest/templates/popup.html',
                         controller: 'Client.manageRequest.popupController',
                         resolve: {
-                            id: function () {
-                                return id;
+                            request: function () {
+                                return request;
+                            },
+                            role: function () {
+                                return $scope.Role;
                             }
                         }
                     });
