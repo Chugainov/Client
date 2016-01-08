@@ -47,5 +47,5 @@ tr.table-head {
     outline:none;
 }
 .opacity-header {
-    color: #ABB1B9;
+    opacity: 0.4;
 }
