@@ -1,3 +1,4 @@
 ﻿define([
-    './popupController'
+    './popupController',
+    './popupGiveController'
 ], function () { })

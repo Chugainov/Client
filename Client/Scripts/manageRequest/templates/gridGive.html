@@ -1,0 +1,53 @@
+﻿<div>
+    <div><h1>Выдача кредитов </h1></div>
+
+    
+    <div><input type="button" value="{{status}}" ng-show="Role != 1" ng-click="setStatus()" /></div>
+    <table class="table" ng-show="unconfirmed">
+        <thead>
+            <tr>
+                <td>Имя клиента</td>
+                <td>Кредит</td>
+                <td>Запрашиваемая сумма</td>
+                <td>Срок</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
+                <td>{{request.Customer.Firstname}}</td>
+                <td>{{request.Credit.Name}}</td>
+                <td>{{request.Sum + ' BYR'}}</td>
+                <td>{{request.MonthCount|date:"longDate"  + ' мес.'}}</td>
+                <td><button ng-click="open(request.Id)">Выдать</button></td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model=" _currentpage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table>
+    <table class="table" ng-show="!unconfirmed">
+        <thead>
+            <tr>
+                <td>Номер контракта</td>
+                <td>Сумма</td>
+                <td>Начало кредита</td>
+                <td>Окончание кредита</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="credit in _gridOptions.Items">
+                <td>{{credit.ContractNumber}}</td>
+                <td>{{credit.CreditSum + ' BYR'}}</td>
+                <td>{{credit.StartDate|date:"longDate"  }}</td>
+                <td>{{credit.EndDate|date:"longDate"  }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    </>

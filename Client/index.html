@@ -23,8 +23,28 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav custom-nav">
                     <li><a ui-sref="home">На главную</a></li>
-                    <li><a ui-sref="credits">Кредиты</a></li>
-                    <li><a ui-sref="deposits">Депозиты</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            Кредиты <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="credits">Управление кредитами</a></li>
+                            <li><a ui-sref="giveCredits">Выдача кредитов</a></li>
+                            <li><a ui-sref="pay">Оплата кредитов</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            Депозиты <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="deposits">Управление деопзитами</a></li>
+                            <li><a ui-sref="giveDeposits">Выдача депозитов</a></li>
+                        </ul>
+                    </li>
+
                     <li><a ui-sref="request">Заявки</a></li>
                     <li><a ui-sref="reg">Сотрудники</a></li>
 
@@ -36,7 +56,6 @@
                             <li><a ui-sref="calculation">Кредитный калькулятор</a></li>
                             <li><a href="javascript:void(0)">Депозитный калькулятор</a></li>
                         </ul>
-
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -1,3 +1,3 @@
 ﻿define([
-    './payService'
+    './requestDepositeService'
 ], function () { })

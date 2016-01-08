@@ -1,3 +1,4 @@
 ﻿define([
-    './kcRequest'
+    './kcRequest',
+    './kcGiveCredits'
 ], function () { })

@@ -1,3 +1,3 @@
 ﻿define([
-    './filereader'
+    './payController'
 ], function () { })

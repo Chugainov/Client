@@ -3,6 +3,7 @@
     <h4 class="modal-title">Регистрация</h4>
 </div>
 <div class="modal-body">
+<<<<<<< HEAD
     <form>
         <fieldset>
 
@@ -45,18 +46,19 @@
 
             <div class="form-group is-empty">
                 <label for="inputPassword" class="control-label">Пароль</label>
-                <input type="text" class="form-control input-sm" id="inputPassword" ng-model="info.Password" required>
+                <input type="password" class="form-control input-sm" id="inputPassword" ng-model="info.Password" required>
                 <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputPasswordConfirm" class="control-label">Подтверждение пароля</label>
-                <input type="text" class="form-control input-sm" id="inputPasswordConfirm" ng-model="info.ConfirmPassword">
+                <input type="password" class="form-control input-sm" id="inputPasswordConfirm" ng-model="info.ConfirmPassword">
                 <span class="material-input"></span>
             </div>
 
         </fieldset>
     </form>
+
     <p ng-show="!isValid()" style="color: red">Пароли не совпадают или невалидные данные</p>
 </div>
 <div class="modal-footer">

@@ -18,12 +18,14 @@
      './manageRequest/namespace',
      './manageRequest/require',
      './paymentPlan/namespace',
-     './paymentPlan/require'
+     './paymentPlan/require',
+     './requestDeposite/namespace',
+     './requestDeposite/require',
 ], function (angular, namespace, common ) {
     'use strict';
 
     var name = namespace;
 
     return angular.module(name, [common, 'ui.router','LocalStorageModule', 'ngResource', 'ui.bootstrap','Client.manageDeposits',
-                                 'Client.manageCredits', 'Client.calculator', 'Client.auth', 'Client.manageRequest']);
+                                 'Client.manageCredits', 'Client.calculator', 'Client.auth', 'Client.manageRequest', 'Client.requestDeposite']);
 });

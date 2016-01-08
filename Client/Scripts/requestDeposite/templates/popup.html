@@ -1,0 +1,98 @@
+﻿<div class="modal-header">
+    <h3>Выдача депозита</h3>
+</div>
+<div class="modal-body">
+    <table>
+        <tr>
+            <td><p>Сумма</p></td>
+            <td><input type="number" ng-model="requestN.InitialSum" required /></td>
+        </tr>
+        <tr>
+            <td><p>День получения</p></td>
+            <td class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="requestN.StartDate" is-open="opened1"
+                       ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td><p>День востребования</p></td>
+            <td class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="requestN.EndDate" is-open="opened2"
+                       ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td><p>Выберите кредит DepositId</p></td>
+            <td><select ng-model="deposit" ng-options="c.Name for c in _deposits" required></select></td>
+        </tr>
+        <tr>
+            <td><p>Тип документа</p></td>
+            <td><input type="text" disabled value="Паспорт" required /></td>
+        </tr>
+        <tr>
+            <td><p>Номер документа</p></td>
+            <td><input type="text" ng-model="customer.DocumentNumber" required /></td>
+        </tr>
+        <tr>
+            <td><p>Идентификационный номер</p></td>
+            <td><input type="text" ng-model="customer.IdentificationNumber" required /></td>
+            <td><input type="button" value="Set" ng-click="Set()" /></td>
+        </tr>
+        <!--  -->
+        <tr>
+            <td><p>Фамилия</p></td>
+            <td><input type="text" ng-model="customer.Lastname" required /></td>
+        </tr>
+        <tr>
+            <td><p>Имя</p></td>
+            <td><input type="text" ng-model="customer.Firstname" required /></td>
+        </tr>
+
+        <tr>
+            <td><p>Отчество</p></td>
+            <td><input type="text" ng-model="customer.Patronymic" /></td>
+        </tr>
+        <tr>
+            <td><p>Дата рождения</p></td>
+            <td class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="customer.DateOfBirth" is-open="opened3"
+                       ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td><p>Страна</p></td>
+            <td><input type="text" ng-model="customer.Address.Country" required /></td>
+        </tr>
+        <tr>
+            <td><p>Город</p></td>
+            <td><input type="text" ng-model="customer.Address.City" required /></td>
+        </tr>
+        <tr>
+            <td><p>Улица</p></td>
+            <td><input type="text" ng-model="customer.Address.Street" required /></td>
+        </tr>
+        <tr>
+            <td><p>Дом</p></td>
+            <td><input type="text" ng-model="customer.Address.House" required /></td>
+        </tr>
+        <tr>
+            <td><p>Квартира</p></td>
+            <td><input type="text" ng-model="customer.Address.Flat" /></td>
+        </tr>
+        <!--  -->
+    </table>
+
+    <div><input type="button" value="Готово" ng-click="add()" /></div>
+    <div><input type="button" value="Отмена" ng-click="cancel()" /></div>
+</div>

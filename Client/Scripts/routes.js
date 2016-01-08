@@ -26,7 +26,38 @@
             
             templateUrl: "Scripts/common/templates/_mainLayout.html"
         })
-
+        .state('giveCredits', {
+            url: "/givecredits",
+            templateUrl: "Scripts/common/templates/_giveCredits.html",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Operator]);
+                }
+            }
+        })
+        .state('giveDeposits', {
+            url: "/givedeposits",
+            templateUrl: "Scripts/common/templates/_giveDeposits.html",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Operator]);
+                }
+            }
+        })
+        .state('pay', {
+            url: "/payment",
+            templateUrl: "Scripts/common/templates/_pay.html",
+            
+            controller: "Client.common.payController",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Cashier]);
+                }
+            }
+        })
         .state('credits', {
             url: "/credits",
             templateUrl: "Scripts/common/templates/_credits.html",
@@ -38,26 +69,26 @@
             }
         })
 
-            .state('reg', {
-                url: "/registration",
-                templateUrl: "Scripts/common/templates/_reg.html",
-                resolve: {
-                    permissionResource: "authorizationService",
-                    permission: function (permissionResource, $stateParams) {
-                        return permissionResource.permissionCheck([roles.Admin]);
-                    }
+        .state('reg', {
+            url: "/registration",
+            templateUrl: "Scripts/common/templates/_reg.html",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Admin]);
                 }
-            })
-            .state('request', {
-                url: "/requests",
-                templateUrl: "Scripts/common/templates/_request.html",
-                resolve: {
-                    permissionResource: "authorizationService",
-                    permission: function (permissionResource, $stateParams) {
-                        return permissionResource.permissionCheck([roles.CreditCommitteeMember, roles.CreditDepartmentChief, roles.Operator, roles.Security]);
-                    }
+            }
+        })
+        .state('request', {
+            url: "/requests",
+            templateUrl: "Scripts/common/templates/_request.html",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.CreditCommitteeMember, roles.CreditDepartmentChief, roles.Operator, roles.Security]);
                 }
-            })
+            }
+        })
 
         .state('deposits', {
             url: "/deposits",

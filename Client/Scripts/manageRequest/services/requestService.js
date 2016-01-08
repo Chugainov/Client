@@ -12,8 +12,9 @@ function (namespace, module) {
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
         var authUri = settings.authURI;
-        var creditUri = settings.creditURI;
+        var creditUri = settings.creditURI; 
         var customerUri = settings.customerURI;
+        var customerCreditUri = settings.customerCreditURI;
         var requestServiceFactory = {};
 
         function _getAll() {
@@ -24,6 +25,26 @@ function (namespace, module) {
                 }
             };
             return $http.get(serviceUri, config);
+        };
+
+        function _getConfirmed(page) {
+            var serviceUri = serviceBaseUri + "/GetConfirmed";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, page, config);
+        };
+
+        function _getConfirmedByChief(page) {
+            var serviceUri = serviceBaseUri + "/GetConfirmedByChief";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, page, config);
         };
 
         function _getUnconfirmed(page) {
@@ -57,8 +78,25 @@ function (namespace, module) {
             return $http.get(serviceUri, data);
         } 
 
-        function _getById(id) {
-            return $http.get(serviceBaseUri + '/' + id);
+        function _getByCustomer(customerId, page) {
+            var serviceUri = customerCreditUri + "/GetByCustomerId";
+            var data = {
+                params: {
+                    customerId: customerId,
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
+        function _getCustomerCredits(page) {
+            var serviceUri = customerCreditUri + "/Get";
+            var data = {
+                params: {
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
         };
 
         function _getCredits() {
@@ -91,6 +129,16 @@ function (namespace, module) {
             return $http.post(serviceUri, data, config);
         };
 
+        var _giveCredit = function (data) {
+            var serviceUri = customerCreditUri + "/add";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, data, config);
+        };
+
         var _setStatus = function (data) {
             var serviceUri = serviceBaseUri + "/SetStatus";
             var config = {
@@ -105,26 +153,20 @@ function (namespace, module) {
             return $http.delete(serviceBaseUri + '/' + id);
         };
 
-        var _put = function (id, data) {
-            var serviceUri = serviceBaseUri + "/" + id;
-            var config = {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            };
-            return $http.put(serviceUri, data, config);
-        }
 
-        requestServiceFactory.getById = _getById;
+        requestServiceFactory.getByCustomer = _getByCustomer;
         requestServiceFactory.getRole = _getRole;
+        requestServiceFactory.getConfirmed = _getConfirmed;
+        requestServiceFactory.getConfirmedByChief = _getConfirmedByChief;
         requestServiceFactory.getUnconfirmed = _getUnconfirmed;
         requestServiceFactory.getUnconfirmedByChief = _getUnconfirmedByChief;
         requestServiceFactory.add = _add;
         requestServiceFactory.setStatus = _setStatus;
         requestServiceFactory.delete = _delete;
+        requestServiceFactory.giveCredit = _giveCredit;
         requestServiceFactory.getCredits = _getCredits;
-        requestServiceFactory.put = _put;
-        requestServiceFactory.getCustomer = _getCustomer;
+        requestServiceFactory.getCustomerCredits = _getCustomerCredits;
+        requestServiceFactory.getCustomer = _getCustomer; 
 
         return requestServiceFactory;
     };

@@ -31,10 +31,13 @@
                     $scope._currentPage = page;
                     if ($scope.unconfirmed) {
                         $timeout(function () {
-                            requestService.getCredits().then(function (response) {
-                                $scope._credits = response.data;
-                            });
+                            
                             switch ($scope.Role) {
+                                case 1:
+                                    requestService.getCredits().then(function (response) {
+                                        $scope._credits = response.data;
+                                    });
+                                    break;
                                 case 3:
                                     requestService.getUnconfirmed($scope._currentPage).then(function (response) {
                                         $scope._gridOptions = response.data;
@@ -56,22 +59,25 @@
                     };
                     if (!$scope.unconfirmed) {
                         $timeout(function () {
-                            requestService.getCredits().then(function (response) {
-                                $scope._credits = response.data;
-                            });
+                            
                             switch ($scope.Role) {
+                                case 1:
+                                    requestService.getCredits().then(function (response) {
+                                        $scope._credits = response.data;
+                                    });
+                                    break;
                                 case 3:
-                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                    requestService.getConfirmed($scope._currentPage).then(function (response) {
                                         $scope._gridOptions = response.data;
                                     });
                                     break;
                                 case 4:
-                                    requestService.getUnconfirmed($scope._currentPage).then(function (response) {
+                                    requestService.getConfirmed($scope._currentPage).then(function (response) {
                                         $scope._gridOptions = response.data;
                                     });
                                     break;
                                 case 5:
-                                    requestService.getUnconfirmedByChief($scope._currentPage).then(function (response) {
+                                    requestService.getConfirmedByChief($scope._currentPage).then(function (response) {
                                         $scope._gridOptions = response.data;
                                     });
                                     break;
@@ -80,7 +86,16 @@
                         });
                     }
                 };
-
+                $scope.setStatus = function () {
+                    if ($scope.unconfirmed) {
+                        $scope.status = 'Посмотреть необработанные';
+                        $scope.unconfirmed = false;
+                    } else {
+                        $scope.status = 'Посмотреть обработанные';
+                        $scope.unconfirmed = true;
+                    }
+                    _loadData(1);
+                };
                 $scope.Set = function () {
                     requestService.getCustomer($scope.customer.IdentificationNumber).then(function (responce) {
                         $scope.customer = responce.data;

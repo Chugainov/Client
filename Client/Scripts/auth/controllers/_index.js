@@ -1,4 +1,5 @@
 ﻿define([
     './authController',
-    './popupController'
+    './popupController',
+    './menu'
 ], function () { })
