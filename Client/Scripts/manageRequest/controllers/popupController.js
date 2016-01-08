@@ -9,6 +9,17 @@
     var controller = function ($uibModalInstance, $scope, requestService, request, role) {
         $scope.request = request;
         $scope.Role = role;
+        requestService.getByCustomer(request.CustomerId, 1).then(function (response) {
+            $scope.customersCredits = response.data.Items;
+        });
+
+        $scope.hasCustomerCredits = function () {
+            if (role == 3) return false;
+            if (typeof ($scope.customersCredits) == "undefined") return false;
+            if (typeof ($scope.customersCredits) == "null") return false;
+            if ($scope.customersCredits.length == 0) return false;
+            return true;
+        };
 
         $scope.isValid = function () {
             if (typeof ($scope.decision) == "undefined") return false;

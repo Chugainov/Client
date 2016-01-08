@@ -12,8 +12,9 @@ function (namespace, module) {
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
         var authUri = settings.authURI;
-        var creditUri = settings.creditURI;
+        var creditUri = settings.creditURI; 
         var customerUri = settings.customerURI;
+        var customerCreditUri = settings.customerCreditURI;
         var requestServiceFactory = {};
 
         function _getAll() {
@@ -77,8 +78,15 @@ function (namespace, module) {
             return $http.get(serviceUri, data);
         } 
 
-        function _getById(id) {
-            return $http.get(serviceBaseUri + '/' + id);
+        function _getByCustomer(customerId, page) {
+            var serviceUri = customerCreditUri + "/GetByCustomerId";
+            var data = {
+                params: {
+                    customerId: customerId,
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
         };
 
         function _getCredits() {
@@ -135,7 +143,7 @@ function (namespace, module) {
             return $http.put(serviceUri, data, config);
         }
 
-        requestServiceFactory.getById = _getById;
+        requestServiceFactory.getByCustomer = _getByCustomer;
         requestServiceFactory.getRole = _getRole;
         requestServiceFactory.getConfirmed = _getConfirmed;
         requestServiceFactory.getConfirmedByChief = _getConfirmedByChief;

@@ -8,8 +8,9 @@
     var resources = function () {
         this.baseURI = 'http://localhost:12715/api/CreditRequest';
         this.authURI = 'http://localhost:12715/api/Account/';
-        this.creditURI = 'http://localhost:12715/api/Credit';
+        this.creditURI = 'http://localhost:12715/api/Credit'; 
         this.customerURI = 'http://localhost:12715/api/Customer';
+        this.customerCreditURI = 'http://localhost:12715/api/CustomerCredit';
     };
     module.service(name, dependencies.concat(resources));
 });
