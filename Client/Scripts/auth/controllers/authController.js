@@ -13,6 +13,49 @@
         var controller = function ($scope, authService, localStorageService) {
             var vm = this;
 
+            var load = function () {
+                authService.getRole().then(function (response) {
+                    var Role = response.data.Role;
+
+                    if (typeof (Role) == "undefined") {
+                        $scope.isLogin = false;
+
+                    }
+                    else {
+                        $scope.isLogin = true;
+                        switch (Role) {
+                            case "Admin":
+                                $scope.Role = "Администратор";
+                                break;
+                            case "Operator":
+                                $scope.Role = "Оператор";
+                                break;
+                            case "Security":
+                                $scope.Role = "Сотрудник службы безопастности";
+                                break;
+                            case "CreditCommitteeMember":
+                                $scope.Role = "Сотрудник кредитной комиссии";
+                                break;
+                            case "CreditDepartmentChief":
+                                $scope.Role = "Начальник кредитной комиссии";
+                                break;
+                            case "Cashier":
+                                $scope.Role = "Кассир";
+                                break;
+                        }
+                    };
+
+                });
+            };
+            load();
+            $scope.changePass = function () {
+                
+                authService.changePass($scope.pass).then(function (resp) {
+                    var resp = resp;
+                }, function (err) {
+                    $scope.error = err.data.ModelState.model;
+                });
+            };
 
             $scope.login = function () {
                 var user = { UserName: $scope.Name, Password: $scope.Password };
@@ -20,17 +63,22 @@
 
                     var token = response.data;
                     localStorageService.set('token', token);
+                    $scope.isLogin = true;
+                    load();
                 });
+                
             }
 
             $scope.logout = function () {
                 var user = { UserName: $scope.Name, Password: $scope.Password };
                 var token = localStorageService.get('token');
                 var data = { Token: token, TokenObj: '' };
-                authService.logout(data).then(function (response) {
+                authService.logout().then(function (response) {
 
                     localStorageService.remove('token');
+                    $scope.isLogin = false;
                 });
+                
             }
         };
 

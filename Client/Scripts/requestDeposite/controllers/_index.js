@@ -1,4 +1,3 @@
 ﻿define([
-    './kcCalculator'
-
+    './popupController'
 ], function () { })

@@ -21,7 +21,13 @@ function (namespace, module) {
                 }
             };
             return $http.post(serviceUri, data, config);
-        };
+        }; 
+
+        function _changePass(data) {
+            var serviceUri = serviceBaseUri + "ChangePassword";
+            
+            return $http.post(serviceUri, data);
+        }
 
         function _getAll(page) {
             var serviceUri = serviceBaseUri + "GetAll";
@@ -77,7 +83,8 @@ function (namespace, module) {
         authServiceFactory.login = _login;
         authServiceFactory.getRole = _getRole;
         authServiceFactory.logout = _logout;
-        authServiceFactory.getAll = _getAll;
+        authServiceFactory.changePass = _changePass;
+        authServiceFactory.getAll = _getAll; 
         authServiceFactory.register = _register;
         return authServiceFactory;
     };

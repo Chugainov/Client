@@ -84,6 +84,7 @@
     <Content Include="Scripts\auth\templates\auth.html" />
     <Content Include="Scripts\auth\templates\reg.html" />
     <Content Include="Scripts\calculator\directives\kcCalculator.js" />
+    <Content Include="Scripts\auth\controllers\menu.js" />
     <Content Include="Scripts\calculator\directives\_index.js" />
     <Content Include="Scripts\calculator\module.js" />
     <Content Include="Scripts\calculator\namespace.js" />
@@ -102,6 +103,8 @@
     <Content Include="Scripts\common\templates\_calculator.html" />
     <Content Include="Scripts\common\templates\_credits.html" />
     <Content Include="Scripts\common\templates\_deposits.html" />
+    <Content Include="Scripts\common\templates\_giveCredits.html" />
+    <Content Include="Scripts\common\templates\_giveDeposits.html" />
     <Content Include="Scripts\common\templates\_mainLayout.html" />
     <Content Include="Scripts\common\templates\_payments.html" />
     <Content Include="Scripts\common\templates\_reg.html" />
@@ -134,6 +137,7 @@
     <Content Include="Scripts\manageDeposits\templates\popup.html" />
     <Content Include="Scripts\manageRequest\controllers\popupController.js" />
     <Content Include="Scripts\manageRequest\controllers\_index.js" />
+    <Content Include="Scripts\manageRequest\directives\kcGiveCredits.js" />
     <Content Include="Scripts\manageRequest\directives\kcRequest.js" />
     <Content Include="Scripts\manageRequest\directives\_index.js" />
     <Content Include="Scripts\manageRequest\module.js" />
@@ -144,7 +148,9 @@
     <Content Include="Scripts\manageRequest\settings\requestSettings.js" />
     <Content Include="Scripts\manageRequest\settings\_index.js" />
     <Content Include="Scripts\manageRequest\templates\grid.html" />
+    <Content Include="Scripts\manageRequest\templates\gridGive.html" />
     <Content Include="Scripts\manageRequest\templates\popup.html" />
+    <Content Include="Scripts\manageRequest\templates\popupGive.html" />
     <Content Include="Scripts\paymentPlan\directives\kcPayments.js" />
     <Content Include="Scripts\paymentPlan\directives\_index.js" />
     <Content Include="Scripts\paymentPlan\module.js" />
@@ -155,6 +161,19 @@
     <Content Include="Scripts\paymentPlan\settings\settings.js" />
     <Content Include="Scripts\paymentPlan\settings\_index.js" />
     <Content Include="Scripts\paymentPlan\templates\grid.html" />
+    <Content Include="Scripts\requestDeposite\controllers\popupController.js" />
+    <Content Include="Scripts\requestDeposite\controllers\_index.js" />
+    <Content Include="Scripts\requestDeposite\directives\kcRequestDeposite.js" />
+    <Content Include="Scripts\requestDeposite\directives\_index.js" />
+    <Content Include="Scripts\requestDeposite\module.js" />
+    <Content Include="Scripts\requestDeposite\namespace.js" />
+    <Content Include="Scripts\requestDeposite\require.js" />
+    <Content Include="Scripts\requestDeposite\services\requestDepositeService.js" />
+    <Content Include="Scripts\requestDeposite\services\_index.js" />
+    <Content Include="Scripts\requestDeposite\settings\settings.js" />
+    <Content Include="Scripts\requestDeposite\settings\_index.js" />
+    <Content Include="Scripts\requestDeposite\templates\grid.html" />
+    <Content Include="Scripts\requestDeposite\templates\popup.html" />
     <Content Include="Scripts\routes.js" />
     <Content Include="Scripts\common\services\authService.js" />
     <Content Include="Scripts\common\services\_index.js" />
@@ -167,9 +186,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,4 +1,3 @@
 ﻿define([
-    './kcCalculator'
-
+    './requestDepositeService'
 ], function () { })

@@ -1,0 +1,28 @@
+﻿<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Имя клиента</td>
+                <td>Кредит</td>
+                <td>Запрашиваемая сумма</td>
+                <td>Срок</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
+                <td ng-click="open(request)">{{request.Customer.Firstname}}</td>
+                <td>{{request.Credit.Name}}</td>
+                <td>{{request.Sum + ' BYR'}}</td>
+                <td>{{request.MonthCount + ' мес.'}}</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <uib-pagination total-items="_gridOptions.TotalItemCount"
+                            ng-model="_currentPage" max-size="5"
+                            class="pagination-sm" boundary-links="true"
+                            rotate="false" ng-change="pageChanged()"></uib-pagination>
+        </tfoot>
+    </table>
+    </>

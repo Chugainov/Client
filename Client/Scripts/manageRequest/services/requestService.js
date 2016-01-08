@@ -89,6 +89,16 @@ function (namespace, module) {
             return $http.get(serviceUri, data);
         };
 
+        function _getCustomerCredits(page) {
+            var serviceUri = customerCreditUri + "/Get";
+            var data = {
+                params: {
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
         function _getCredits() {
             var serviceUri = creditUri + "/GetAll";
             var config = {
@@ -119,6 +129,16 @@ function (namespace, module) {
             return $http.post(serviceUri, data, config);
         };
 
+        var _giveCredit = function (data) {
+            var serviceUri = customerCreditUri + "/add";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.post(serviceUri, data, config);
+        };
+
         var _setStatus = function (data) {
             var serviceUri = serviceBaseUri + "/SetStatus";
             var config = {
@@ -133,15 +153,6 @@ function (namespace, module) {
             return $http.delete(serviceBaseUri + '/' + id);
         };
 
-        var _put = function (id, data) {
-            var serviceUri = serviceBaseUri + "/" + id;
-            var config = {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            };
-            return $http.put(serviceUri, data, config);
-        }
 
         requestServiceFactory.getByCustomer = _getByCustomer;
         requestServiceFactory.getRole = _getRole;
@@ -152,9 +163,10 @@ function (namespace, module) {
         requestServiceFactory.add = _add;
         requestServiceFactory.setStatus = _setStatus;
         requestServiceFactory.delete = _delete;
+        requestServiceFactory.giveCredit = _giveCredit;
         requestServiceFactory.getCredits = _getCredits;
-        requestServiceFactory.put = _put;
-        requestServiceFactory.getCustomer = _getCustomer;
+        requestServiceFactory.getCustomerCredits = _getCustomerCredits;
+        requestServiceFactory.getCustomer = _getCustomer; 
 
         return requestServiceFactory;
     };
