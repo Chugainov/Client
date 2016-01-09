@@ -22,7 +22,7 @@
             ]
         },
         'underscoreModule': {
-            deps: ['jquery']
+            deps: ['angular', 'jquery']
         },
         'bootstrap': {
             deps: ['jquery']

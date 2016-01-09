@@ -4,13 +4,20 @@
 ], function (module, namespace, app) {
     var name = namespace + '.popupController';
 
-    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestService', 'request', 'role'];
+    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestService', 'request', 'role', 'unconfirmed'];
 
-    var controller = function ($uibModalInstance, $scope, requestService, request, role) {
+    var controller = function ($uibModalInstance, $scope, requestService, request, role, unconfirmed) {
         $scope.request = request;
         $scope.Role = role;
-        requestService.getByCustomer(request.CustomerId, 1).then(function (response) {
-            $scope.customersCredits = response.data.Items;
+        
+        requestService.getSolvencyRate(request).then(function (responce) {
+            $scope.solvency = responce.data.solvency;
+            if ($scope.solvency) {
+                $scope.solvencyText = "Рейтинг платежеспособности позволяет выдать кредит этому клиенту.";
+            }
+            else {
+                $scope.solvencyText = "Рейтинг платежеспособности низкий. Выдавать кредит на свой страх и риск.";
+            }
         });
 
         $scope.hasCustomerCredits = function () {
@@ -28,6 +35,14 @@
             if (typeof ($scope.decision.Message) == "undefined") return false;
             if ($scope.decision.Message == "") return false;
             return true;
+        };
+
+        $scope.unset = function () {
+            $scope.decision = {};
+            $scope.decision.CreditRequestId = request.Id;
+            $scope.decision.CreditRequestStatusInfo = "None";
+            requestService.setStatus($scope.decision);
+            $uibModalInstance.close();
         };
 
         $scope.ok = function () {

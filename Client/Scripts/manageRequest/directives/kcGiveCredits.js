@@ -22,7 +22,7 @@
 
 
             function controller($scope, $uibModal, $timeout) {
-                $scope.status = 'Посмотреть невыданные кредиты';
+                $scope.status = 'Посмотреть выданные кредиты';
                 $scope.unconfirmed = true;
                 function _loadData(page) {
                     $scope._gridOptions = [];
@@ -45,10 +45,10 @@
 
                 $scope.setStatus = function () {
                     if ($scope.unconfirmed) {
-                        $scope.status = 'Посмотреть выданные кредиты';
+                        $scope.status = 'Посмотреть невыданные кредиты';
                         $scope.unconfirmed = false;
                     } else {
-                        $scope.status = 'Посмотреть невыданные кредиты';
+                        $scope.status = 'Посмотреть выданные кредиты';
                         $scope.unconfirmed = true;
                     }
                     _loadData(1);

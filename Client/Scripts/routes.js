@@ -101,13 +101,10 @@
             templateUrl: "Scripts/common/templates/_deposits.html"
         })
 
-        .state('plan', {
-            url: "/payments",
-            resolve: {
-                permissionResource: "authorizationService",
-                permission: function (permissionResource, $stateParams) {
-                    return permissionResource.permissionCheck([roles.Admin, roles.User]);
-                }
+        .state('payments', {
+            url: "/payments?customerId",
+            controller: function($scope, $stateParams){
+                $scope.CustomerId = $stateParams.customerId;
             },
             templateUrl: "Scripts/common/templates/_payments.html"
         })
