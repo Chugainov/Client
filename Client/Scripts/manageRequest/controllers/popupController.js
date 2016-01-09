@@ -9,6 +9,7 @@
     var controller = function ($uibModalInstance, $scope, requestService, request, role, unconfirmed) {
         $scope.request = request;
         $scope.Role = role;
+        $scope.unconfirmed = unconfirmed;
         
         requestService.getSolvencyRate(request).then(function (responce) {
             $scope.solvency = responce.data.solvency;
