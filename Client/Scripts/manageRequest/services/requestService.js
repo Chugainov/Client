@@ -186,7 +186,7 @@ function (namespace, module) {
         };
 
         var _delete = function (id) {
-            return $http.delete(serviceBaseUri + '/' + id);
+            return $http.delete(serviceBaseUri + '/delete' + id);
         };
 
 
