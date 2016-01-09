@@ -32,6 +32,14 @@
                             
                             requestDepositeService.getCustomerDeposits($scope._currentPage).then(function (response) {
                                 $scope._gridOptions = response.data;
+                                $scope._gridOptions.Items.forEach(function (item) {
+
+                                    requestDepositeService.getContractReq(item.ContractNumber).then(function (response) {
+
+                                        item.Contract = response.data;
+                                    });
+
+                                });
                             });
                                    
 

@@ -7,7 +7,7 @@
                 <td>Кредит</td>
                 <td>Запрашиваемая сумма</td>
                 <td>Срок</td>
-                <td></td>
+                <td>Скачать договор</td>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +16,11 @@
                 <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
                 <td>{{request.MonthCount + ' мес.'}}</td>
+                <td>
+                    <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                    </a>
+                </td>
             </tr>
 
         </tbody>

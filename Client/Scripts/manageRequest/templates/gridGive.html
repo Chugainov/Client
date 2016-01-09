@@ -10,7 +10,8 @@
                 <td>Кредит</td>
                 <td>Запрашиваемая сумма</td>
                 <td>Срок</td>
-                <td></td>
+                <td>Выдать</td>
+                <td>Скачать заявку</td>
             </tr>
         </thead>
         <tbody>
@@ -18,8 +19,13 @@
                 <td>{{request.Customer.Firstname}}</td>
                 <td>{{request.Credit.Name}}</td>
                 <td>{{request.Sum + ' BYR'}}</td>
-                <td>{{request.MonthCount|date:"longDate"  + ' мес.'}}</td>
+                <td>{{request.MonthCount + ' мес.'}}</td>
                 <td><button ng-click="open(request.Id)">Выдать</button></td>
+                <td>
+                    <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                    </a>
+                </td>
             </tr>
 
         </tbody>
@@ -37,7 +43,7 @@
                 <td>Сумма</td>
                 <td>Начало кредита</td>
                 <td>Окончание кредита</td>
-                <td></td>
+                <td>Скачать контракт</td>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +52,11 @@
                 <td>{{credit.CreditSum + ' BYR'}}</td>
                 <td>{{credit.StartDate|date:"longDate"  }}</td>
                 <td>{{credit.EndDate|date:"longDate"  }}</td>
+                <td>
+                    <a ng-href="{{credit.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                    </a>
+                </td>
             </tr>
 
         </tbody>
