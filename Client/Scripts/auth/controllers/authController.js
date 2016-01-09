@@ -52,14 +52,14 @@
                 
                 authService.changePass($scope.pass).then(function (resp) {
                     var resp = resp;
-                    $scope.pass = {};
                     $scope.passField = false;
                 }, function (err) {
                     $scope.error = err.data.ModelState;
-                    $scope.pass = {};
                     $scope.passField = true;
                     $scope.passText = "Пароль успешно изменен";
                 });
+
+                $scope.pass = {};
             };
 
             $scope.login = function () {
@@ -79,7 +79,7 @@
                 var token = localStorageService.get('token');
                 var data = { Token: token, TokenObj: '' };
                 authService.logout().then(function (response) {
-
+                    $scope.pass = {};
                     localStorageService.remove('token');
                     $scope.isLogin = false;
                 });
