@@ -34,10 +34,7 @@
                     }, 1000);
                 };
 
-                $scope._delete = function (id) {
-                    creditsService.delete(id).success(function () { _loadData($scope._currentPage); });
-                    
-                };
+                
 
                 _loadData(1);
 
@@ -46,6 +43,27 @@
                 }
 
                 $scope.animationsEnabled = true;
+
+                $scope.confirm = function (id) {
+
+                    var modalInstance = $uibModal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'scripts/manageCredits/templates/confirm.html',
+                        controller: 'Client.manageCredits.confirmController',
+                        resolve: {
+                            id: function () {
+                                return id;
+                            }
+                        }
+                    });
+
+                    modalInstance.result.then(function () {
+                        $timeout(function () { _loadData($scope._currentPage); });
+
+                    }, function () {
+                        //TODO:
+                    });
+                };
 
                 $scope.open = function (id) {
 

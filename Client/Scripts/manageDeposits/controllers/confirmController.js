@@ -2,17 +2,17 @@
     '../module',
     '../namespace',
 ], function (module, namespace, app) {
-    var name = namespace + '.popupGiveController';
+    var name = namespace + '.confirmController';
 
-    var dependencies = ['$uibModalInstance', '$scope', namespace + '.requestService', 'id'];
+    var dependencies = ['$uibModalInstance', '$scope', namespace + '.depositsService', 'id'];
 
-    var controller = function ($uibModalInstance, $scope, requestService, id) {
+    var controller = function ($uibModalInstance, $scope, depositsService, id) {
 
-        
-        
+
+
 
         $scope.ok = function () {
-            requestService.giveCredit(id).then(function () {
+            depositsService.delete(id).then(function () {
                 $uibModalInstance.close();
             });
         };

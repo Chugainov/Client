@@ -48,6 +48,27 @@
 
                 $scope.animationsEnabled = true;
 
+                $scope.confirm = function (id) {
+
+                    var modalInstance = $uibModal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'scripts/manageDeposits/templates/confirm.html',
+                        controller: 'Client.manageDeposits.confirmController',
+                        resolve: {
+                            id: function () {
+                                return id;
+                            }
+                        }
+                    });
+
+                    modalInstance.result.then(function () {
+                        $timeout(function () { _loadData($scope._currentPage); });
+
+                    }, function () {
+                        //TODO:
+                    });
+                };
+
                 $scope.open = function (id) {
 
                     var modalInstance = $uibModal.open({
