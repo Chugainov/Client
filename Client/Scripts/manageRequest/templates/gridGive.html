@@ -1,64 +1,71 @@
-﻿<div>
-    <div><h1>Выдача кредитов </h1></div>
+﻿<div class="container-fluid">
+    <div class="col-sm-offset-1 col-sm-10">
+        <h1 class="opacity-header">Выдача кредитов</h1>
+        <a href="javascript:void(0)" class="btn btn-info btn-fab btn-add" ng-click="setStatus()" ng-show="Role != 1" title="{{status}}">
+            <i class="material-icons glyphicon glyphicon-search"></i>
+        </a>
+        <div class="table-responsive well">
+            <table class="table table-striped table-hover custom-table" ng-show="unconfirmed">
+                <thead>
+                    <tr class="table-head">
+                        <td>Имя клиента</td>
+                        <td>Кредит</td>
+                        <td>Запрашиваемая сумма</td>
+                        <td>Срок</td>
+                        <td>Выдать кредит</td>
+                        <td>Скачать договор</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
+                        <td>{{request.Customer.Firstname}}</td>
+                        <td>{{request.Credit.Name}}</td>
+                        <td>{{request.Sum + ' BYR'}}</td>
+                        <td>{{request.MonthCount  + ' мес.'}}</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="open(request.Id)">
+                                <i class="material-icons glyphicon glyphicon-ok"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                            </a>
+                        </td>
+                    </tr>
 
-    
-    <div><input type="button" value="{{status}}" ng-show="Role != 1" ng-click="setStatus()" /></div>
-    <table class="table" ng-show="unconfirmed">
-        <thead>
-            <tr>
-                <td>Имя клиента</td>
-                <td>Кредит</td>
-                <td>Запрашиваемая сумма</td>
-                <td>Срок</td>
-                <td>Выдать</td>
-                <td>Скачать заявку</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
-                <td>{{request.Customer.Firstname}}</td>
-                <td>{{request.Credit.Name}}</td>
-                <td>{{request.Sum + ' BYR'}}</td>
-                <td>{{request.MonthCount + ' мес.'}}</td>
-                <td><button ng-click="open(request.Id)">Выдать</button></td>
-                <td>
-                    <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
-                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
-                    </a>
-                </td>
-            </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped table-hover custom-table" ng-show="!unconfirmed">
+                <thead>
+                    <tr class="table-head">
+                        <td>Номер контракта</td>
+                        <td>Сумма</td>
+                        <td>Начало кредита</td>
+                        <td>Окончание кредита</td>
+                        <td>Скачать договор</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="credit in _gridOptions.Items">
+                        <td>{{credit.ContractNumber}}</td>
+                        <td>{{credit.CreditSum + ' BYR'}}</td>
+                        <td>{{credit.StartDate|date:"longDate"  }}</td>
+                        <td>{{credit.EndDate|date:"longDate"  }}</td>
+                        <td>
+                            <a ng-href="{{credit.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                            </a>
+                        </td>
+                    </tr>
 
-        </tbody>
-        <tfoot>
-            <uib-pagination total-items="_gridOptions.TotalItemCount"
-                            ng-model=" _currentpage" max-size="5"
-                            class="pagination-sm" boundary-links="true"
-                            rotate="false" ng-change="pageChanged()"></uib-pagination>
-        </tfoot>
-    </table>
-    <table class="table" ng-show="!unconfirmed">
-        <thead>
-            <tr>
-                <td>Номер контракта</td>
-                <td>Сумма</td>
-                <td>Начало кредита</td>
-                <td>Окончание кредита</td>
-                <td>Скачать контракт</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="credit in _gridOptions.Items">
-                <td>{{credit.ContractNumber}}</td>
-                <td>{{credit.CreditSum + ' BYR'}}</td>
-                <td>{{credit.StartDate|date:"longDate"  }}</td>
-                <td>{{credit.EndDate|date:"longDate"  }}</td>
-                <td>
-                    <a ng-href="{{credit.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
-                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
-                    </a>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    </>
+                </tbody>
+            </table>
+        </div>
+        <uib-pagination total-items="_gridOptions.TotalItemCount"
+                        ng-model=" _currentpage" max-size="5"
+                        class="pagination pagination-lg"
+                        previous-text="«" next-text="»"
+                        rotate="false" ng-change="pageChanged()"></uib-pagination>
+    </div>
+</div>

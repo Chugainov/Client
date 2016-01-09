@@ -1,34 +1,41 @@
-﻿<div>
-    <button ng-click="open()">Выдать депозит</button>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Имя клиента</td>
-                <td>Кредит</td>
-                <td>Запрашиваемая сумма</td>
-                <td>Срок</td>
-                <td>Скачать договор</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="request in _gridOptions.Items">
-                <td>{{request.Customer.Firstname}}</td>
-                <td>{{request.Credit.Name}}</td>
-                <td>{{request.Sum + ' BYR'}}</td>
-                <td>{{request.MonthCount + ' мес.'}}</td>
-                <td>
-                    <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
-                        <i class="material-icons glyphicon glyphicon-cloud-download"></i>
-                    </a>
-                </td>
-            </tr>
+﻿<div class="container-fluid">
+    <div class="col-sm-offset-1 col-sm-10">
+        <h1 class="opacity-header">Депозиты</h1>
+        <a href="javascript:void(0)" class="btn btn-danger btn-fab btn-add" ng-click="open()"><i class="material-icons">+</i></a>
+        <div class="table-responsive well">
+            <table class="table table-striped table-hover custom-table">
+                <thead>
+                    <tr class="table-head">
+                        <td>Клиент</td>
+                        <td>Депозит</td>
+                        <td>Начальная сумма</td>
+                        <td>Дата открытия</td>
+                        <td>Дата востребования</td>
+                        <td>Статус</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="request in _gridOptions.Items">
+                        <td>{{request.Customer.Firstname + ' ' + request.Customer.Lastname}}</td>
+                        <td>{{request.Deposit.Name}}</td>
+                        <td>{{request.InitialSum + ' BYR'}}</td>
+                        <td>{{request.StartDate | date:"MMMM d, y"}}</td>
+                        <td>{{request.EndDate | date:"MMMM d, y"}}</td>
+                        <td>{{request.IsPaid ? 'Закрыт' : 'Активен'}}</td>
+                        <td>
+                            <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                            </a>
+                        </td>
+                    </tr>
 
-        </tbody>
-        <tfoot>
-            <uib-pagination total-items="_gridOptions.TotalItemCount"
-                            ng-model="_currentPage" max-size="5"
-                            class="pagination-sm" boundary-links="true"
-                            rotate="false" ng-change="pageChanged()"></uib-pagination>
-        </tfoot>
-    </table>
+                </tbody>
+            </table>
+        </div>
+        <uib-pagination total-items="_gridOptions.TotalItemCount"
+                        ng-model="_currentPage" max-size="5"
+                        class="pagination pagination-lg"
+                        previous-text="«" next-text="»"
+                        rotate="false" ng-change="pageChanged()"></uib-pagination>
     </div>
+</div>
