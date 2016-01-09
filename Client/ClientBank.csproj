@@ -94,8 +94,8 @@
     <Content Include="Scripts\calculator\settings\settings.js" />
     <Content Include="Scripts\calculator\settings\_index.js" />
     <Content Include="Scripts\calculator\templates\calculator.html" />
-    <Content Include="Scripts\common\directives\payController.js" />
-    <Content Include="Scripts\common\directives\_index.js" />
+    <Content Include="Scripts\common\controllers\payController.js" />
+    <Content Include="Scripts\common\controllers\_index.js" />
     <Content Include="Scripts\common\module.js" />
     <Content Include="Scripts\common\namespace.js" />
     <Content Include="Scripts\common\require.js" />

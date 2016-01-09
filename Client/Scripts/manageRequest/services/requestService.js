@@ -17,6 +17,22 @@ function (namespace, module) {
         var customerCreditUri = settings.customerCreditURI;
         var requestServiceFactory = {};
 
+        function _getSolvencyRate(data) {
+            var serviceUri = "http://localhost:12715/api/calculationcredit/solvencyrate";
+            var data = {
+                params: {
+                    Sum: data.Sum,
+                    MonthPeriod: data.MonthCount,
+                    CreditId: data.CreditId,
+                    IncomeSum: data.IncomeSum,
+                    OtherCreditPayments: data.OtherCreditPayments,
+                    UtilitiesPayments: data.UtilitiesPayments,
+                    OtherPayments: data.OtherPayments
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
         function _getAll() {
             var serviceUri = serviceBaseUri;
             var config = {
@@ -167,6 +183,8 @@ function (namespace, module) {
         requestServiceFactory.getCredits = _getCredits;
         requestServiceFactory.getCustomerCredits = _getCustomerCredits;
         requestServiceFactory.getCustomer = _getCustomer; 
+        requestServiceFactory.getSolvencyRate = _getSolvencyRate; 
+        
 
         return requestServiceFactory;
     };

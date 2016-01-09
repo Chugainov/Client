@@ -31,6 +31,14 @@
             <td><label>Другие расходы</label></td>
             <td>{{request.OtherPayments + ' BYR'}}</td>
         </tr>
+        <tr>
+            <td><label>Решение автоматизированной системы</label></td>
+            <td>{{solvencyText}}</td>
+        </tr>
+        <tr><td>
+            <a ui-sref="payments({customerId: {{request.CustomerId}} })" target="_blank">Посмотреть кредитную историю</a>
+            </td>
+        </tr>
         <tr ng-show="Role == 3">
             <td><label>Копия военного билета</label></td>
             <td><img width="100" height="111" alt="Военный билет" ng-src="{{request.MilitaryIdPath}}" /></td>
@@ -40,33 +48,16 @@
             <td><img width="100" height="111" alt="Справка о доходах" ng-src="{{request.IncomeCertificatePath}}" /></td>
         </tr>
     </table>
-    <table ng-show="hasCustomerCredits()">
-        <thead>
-            <tr>
-                <td>Номер контракта</td>
-                <td>Сумма</td>
-                <td>Начало кредита</td>
-                <td>Окончание кредита</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="credit in customersCredits">
-                <td>{{credit.ContractNumber}}</td>
-                <td>{{credit.CreditSum + ' BYR'}}</td>
-                <td>{{credit.StartDate  }}</td>
-                <td>{{credit.EndDate }}</td>
-            </tr>
+    
 
-        </tbody>
-    </table>
     <input type="radio" ng-model="decision.CreditRequestStatusInfo" value="Accepted"> Разрешить <br />
     <input type="radio" ng-model="decision.CreditRequestStatusInfo" value="Declined"> Отвергнуть <br />
     <div ng-show="decision.CreditRequestStatusInfo == 'Declined'">
         <label>Напишите причину отказа</label>
         <textarea ng-model="decision.Message"></textarea>
     </div>
-    
+
     <input class="btn btn-primary" ng-show="isValid()" value="Ok" type="button" ng-click="ok()" />
     <input class="btn btn-warning" value="Отмена" type="button" ng-click="cancel()" />
+    <input class="btn btn-primary" ng-show="!unconfirmed" value="Отменить решение" type="button" ng-click="unset()" />
 </div>

@@ -181,7 +181,10 @@
                             },
                             role: function () {
                                 return $scope.Role;
-                            }
+                            },
+                            unconfirmed: function () {
+                                return $scope.unconfirmed;
+                            },
                         }
                     });
 

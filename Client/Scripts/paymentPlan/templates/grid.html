@@ -1,3 +1,48 @@
 ﻿<div>
+    <div><h1>Кредитная история</h1></div>
+    <ul style="list-style-type: none;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Номер контракта</td>
+                    <td>Сумма</td>
+                    <td>Начало кредита</td>
+                    <td>Окончание кредита</td>
+                    <td></td>
+                </tr>
+            </thead>
+        </table>
+    </ul>
+    <ul style="list-style-type: none;" ng-repeat="credit in credits">
+        <li>
+            <table class="table">
+                <tr ng-click="details(credit.ContractNumber, credit.Payments)">
+                    <td>{{credit.ContractNumber}}</td>
+                    <td>{{credit.CreditSum + ' BYR'}}</td>
+                    <td>{{credit.StartDate|date:"longDate"  }}</td>
+                    <td>{{credit.EndDate|date:"longDate"  }}</td>
+                </tr>
+            </table>
+            <div ng-show="showDetails == credit.ContractNumber">
+                <h4 ng-show="!hasPayments">По этому кредиту не было платежей</h4>
+                <table ng-show="hasPayments">
+                    <tr>
+                        <td>Дата</td>
+                        <td>Основная сумма</td>
+                        <td>Пеня основной суммы</td>
+                        <td>Сумма процентов</td>
+                        <td>Пеня суммы процентов</td>
+                    </tr>
+                    <tr ng-repeat="payment in credit.Payments">
+                        <td>{{payment.DateTime|date:"longDate"  }}</td>
+                        <td>{{payment.MainSum + ' BYR'}}</td>
+                        <td>{{payment.DelayMainSum + ' BYR'}}</td>
+                        <td>{{payment.PercentSum + ' BYR'}}</td>
+                        <td>{{payment.DelayPercentSum + ' BYR'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
 
 </div>

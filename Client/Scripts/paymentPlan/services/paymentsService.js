@@ -14,37 +14,43 @@ function (namespace, module) {
         var creditsBaseUri = settings.creditsURI;
         var paymentsServiceFactory = {};
 
-        function _get() {
-            var serviceUri = creditsBaseUri;
-            var config = {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            };
-            return $http.get(serviceUri, config);
-        };
-
-
-
-        function _getPaymentPlan(data) {
-            var serviceUri = serviceBaseUri + 'paymentsplan';
+        function _get(page) {
+            var serviceUri = serviceBaseUri + "/Get";
             var data = {
                 params: {
-                    creditId: data.CreditId,
-                    sum: data.Sum,
-                    monthPeriod: data.Month,
-                    startDate: new Date()
+                    page: page
                 }
             };
             return $http.get(serviceUri, data);
-        }
+        }; 
+
+        function _getByContractNumber(contractNumber) {
+            var serviceUri = serviceBaseUri + "GetByContractNumber";
+            var data = {
+                params: {
+                    contractNumber: contractNumber
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
+        function _getByCustomer(customerId, page) {
+            var serviceUri = serviceBaseUri + "GetByCustomerId";
+            var data = {
+                params: {
+                    customerId: customerId,
+                    page: page
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
 
         function _getById(id) {
             return $http.get(serviceBaseUri + 'get/' + id);
         };
 
-        paymentsServiceFactory.get = _get;
-        paymentsServiceFactory.getPaymentPlan = _getPaymentPlan;
+        paymentsServiceFactory.getByCustomer = _getByCustomer;
+        paymentsServiceFactory.getByContractNumber = _getByContractNumber;
 
 
         return paymentsServiceFactory;
