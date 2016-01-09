@@ -32,14 +32,14 @@
                             requestService.getConfirmedByChief($scope._currentPage).then(function (response) {
                                 $scope._gridOptions = response.data;
                             });
-                        });
+                        }, 1000);
                     };
                     if (!$scope.unconfirmed) {
                         $timeout(function () {
                             requestService.getCustomerCredits($scope._currentPage).then(function (response) {
                                 $scope._gridOptions = response.data;
                             });
-                        });
+                        }, 1000);
                     };
                 };
 
