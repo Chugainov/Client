@@ -27,8 +27,9 @@
 
         $scope.ok = function () {
             $scope.info.Role = $scope.role.Id;
-            authService.register($scope.info);
-            $uibModalInstance.close();
+            authService.register($scope.info).then(function () {
+                $uibModalInstance.close();
+            });
         };
 
         $scope.cancel = function () {
