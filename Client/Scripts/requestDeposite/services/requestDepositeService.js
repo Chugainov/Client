@@ -91,6 +91,7 @@ function (namespace, module) {
         requestDepositeServiceFactory.getDeposits = _getDeposits;
         requestDepositeServiceFactory.getCustomerDeposits = _getCustomerDeposits;
         requestDepositeServiceFactory.getCustomer = _getCustomer;
+        requestDepositeServiceFactory.getContract = _getContract;
 
         return requestDepositeServiceFactory;
     };

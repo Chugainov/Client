@@ -69,7 +69,9 @@
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\auth\controllers\authController.js" />
+    <Content Include="Scripts\auth\controllers\confirmController.js" />
     <Content Include="Scripts\auth\controllers\popupController.js" />
+    <Content Include="Scripts\auth\templates\confirm.html" />
     <Content Include="Scripts\auth\templates\popup.html" />
     <Content Include="Scripts\auth\controllers\_index.js" />
     <Content Include="Scripts\auth\directives\kcReg.js" />
