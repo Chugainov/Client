@@ -83,11 +83,11 @@
 
     <div class="form-group is-empty" ng-show="decision.CreditRequestStatusInfo == 'Declined'">
         <label for="decision.Message" class="control-label">Напишите причину отказа</label>
-        <input type="text" class="form-control input-sm" id="decision.Message" ng-model="decision.Message" required>
+        <input type="text" class="form-control input-sm" id="decision.Message" ng-model="decision.Message" required/>
         <span class=" material-input"></span>
     </div>
 
     <button type="button" ng-show="isValid()" class="btn btn-default" ng-click="ok()">Подтвердить</button>
-    <button ng-show="isValid()" type="button" class="btn btn-warning" ng-click="cancel()">Отмена</button>
-    <button class="btn btn-primary" ng-show="!unconfirmed" value="Отменить решение" type="button" ng-click="unset()" />
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Отмена</button>
+    <button class="btn btn-primary" ng-show="!unconfirmed" type="button" ng-click="unset()" >Отменить решение</button>
 </div>
