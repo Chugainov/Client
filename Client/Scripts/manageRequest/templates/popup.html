@@ -1,63 +1,93 @@
 ﻿<div class="modal-header">
-    <h3>Редактирование</h3>
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+    <h4 class="modal-title">{{request.Customer.Lastname + ' ' +request.Customer.Firstname+ ' ' + request.Customer.Patronymic}}</h4>
 </div>
 <div class="modal-body">
-    <table>
-        <tr>
-            <td><label>Имя клиента</label></td>
-            <td>{{request.Customer.Lastname + ' ' +request.Customer.Firstname+ ' ' + request.Customer.Patronymic}}</td>
-        </tr>
-        <tr>
-            <td><label>Название кредита</label></td>
-            <td>{{request.Credit.Name}}</td>
-        </tr>
-        <tr ng-show="Role != 3">
-            <td><label>Запрашиваемая сумма</label></td>
-            <td>{{request.Sum + ' BYR'}}</td>
-        </tr>
-        <tr ng-show="Role != 3">
-            <td><label>Количество месяцев</label></td>
-            <td>{{request.MonthCount + ' мес.'}}</td>
-        </tr>
-        <tr ng-show="Role != 3">
-            <td><label>Выплаты по другим кредитам</label></td>
-            <td>{{request.OtherCreditPayments + ' BYR'}}</td>
-        </tr>
-        <tr ng-show="Role != 3">
-            <td><label>Оплата коммунальных услуг</label></td>
-            <td>{{request.UtilitiesPayments + ' BYR'}}</td>
-        </tr>
-        <tr ng-show="Role != 3">
-            <td><label>Другие расходы</label></td>
-            <td>{{request.OtherPayments + ' BYR'}}</td>
-        </tr>
-        <tr>
-            <td><label>Решение автоматизированной системы</label></td>
-            <td>{{solvencyText}}</td>
-        </tr>
-        <tr><td>
-            <a ui-sref="payments({customerId: {{request.CustomerId}} })" target="_blank">Посмотреть кредитную историю</a>
-            </td>
-        </tr>
-        <tr ng-show="Role == 3">
-            <td><label>Копия военного билета</label></td>
-            <td><img width="100" height="111" alt="Военный билет" ng-src="{{request.MilitaryIdPath}}" /></td>
-        </tr>
-        <tr ng-show="Role == 3">
-            <td><label>Копия справки о доходах</label></td>
-            <td><img width="100" height="111" alt="Справка о доходах" ng-src="{{request.IncomeCertificatePath}}" /></td>
-        </tr>
-    </table>
-    
 
-    <input type="radio" ng-model="decision.CreditRequestStatusInfo" value="Accepted"> Разрешить <br />
-    <input type="radio" ng-model="decision.CreditRequestStatusInfo" value="Declined"> Отвергнуть <br />
-    <div ng-show="decision.CreditRequestStatusInfo == 'Declined'">
-        <label>Напишите причину отказа</label>
-        <textarea ng-model="decision.Message"></textarea>
+    <form>
+        <fieldset>
+
+            <div class="form-group is-empty">
+                <label for="creditName" class="control-label">Название кредита</label>
+                <input type="text" class="form-control input-sm" id="creditName" ng-model="request.Credit.Name" readonly>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty" ng-show="Role != 3">
+                <label for="request.Sum" class="control-label">Запрашиваемая сумма (BYR)</label>
+                <input type="text" class="form-control input-sm" id="request.Sum" ng-model="request.Sum" readonly>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty" ng-show="Role != 3">
+                <label for="request.MonthCount" class="control-label">Количество месяцев</label>
+                <input type="text" class="form-control input-sm" id="request.MonthCount" ng-model="request.MonthCount" readonly>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty" ng-show="Role != 3">
+                <label for="request.OtherCreditPayments" class="control-label">Выплаты по другим кредитам (BYR)</label>
+                <input type="text" class="form-control input-sm" id="request.OtherCreditPayments" ng-model="request.OtherCreditPayments" readonly>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty" ng-show="Role != 3">
+                <label for="request.UtilitiesPayments" class="control-label">Оплата коммунальных услуг (BYR)</label>
+                <input type="text" class="form-control input-sm" id="request.UtilitiesPayments" ng-model="request.UtilitiesPayments" readonly>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty" ng-show="Role != 3">
+                <label for="request.OtherPayments" class="control-label">Другие расходы (BYR)</label>
+                <input type="text" class="form-control input-sm" id="request.OtherPayments" ng-model="request.OtherPayments" readonly>
+                <span class="material-input"></span>
+            </div>
+            <div class="form-group is-empty">
+                <label for="solvencyText" class="control-label">Решение автоматизированной системы:</label>
+                <input type="text" class="form-control input-sm" id="solvencyText" ng-model="solvencyText" readonly>
+                <span class="material-input"></span>
+            </div>
+            <tr>
+                <td>
+                    <a ui-sref="payments({customerId: {{request.CustomerId}} })" target="_blank">Посмотреть кредитную историю</a>
+                </td>
+            </tr>
+
+            <div class="container-fluid" ng-show="Role == 3">
+                <div class="col-sm-6" ng-show="request.MilitaryIdPath">
+                    <h5>Копия военного билета</h5>
+                    <img style="width:100%; height: auto;" alt="Военный билет" ng-src="{{request.MilitaryIdPath}}" />
+                </div>
+                <div class="{{request.MilitaryIdPath ? 'col-sm-6' : 'col-sm-12'}}">
+                    <h5>Копия справки о доходах</h5>
+                    <img style="width:100%; height: auto;" alt="Справка о доходах" ng-src="{{request.IncomeCertificatePath}}" />
+                </div>
+            </div>
+
+            <div class="form-group is-empty">
+                <label>
+                    <input type="radio" name="decision" id="Accepted" value="Accepted" checked="" ng-model="decision.CreditRequestStatusInfo">
+                    Разрешить
+                </label>
+                <label>
+                    <input type="radio" name="decision" id="Declined" value="Declined" ng-model="decision.CreditRequestStatusInfo">
+                    Отклонить
+                </label>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+<div class="modal-footer">
+
+    <div class="form-group is-empty" ng-show="decision.CreditRequestStatusInfo == 'Declined'">
+        <label for="decision.Message" class="control-label">Напишите причину отказа</label>
+        <input type="text" class="form-control input-sm" id="decision.Message" ng-model="decision.Message" required>
+        <span class=" material-input"></span>
     </div>
 
-    <input class="btn btn-primary" ng-show="isValid()" value="Ok" type="button" ng-click="ok()" />
-    <input class="btn btn-warning" value="Отмена" type="button" ng-click="cancel()" />
+    <button type="button" ng-show="isValid()" class="btn btn-default" ng-click="ok()">Подтвердить</button>
+    <button ng-show="isValid()" type="button" class="btn btn-warning" ng-click="cancel()">Отмена</button>
     <input class="btn btn-primary" ng-show="!unconfirmed" value="Отменить решение" type="button" ng-click="unset()" />
 </div>

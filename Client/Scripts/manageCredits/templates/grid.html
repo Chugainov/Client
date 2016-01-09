@@ -1,36 +1,44 @@
-﻿<div>
-    <div><h1>Управление кредитами</h1></div>
-    <div><input type="button" value="Добавить новый" ng-click="open(credit)" /></div>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Название</td>
-                <td>Процентная ставка</td>
-                <td>Минимальная сумма</td>
-                <td>Максимальная сумма</td>
-                <td>Минимальный срок</td>
-                <td>Максимальный срок</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
+﻿<div class="container-fluid">
+    <div class="col-sm-offset-1 col-sm-10">
+        <h1 class="opacity-header">Управление кредитами</h1>
+        <a href="javascript:void(0)" class="btn btn-danger btn-fab btn-add" ng-click="open(credit)"><i class="material-icons">+</i></a>
+        <div class="table-responsive well">
+            <table class="table table-striped table-hover custom-table"> 
+                <thead>
+                    <tr class="table-head">
+                        <td>Название</td>
+                        <td>Процентная ставка</td>
+                        <td>Минимальная сумма</td>
+                        <td>Максимальная сумма</td>
+                        <td>Минимальный срок</td>
+                        <td>Максимальный срок</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
 
-            <tr ng-repeat="credit in _gridOptions.Items">
-                <td ng-click="open(credit.Id)">{{credit.Name}}</td>
-                <td>{{credit.PercentRate}}</td>
-                <td>{{credit.MinSum + ' BYR'}}</td>
-                <td>{{credit.MaxSum + ' BYR'}}</td>
-                <td>{{credit.MinMonthPeriod + ' мес.'}}</td>
-                <td>{{credit.MaxMonthPeriod + ' мес.'}}</td>
-                <td><input type="button" value="del" ng-click="_delete(credit.Id)"></td>
-            </tr>
+                    <tr ng-repeat="credit in _gridOptions.Items">
+                        <td ng-click="open(credit.Id)">{{credit.Name}}</td>
+                        <td>{{credit.PercentRate}}</td>
+                        <td>{{credit.MinSum + ' BYR'}}</td>
+                        <td>{{credit.MaxSum + ' BYR'}}</td>
+                        <td>{{credit.MinMonthPeriod + ' мес.'}}</td>
+                        <td>{{credit.MaxMonthPeriod + ' мес.'}}</td>
+                        <td>{{credit.PaymentType.Name}}</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="_delete(credit.Id)">
+                                <i class="material-icons glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
 
-        </tbody>
-        <tfoot>
-            <uib-pagination total-items="_gridOptions.TotalItemCount"
-                            ng-model="_currentPage" max-size="5"
-                            class="pagination-sm" boundary-links="true"
-                            rotate="false" ng-change="pageChanged()"></uib-pagination>
-        </tfoot>
-    </table> 
+                </tbody>
+            </table>
+        </div>
+        <uib-pagination total-items="_gridOptions.TotalItemCount"
+                        ng-model="_currentPage" max-size="5"
+                        class="pagination pagination-lg"
+                        previous-text="«" next-text="»"
+                        rotate="false" ng-change="pageChanged()"></uib-pagination>
+    </div>
 </div>
