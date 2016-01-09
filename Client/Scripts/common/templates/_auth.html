@@ -47,7 +47,7 @@
                     </div>
 
                     <p ng-show="pass.NewPassword != pass.ConfirmPassword" style="color: red"> Пароли не совпадают</p>
-                    <p style="color: red"> {{error}}</p>
+                    <p ng-show="passField" style="color: red"> {{passText}}</p>
 
                     <div class="form-group is-empty">
                         <div class="col-sm-12">

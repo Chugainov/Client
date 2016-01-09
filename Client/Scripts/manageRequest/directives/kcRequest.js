@@ -37,6 +37,7 @@
                                     requestService.getCredits().then(function (response) {
                                         $scope._credits = response.data;
                                     });
+                                    $scope.done = false;
                                     break;
                                 case 3:
                                     requestService.getUnconfirmed($scope._currentPage).then(function (response) {
@@ -65,6 +66,7 @@
                                     requestService.getCredits().then(function (response) {
                                         $scope._credits = response.data;
                                     });
+                                    $scope.done = false;
                                     break;
                                 case 3:
                                     requestService.getConfirmed($scope._currentPage).then(function (response) {
@@ -125,12 +127,15 @@
                     
 
                 };
+                $scope.addNew = function () {
+                    $scope.requestN = {};
+                    $scope.done = false;
+                };
                 $scope._delete = function (id) {
                     requestService.delete(id).success(function () { _loadData($scope._currentPage); });
                     
                 };
-                var token = localStorageService.get('token');
-                requestService.getRole(token).then(function (response) {
+                requestService.getRole().then(function (response) {
                     switch (response.data.Role) {
                         case 'CreditCommitteeMember':
                             $scope.Role = 4;
@@ -160,6 +165,9 @@
                     $scope.requestN.IncomeCertificate = $scope.docs;
                     $scope.requestN.Currency = 0;
                     $scope.requestN.CreditId = $scope.credit.Id;
+
+                    $scope.done = true;
+
                     requestService.add($scope.requestN);
                 };
 
