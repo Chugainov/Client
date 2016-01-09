@@ -31,7 +31,7 @@
                         authService.getAll().then(function (response) {
                             $scope._gridOptions = response.data;
                         });
-                    });
+                    }, 1000);
                 };
 
                 $scope._delete = function (id) {

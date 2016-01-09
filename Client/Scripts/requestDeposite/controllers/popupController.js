@@ -26,17 +26,19 @@
                 $scope.customer = responce.data;
             })
         };
-        $scope.add = function () {
+        $scope.set = function () {
             $scope.requestN.Customer = $scope.customer;
             $scope.requestN.Customer.DocumentType = 0;
             $scope.requestN.Currency = 0;
             $scope.requestN.DepositId = $scope.deposit.Id;
-            requestDepositeService.add($scope.requestN);
+            
         };
 
         $scope.ok = function () {
-            $scope.add();
-            $uibModalInstance.close();
+            $scope.set();
+            requestDepositeService.add($scope.requestN).then(function () {
+                $uibModalInstance.close();
+            });
         };
 
         $scope.cancel = function () {

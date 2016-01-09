@@ -26,11 +26,14 @@
 
         $scope.ok = function () {
             if (typeof (id) === 'undefined') {
-                depositsService.post($scope.deposit);
+                depositsService.post($scope.deposit).then(function () {
+                    $uibModalInstance.close();
+                });
             } else {
-                depositsService.put(id, $scope.deposit);
+                depositsService.put(id, $scope.deposit).then(function () {
+                    $uibModalInstance.close();
+                });
             };
-            $uibModalInstance.close();
         };
 
         $scope.cancel = function () {

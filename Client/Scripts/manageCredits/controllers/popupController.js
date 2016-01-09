@@ -27,11 +27,14 @@
 
         $scope.ok = function () {
             if (typeof (id) === 'undefined') {
-                creditsService.post($scope.credit);
+                creditsService.post($scope.credit).then(function () {
+                    $uibModalInstance.close();
+                });
             } else {
-                creditsService.put(id, $scope.credit);
+                creditsService.put(id, $scope.credit).then(function () {
+                    $uibModalInstance.close();
+                });
             };
-            $uibModalInstance.close();
         };
 
         $scope.cancel = function () {

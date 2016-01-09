@@ -56,7 +56,7 @@
                                     break;
                             }
 
-                        });
+                        }, 1000);
                     };
                     if (!$scope.unconfirmed) {
                         $timeout(function () {
@@ -85,7 +85,7 @@
                                     break;
                             }
 
-                        });
+                        }, 1000);
                     }
                 };
                 $scope.setStatus = function () {
