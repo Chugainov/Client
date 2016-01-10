@@ -1,3 +1,4 @@
 ﻿define([
-    './kcPayments'
+    './kcPayments',
+    './kcPaymentsD'
 ], function () { })

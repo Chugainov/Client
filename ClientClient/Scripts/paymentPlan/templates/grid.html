@@ -1,3 +1,50 @@
-﻿<div>
-
+﻿<div class="container-fluid">
+    <div class="col-sm-offset-1 col-sm-10">
+        <h1 class="opacity-header">Кредитная история клиента</h1>
+        <div class="table-responsive well">
+            <table class="table table-striped table-hover custom-table">
+                <thead>
+                    <tr class="table-head">
+                        <td>Номер контракта</td>
+                        <td>Сумма</td>
+                        <td>Дата начала</td>
+                        <td>Дата окончания</td>
+                        <td>Статус</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat-start="credit in credits">
+                        <td ng-click="details(credit.ContractNumber, credit.Payments)">{{credit.ContractNumber}}</td>
+                        <td>{{credit.CreditSum + ' BYR'}}</td>
+                        <td>{{credit.StartDate| date: "MMMM d, y"}}</td>
+                        <td>{{credit.EndDate| date: "MMMM d, y"}}</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat-end ng-show="showDetails == credit.ContractNumber">
+                        <td colspan="5" ng-show="!hasPayments" class="table-container">По этому кредиту не было платежей</td>
+                        <td colspan="5" ng-show="hasPayments" class="table-container">
+                            <table class="table child-table" ng-show="hasPayments">
+                                <tr class="table-head">
+                                    <td>Плановый <br /> платеж</td>
+                                    <td>Дата</td>
+                                    <td>Основной долг</td>
+                                    <td>Просрочка по <br /> основному долгу</td>
+                                    <td>Долг по <br /> процентам</td>
+                                    <td>Просрочка по <br /> процентам</td>
+                                </tr>
+                                <tr ng-repeat="payment in credit.Payments">
+                                    <td>{{payment.PaymentPlanNumber + 1}}</td>
+                                    <td>{{payment.DateTime | date: "MMMM d, y"}}</td>
+                                    <td>{{payment.MainSum | number:0}} BYR</td>
+                                    <td>{{payment.DelayMainSum | number:0}} BYR</td>
+                                    <td>{{payment.PercentSum | number:0}} BYR</td>
+                                    <td>{{payment.DelayPercentSum | number:0}} BYR</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

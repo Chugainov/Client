@@ -39,7 +39,7 @@
         })
 
         .state('creditHistory', {
-            url: "/payments",
+            url: "/paymentsCredit",
             resolve: {
                 permissionResource: "authorizationService",
                 permission: function (permissionResource, $stateParams) {
@@ -47,6 +47,17 @@
                 }
             },
             templateUrl: "Scripts/common/templates/_payments.html"
+        })
+
+        .state('depositHistory', {
+            url: "/paymentsDeposit",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck();
+                }
+            },
+            templateUrl: "Scripts/common/templates/_paymentsD.html"
         })
 
         .state('calculationD', {

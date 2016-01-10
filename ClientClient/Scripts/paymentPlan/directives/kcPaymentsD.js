@@ -3,12 +3,12 @@
     , '../namespace'
 ],
     function (module, namespace) {
-        var name = 'kcPayments';
+        var name = 'kcPaymentsD';
         var dependencies = [namespace + '.paymentsService'];
 
         var directive = function (paymentsService) {
             var directive = {
-                templateUrl: 'Scripts/paymentPlan/templates/grid.html',
+                templateUrl: 'Scripts/paymentPlan/templates/gridD.html',
                 link: link,
                 restrict: 'EA',
                 controller: controller
@@ -29,29 +29,17 @@
                     $scope.hasPayments = false;
                     $timeout(function () {
 
-                        paymentsService.getByCustomer(page).then(function (response) {
-                            $scope.credits = response.data.Items;
+                        paymentsService.getByCustomerD(page).then(function (response) {
+                            $scope.deposits = response.data.Items;
 
-                            $scope.credits.forEach(function (item) {
+                            $scope.deposits.forEach(function (item) {
+                                item.Status = item.IsPaid ? "Завершён" : "Действует";
+                                paymentsService.getByContractNumberD(item.ContractNumber).then(function (response) {
+                                    var data = response.data.DepositPayments;
 
-                                paymentsService.getByContractNumber(item.ContractNumber).then(function (response) {
-                                    var data = response.data.CreditPaymentPlanItems;
+                                    
+                                    item.Payments = data;
 
-                                    var Payments = [];
-                                    data.forEach(function (item, index) {
-
-                                        if (item.CreditPayments.length != 0) {
-                                            var payment = item.CreditPayments.map(function (obj) {
-                                                var item = obj;
-                                                item.PaymentPlanNumber = index;
-                                                return item;
-                                            });
-                                            Payments = Payments.concat(payment);
-                                        }
-                                    });
-                                    item.Payments = Payments;
-
-                                    console.log(item.Payments);
 
                                 });
                             });
