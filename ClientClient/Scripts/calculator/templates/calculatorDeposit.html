@@ -30,30 +30,30 @@
                 </div>
 
                 <button type="button" class="btn btn-default" ng-click="calc()">Рассчитать</button>
-                
+
             </fieldset>
         </form>
-            <div ng-show="capPlan">
+        <div ng-show="capPlan">
 
-                <div class="table-responsive well">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr class="table-head">
-                                <td>Всего на счете</td>
-                                <td>Сумма процентов</td>
-                                <td>Дата зачисления</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="payment in paymentPlan">
-                                <td>{{payment.MainSum | number:0}}</td>
-                                <td>{{payment.PercentSum | number:0}}</td>
-                                <td>{{payment.StartDate | date:"MMMM d, y"}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive well">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr class="table-head">
+                            <td>Всего на счете</td>
+                            <td>Сумма процентов</td>
+                            <td>Дата зачисления</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="payment in paymentPlan">
+                            <td>{{payment.MainSum | number:0}}</td>
+                            <td>{{payment.PercentSum | number:0}}</td>
+                            <td>{{payment.StartDate | date:"MMMM d, y"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>

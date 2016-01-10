@@ -35,6 +35,18 @@ function (namespace, module) {
             return $http.post(serviceUri, data, config);
         };
 
+        function _changePass(data) {
+            var serviceUri = serviceBaseUri + "ChangePassword";
+
+            return $http.post(serviceUri, data);
+        }
+
+        function _changeEmail(data) {
+            var serviceUri = serviceBaseUri + "ChangeEmail";
+
+            return $http.post(serviceUri, data);
+        }
+
         function _logout(data) {
             var serviceUri = serviceBaseUri + "logout";
             var config = {
@@ -58,8 +70,9 @@ function (namespace, module) {
         authServiceFactory.login = _login;
         authServiceFactory.getRole = _getRole;
         authServiceFactory.logout = _logout;
-        authServiceFactory.register = _register;
-
+        authServiceFactory.register = _register; 
+        authServiceFactory.changePass = _changePass;
+        authServiceFactory.changeEmail = _changeEmail;
         return authServiceFactory;
     };
 

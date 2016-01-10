@@ -10,12 +10,37 @@ function (namespace, module) {
     var name = namespace + "." + factoryId;
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
-        var serviceBaseUri = settings.baseURI;
+        var serviceBaseUri = settings.calculationCreditURI;
+        var serviceBaseDepositUri = settings.calculationDepositURI;
         var creditsBaseUri = settings.creditsURI;
+        var depositsBaseUri = settings.depositsURI;
         var creditsServiceFactory = {};
 
-        function _get() {
-            var serviceUri = creditsBaseUri + "/GetAll";
+        function _getCapitalizationPlan(data) {
+            var serviceUri = serviceBaseDepositUri + 'capitalizationplan';
+            var data = {
+                params: {
+                    Sum: data.Sum,
+                    PercentRate: data.PercentRate,
+                    MonthPeriod: data.Month,
+                    startDate: new Date()
+                }
+            };
+            return $http.get(serviceUri, data);
+        }
+
+        function _getCredits() {
+            var serviceUri = creditsBaseUri + "GetAll";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.get(serviceUri, config);
+        };
+
+        function _getDeposits() {
+            var serviceUri = depositsBaseUri + "GetAll";
             var config = {
                 headers: {
                     'Accept': 'application/json'
@@ -67,8 +92,10 @@ function (namespace, module) {
 
         creditsServiceFactory.getById = _getById;
         creditsServiceFactory.getIncomeReq = _getIncomeReq;
-        creditsServiceFactory.get = _get;
-        creditsServiceFactory.getMaxSum = _getMaxSum;
+        creditsServiceFactory.getCredits = _getCredits;
+        creditsServiceFactory.getDeposits = _getDeposits;
+        creditsServiceFactory.getCapitalizationPlan = _getCapitalizationPlan;
+        creditsServiceFactory.getMaxSum = _getMaxSum; 
         creditsServiceFactory.getPaymentPlan = _getPaymentPlan;
 
 

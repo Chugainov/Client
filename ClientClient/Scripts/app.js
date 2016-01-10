@@ -23,5 +23,5 @@
     var name = namespace;
 
     return angular.module(name, [common, 'ui.router','LocalStorageModule', 'ngResource', 'ui.bootstrap','Client.Deposits',
-                                 'Client.Credits', 'Client.calculator', 'Client.auth']);
+                                 'Client.Credits', 'Client.calculator', 'Client.auth', 'Client.payments']);
 });

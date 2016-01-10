@@ -1,33 +1,56 @@
 ﻿<div class="modal-header">
-    <h3>Описание депозита</h3>
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+    <h4 class="modal-title" ng-if="deposit.Id">Описание депозита</h4>
 </div>
 <div class="modal-body">
-    <table>
-        <tr>
-            <td><label>Название</label></td>
-            <td>{{deposit.Name}}</td>
-        </tr>
+    <form>
+        <fieldset>
 
-        <tr>
-            <td><label>Процент</label></td>
-            <td>{{deposit.InterestRate}}</td>
-        </tr>
-        <tr>
-            <td><label>Минимальная сумма</label></td>
-            <td>{{deposit.MinSum}}</td>
-        </tr>
-        <tr>
-            <td><label>Максимальная сумма</label></td>
-            <td>{{deposit.MaxSum}}/></td>
-        </tr>
-        <tr>
-            <td><label>Минимальный срок</label></td>
-            <td>{{deposit.MinMonthPeriod}}</td>
-        </tr>
-        <tr>
-            <td><label>Максимальный срок</label></td>
-            <td>{{deposit.MaxMonthPeriod}}</td>
-        </tr>
-    </table>
-    <input class="btn btn-warning" value="Назад" type="button" ng-click="cancel()" />
+            <div class="form-group is-empty">
+                <label for="inputName" class="control-label">Название</label>
+                <input type="text" class="form-control input-sm" id="inputName" readonly ng-model="deposit.Name" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputPercent" class="control-label">Процентная ставка</label>
+                <input type="text" class="form-control input-sm" id="inputPercent" readonly ng-model="deposit.InterestRate" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputMinSum" class="control-label">Минимальная сумма</label>
+                <input type="text" class="form-control input-sm" id="inputMinSum" readonly ng-model="deposit.MinSum" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputMaxSum" class="control-label">Максимальная сумма</label>
+                <input type="text" class="form-control input-sm" id="inputMaxSum" readonly ng-model="deposit.MaxSum" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputMinMonthPeriod" class="control-label">Минимальный срок (в месяцах)</label>
+                <input type="text" class="form-control input-sm" id="inputMinMonthPeriod" readonly ng-model="deposit.MinMonthPeriod" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputMaxMonthPeriod" class="control-label">Максимальный срок (в месяцах)</label>
+                <input type="text" class="form-control input-sm" id="inputMaxMonthPeriod" readonly ng-model="deposit.MaxMonthPeriod" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="inputDescription" class="control-label">Описание</label>
+                <textarea class="form-control input-sm" id="inputDescription" readonly ng-model="deposit.Description" required></textarea>
+                <span class="material-input"></span>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Назад</button>
 </div>
