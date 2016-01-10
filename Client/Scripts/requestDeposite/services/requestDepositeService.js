@@ -16,7 +16,15 @@ function (namespace, module) {
         var customerUri = settings.customerURI;
         var requestDepositeServiceFactory = {};
 
-        
+        function _getContract(id) {
+            var serviceUri = serviceBaseUri + "/GetContract";
+            var data = {
+                params: {
+                    contractNumber: id
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
 
         function _getByCustomer(customerId, page) {
             var serviceUri = serviceBaseUri + "/GetByCustomerId";
@@ -83,6 +91,7 @@ function (namespace, module) {
         requestDepositeServiceFactory.getDeposits = _getDeposits;
         requestDepositeServiceFactory.getCustomerDeposits = _getCustomerDeposits;
         requestDepositeServiceFactory.getCustomer = _getCustomer;
+        requestDepositeServiceFactory.getContract = _getContract;
 
         return requestDepositeServiceFactory;
     };

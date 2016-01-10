@@ -79,6 +79,15 @@ function (namespace, module) {
             };
             return $http.post(serviceUri, data, config);
         };
+
+        var _delete = function (id) {
+            var data = {
+                params: {
+                    id: id
+                }
+            };
+            return $http.delete(serviceBaseUri + "/delete", data);
+        };
         
         authServiceFactory.login = _login;
         authServiceFactory.getRole = _getRole;
@@ -86,6 +95,7 @@ function (namespace, module) {
         authServiceFactory.changePass = _changePass;
         authServiceFactory.getAll = _getAll; 
         authServiceFactory.register = _register;
+        authServiceFactory.delete = _delete;
         return authServiceFactory;
     };
 

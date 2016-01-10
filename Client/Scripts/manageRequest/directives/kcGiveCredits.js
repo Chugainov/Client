@@ -31,6 +31,13 @@
                         $timeout(function () {
                             requestService.getConfirmedByChief($scope._currentPage).then(function (response) {
                                 $scope._gridOptions = response.data;
+                                $scope._gridOptions.CreditRequests.Items.forEach(function (item) {
+                                    requestService.getContractReq(item.Id).then(function (response) {
+
+                                        item.Contract = response.data;
+                                    });
+
+                                });
                             });
                         }, 1000);
                     };
@@ -38,6 +45,14 @@
                         $timeout(function () {
                             requestService.getCustomerCredits($scope._currentPage).then(function (response) {
                                 $scope._gridOptions = response.data;
+                                $scope._gridOptions.Items.forEach(function (item) {
+                                    requestService.getContract(item.ContractNumber).then(function (response) {
+                                        
+                                        item.Contract = response.data;
+                                    });
+
+                                });
+
                             });
                         }, 1000);
                     };
@@ -59,6 +74,8 @@
                 $scope.pageChanged = function () {
                     _loadData($scope._currentPage);
                 }
+
+               
 
                 $scope.animationsEnabled = true;
 

@@ -12,11 +12,11 @@
                         <td>Кредит</td>
                         <td>Запрашиваемая сумма</td>
                         <td>Срок</td>
-                        <td></td>
+                        <td>Выдать кредит</td>
+                        <td>Скачать договор</td>
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr ng-repeat="request in _gridOptions.CreditRequests.Items">
                         <td>{{request.Customer.Firstname}}</td>
                         <td>{{request.Credit.Name}}</td>
@@ -25,6 +25,11 @@
                         <td>
                             <a href="javascript:void(0)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="open(request.Id)">
                                 <i class="material-icons glyphicon glyphicon-ok"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
                             </a>
                         </td>
                     </tr>
@@ -38,16 +43,20 @@
                         <td>Сумма</td>
                         <td>Начало кредита</td>
                         <td>Окончание кредита</td>
-                        <td></td>
+                        <td>Скачать договор</td>
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr ng-repeat="credit in _gridOptions.Items">
                         <td>{{credit.ContractNumber}}</td>
                         <td>{{credit.CreditSum + ' BYR'}}</td>
                         <td>{{credit.StartDate|date:"longDate"  }}</td>
                         <td>{{credit.EndDate|date:"longDate"  }}</td>
+                        <td>
+                            <a ng-href="{{credit.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                            </a>
+                        </td>
                     </tr>
 
                 </tbody>

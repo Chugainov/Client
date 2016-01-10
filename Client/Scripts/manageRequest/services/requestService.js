@@ -105,6 +105,26 @@ function (namespace, module) {
             return $http.get(serviceUri, data);
         };
 
+        function _getContract(contractNumber) {
+            var serviceUri = customerCreditUri + "/GetContract";
+            var data = {
+                params: {
+                    contractNumber: contractNumber
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
+        function _getContractReq(id) {
+            var serviceUri = serviceBaseUri + "/GetContract";
+            var data = {
+                params: {
+                    id: id
+                }
+            };
+            return $http.get(serviceUri, data);
+        };
+
         function _getCustomerCredits(page) {
             var serviceUri = customerCreditUri + "/Get";
             var data = {
@@ -166,7 +186,7 @@ function (namespace, module) {
         };
 
         var _delete = function (id) {
-            return $http.delete(serviceBaseUri + '/' + id);
+            return $http.delete(serviceBaseUri + '/delete' + id);
         };
 
 
@@ -184,7 +204,8 @@ function (namespace, module) {
         requestServiceFactory.getCustomerCredits = _getCustomerCredits;
         requestServiceFactory.getCustomer = _getCustomer; 
         requestServiceFactory.getSolvencyRate = _getSolvencyRate; 
-        
+        requestServiceFactory.getContract = _getContract;
+        requestServiceFactory.getContractReq = _getContractReq;
 
         return requestServiceFactory;
     };

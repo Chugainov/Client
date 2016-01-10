@@ -1,7 +1,78 @@
-﻿<div>
-    <label>Номер договора</label>
-    <input type="text" ng-model="payment.ContractNumber" />
-    <label>Сумма</label>
-    <input type="number" ng-model="payment.Sum" />
-    <button ng-click="pay()">Оплатить</button>
+﻿<div  class="container-fluid">
+    <div class="col-sm-offset-1 col-sm-8" ng-show="!done">
+        <h1 class="opacity-header">Оплата кредита</h1>
+        <form>
+            <fieldset>
+
+                <div class="form-group is-empty" ng-show="step == 1">
+                    <label for="payment.ContractNumber" class="control-label">Введите номер договора</label>
+                    <input type="number" class="form-control input-sm" id="payment.ContractNumber" ng-model="payment.ContractNumber" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step != 1">
+                    <label for="info.FIO" class="control-label">Плательщик</label>
+                    <input type="text" class="form-control input-sm" id="info.FIO" readonly ng-model="info.FIO">
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.DocumentNumber" class="control-label">Номер документа</label>
+                    <input type="text" class="form-control input-sm" id="info.DocumentNumber" readonly ng-model="info.Customer.DocumentNumber" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.IdentificationNumber" class="control-label">Идентификационный номер документа</label>
+                    <input type="text" class="form-control input-sm" id="info.IdentificationNumber" readonly ng-model="info.Customer.IdentificationNumber" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.currentPayDate" class="control-label">Плановая дата последнего платежа</label>
+                    <input type="text" class="form-control input-sm" id="info.currentPayDate" readonly value="{{info.currentPayDate|date:'longDate'}}" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.currentPay.MainSum" class="control-label">Сумма основного долга</label>
+                    <input type="text" class="form-control input-sm" id="info.currentPay.MainSum" readonly value="{{info.currentPay.MainSum|number:0}}" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.currentPay.PercentSum" class="control-label">Сумма основных процентов</label>
+                    <input type="text" class="form-control input-sm" id="info.currentPay.PercentSum" readonly value="{{info.currentPay.PercentSum|number:0}}" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.currentPay.Debt.MainSum" class="control-label">Задолженность основной суммы</label>
+                    <input type="text" class="form-control input-sm" id="info.currentPay.Debt.MainSum" readonly value="{{info.currentPay.Debt.MainSum|number:0}}" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="info.currentPay.Debt.PercentSum" class="control-label">Задолженность процентной суммы</label>
+                    <input type="text" class="form-control input-sm" id="info.currentPay.Debt.PercentSum" readonly value="{{info.currentPay.Debt.PercentSum|number:0}}" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 2">
+                    <label for="payment.Sum" class="control-label">Введите сумму оплаты</label>
+                    <input type="number" class="form-control input-sm" id="payment.Sum" ng-model="payment.Sum" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group is-empty" ng-show="step == 3">
+                    <label for="payment.Sum" class="control-label">Оплатил</label>
+                    <input type="text" class="form-control input-sm" id="payment.Sum" readonly ng-model="payment.Sum" required>
+                    <span class="material-input"></span>
+                </div>
+
+                <button type="button" class="btn btn-default" ng-show="step != 3" ng-click="next()">Продолжить</button>
+                <button type="button" class="btn btn-default" ng-show="step != 1" ng-click="cancel()" >Назад</button>
+            </fieldset>
+        </form>
+    </div>
 </div>

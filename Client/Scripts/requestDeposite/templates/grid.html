@@ -12,10 +12,10 @@
                         <td>Дата открытия</td>
                         <td>Дата востребования</td>
                         <td>Статус</td>
+                        <td>Скачать договор</td>
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr ng-repeat="request in _gridOptions.Items">
                         <td>{{request.Customer.Firstname + ' ' + request.Customer.Lastname}}</td>
                         <td>{{request.Deposit.Name}}</td>
@@ -23,6 +23,11 @@
                         <td>{{request.StartDate | date:"MMMM d, y"}}</td>
                         <td>{{request.EndDate | date:"MMMM d, y"}}</td>
                         <td>{{request.IsPaid ? 'Закрыт' : 'Активен'}}</td>
+                        <td>
+                            <a ng-href="{{request.Contract}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+                                <i class="material-icons glyphicon glyphicon-cloud-download"></i>
+                            </a>
+                        </td>
                     </tr>
 
                 </tbody>
