@@ -1,3 +1,4 @@
 ﻿define([
-    './kcCalculator'
+    './kcCalculatorCredit',
+    './kcCalculatorDeposit'
 ], function () { })

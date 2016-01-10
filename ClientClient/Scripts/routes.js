@@ -49,8 +49,13 @@
             templateUrl: "Scripts/common/templates/_payments.html"
         })
 
-        .state('calculation', {
-            url: "/calculation",
+        .state('calculationD', {
+            url: "/calculationD",
+            templateUrl: "Scripts/common/templates/_calculatorD.html"
+        })
+
+        .state('calculationC', {
+            url: "/calculationC",
             templateUrl: "Scripts/common/templates/_calculator.html"
         })
 

@@ -1,9 +1,81 @@
-﻿<div>
-    <label>Имя</label>
-    <input type="text" ng-model="Name" />
-    <label>Пароль</label>
-    <input type="text" ng-model="Password" />
-    <input type="button" value="Login" ng-click="login()" />
-    <input type="button" value="Logout" ng-click="logout()" />
-    <li><a ui-sref="reg">Sign up</a></li>
+﻿<div class="container-fluid">
+    <div class="col-md-offset-4 col-sm-offset-2 col-xs-offset-1 col-md-4 col-sm-8 col-xs-10">
+        <div class="well page active">
+            <form class="login">
+                <fieldset ng-show="!isLogin">
+                    <legend>Пожалуйста, войдите в систему</legend>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="inputLogin" class="control-label">Логин</label>
+                        <input type="text" class="form-control" id="inputLogin" ng-model="Name">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="inputPassword" class="control-label">Пароль</label>
+                        <input type="password" class="form-control" id="inputPassword" ng-model="Password">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary" ui-sref="reg">Активировать аккаунт</button>
+                            <button type="button" class="btn btn-primary" ng-click="login()">Войти</button>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset ng-show="isLogin">
+                    <h4>Добро пожаловать!</h4>
+                    <legend class="opacity-header">Сменить E-mail:</legend>
+                    <div class="form-group label-floating is-empty">
+                        <label for="pass.OldPassword" class="control-label">Новый E-mail</label>
+                        <input type="email" class="form-control" id="pass.OldPassword" ng-model="mail.NewEmail">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="pass.NewPassword" class="control-label">Подтверждение E-mail</label>
+                        <input type="email" class="form-control" id="pass.NewPassword" ng-model="mail.ConfirmEmail">
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="changeEmail()">Сменить E-mail</button>
+                    <hr />
+                </fieldset>
+                <fieldset ng-show="isLogin">
+
+                    <legend class="opacity-header">Сменить пароль:</legend>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="pass.OldPassword" class="control-label">Старый пароль</label>
+                        <input type="password" class="form-control" id="pass.OldPassword" ng-model="pass.OldPassword">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="pass.NewPassword" class="control-label">Новый пароль</label>
+                        <input type="password" class="form-control" id="pass.NewPassword" ng-model="pass.NewPassword">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group label-floating is-empty">
+                        <label for="pass.ConfirmPassword" class="control-label">Подтверждение нового пароля</label>
+                        <input type="password" class="form-control" id="pass.ConfirmPassword" ng-model="pass.ConfirmPassword">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <p ng-show="pass.NewPassword != pass.ConfirmPassword" style="color: red"> Пароли не совпадают</p>
+                    <button type="button" class="btn btn-primary" ng-click="changePass()">Сменить пароль</button>
+
+
+
+                    <div class="form-group is-empty">
+                        <div class="col-sm-12">
+
+                            <button type="button" class="btn btn-primary" ng-click="logout()">Выйти</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>

@@ -4,21 +4,61 @@
     <meta charset="utf-8">
     <title>Client</title>
     <link href="libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="libs/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="libs/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+    <link href="Styles/main.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <ul class="nav nav-tabs">
-            <li><a ui-sref="home">Главная</a></li>
-            <li><a ui-sref="credits">Информация о кредитах</a></li>
-            <li><a ui-sref="deposits">Информация о депозитах</a></li>
-            <li><a ui-sref="calculation">Кредитный калькулятор</a></li>
-            <li><a ui-sref="auth">Login</a></li>
-            <li><a ui-sref="reg">Sign up</a></li>
-            <li><a >Logout</a></li>
-        </ul>
-    </div>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">3 толстяка</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav custom-nav">
+                    <li><a ui-sref="home">На главную</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            Информация для клиентов <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="credits">Информация о кредитах</a></li>
+                            <li><a ui-sref="deposits">Информация о депозитах</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            Калькуляторы <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="calculationC">Кредитный калькулятор</a></li>
+                            <li><a ui-sref="calculationD">Депозитный калькулятор</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="auth">Войти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div ui-view></div>
 
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script src="libs/bootstrap-material-design/dist/js/ripples.min.js"></script>
     <script src="libs/requirejs/require.js" data-main="Scripts/main.js"></script>
+    <script>
+        $.material.init();
+    </script>
 </body>
 </html>

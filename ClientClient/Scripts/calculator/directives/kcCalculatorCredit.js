@@ -8,7 +8,7 @@
 
         var directive = function (calculatorService) {
             var directive = {
-                templateUrl: 'Scripts/calculator/templates/calculator.html',
+                templateUrl: 'Scripts/calculator/templates/calculatorCredit.html',
                 link: link,
                 restrict: 'EA',
                 controller: controller
@@ -27,7 +27,7 @@
                     $scope._credits = [];
 
                     $timeout(function () {
-                        calculatorService.get().then(function (response) {
+                        calculatorService.getCredits().then(function (response) {
                             $scope._credits = response.data;
                         });
                     });
