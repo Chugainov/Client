@@ -14,9 +14,7 @@
 
 
         $scope.requestN = {
-            Customer: {
-                DocumentType: 0
-            }
+            Customer: {}
         };
 
         $scope.openCalendar3 = function ($event) {
@@ -34,10 +32,12 @@
             });
         };
         $scope.set = function () {
-            $scope.requestN.Customer = $scope.customer;
+            $scope.requestN.Customer = $scope.customer || {
+                Address: {}
+            };
             $scope.requestN.Customer.DocumentType = 0;
             $scope.requestN.Currency = 0;
-            $scope.requestN.DepositId = $scope.deposit.Id;
+            $scope.requestN.DepositId = $scope.deposit ? $scope.deposit.Id : null;
             
         };
 

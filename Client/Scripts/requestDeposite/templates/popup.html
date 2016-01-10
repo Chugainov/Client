@@ -10,26 +10,32 @@
             <div class="form-group is-empty">
                 <label for="requestN.InitialSum" class="control-label">Сумма</label>
                 <input type="number" class="form-control input-sm" id="requestN.InitialSum" ng-model="requestN.InitialSum" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.InitialSum']" class="material-input error">{{errors['request.InitialSum'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="requestN.MonthCount" class="control-label">Желаемый срок (в месяцах)</label>
                 <input type="number" class="form-control input-sm" id="requestN.MonthCount" ng-model="requestN.MonthCount" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.MonthCount']" class="material-input error">{{errors['request.MonthCount'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="deposit" class="control-label">Выберите вклад</label>
                 <select class="form-control input-sm" id="deposit" ng-model="deposit" required
                         ng-options="c.Name for c in _deposits"></select>
-                <span class="material-input"></span>
+                <span ng-show="deposit.Name" class="material-input info-credit-block">
+                    <span>Минимальный срок: {{deposit.MinMonthPeriod}} мес.</span>
+                    <span>Максимальный срок: {{deposit.MaxMonthPeriod}} мес.</span>
+                    <span>Минимальная сумма: {{deposit.MinSum}} BYR</span>
+                    <span>Максимальная сумма: {{deposit.MaxSum}} BYR</span>
+                </span>
+                <span ng-show="errors['request.DepositId']" class="material-input error">{{errors['request.DepositId'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
-                <label for="requestN.Email" class="control-label">Введите E-mail</label>
+                <label for="requestN.Email" class="control-label">Адрес электронной почты</label>
                 <input type="email" class="form-control input-sm" id="requestN.Email" ng-model="requestN.Email" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Email']" class="material-input error">{{errors['request.Email'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
@@ -41,31 +47,30 @@
             <div class="form-group is-empty">
                 <label for="customer.IdentificationNumber" class="control-label">Идентификационный номер</label>
                 <input type="text" class="form-control input-sm" id="customer.IdentificationNumber" ng-model="customer.IdentificationNumber" ng-blur="Set()" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.IdentificationNumber']" class="material-input error">{{errors['request.Customer.IdentificationNumber'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.DocumentNumber" class="control-label">Номер документа</label>
                 <input type="text" class="form-control input-sm" id="customer.DocumentNumber" ng-model="customer.DocumentNumber" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.DocumentNumber']" class="material-input error">{{errors['request.Customer.DocumentNumber'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.LastName" class="control-label">Фамилия</label>
-                <input type="text" class="form-control input-sm" id="customer.LastName" ng-model="customer.Lastname" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="customer.LastName" ng-model="customer.Lastname">
+                <span ng-show="errors['request.Customer.Lastname']" class="material-input error">{{errors['request.Customer.Lastname'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.FirstName" class="control-label">Имя</label>
-                <input type="text" class="form-control input-sm" id="customer.FirstName" ng-model="customer.Firstname" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="customer.FirstName" ng-model="customer.Firstname">
+                <span ng-show="errors['request.Customer.Firstname']" class="material-input error">{{errors['request.Customer.Firstname'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Patronymic" class="control-label">Отчество</label>
                 <input type="text" class="form-control input-sm" id="customer.Patronymic" ng-model="customer.Patronymic">
-                <span class="material-input"></span>
             </div>
 
             <div class="form-group is-empty date-input">
@@ -75,37 +80,37 @@
                 <span class="input-group-btn input-group-sm">
                     <button type="button" class="btn btn-default" ng-click="openCalendar3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.DateOfBirth']" class="material-input error">{{errors['request.Customer.DateOfBirth'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Address.Country" class="control-label">Страна</label>
                 <input type="text" class="form-control input-sm" id="customer.Address.Country" ng-model="customer.Address.Country">
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.Address.Country']" class="material-input error">{{errors['request.Customer.Address.Country'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Address.City" class="control-label">Город</label>
                 <input type="text" class="form-control input-sm" id="customer.Address.City" ng-model="customer.Address.City">
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.Address.City']" class="material-input error">{{errors['request.Customer.Address.City'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Address.Street" class="control-label">Улица</label>
                 <input type="text" class="form-control input-sm" id="customer.Address.Street" ng-model="customer.Address.Street">
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.Address.Street']" class="material-input error">{{errors['request.Customer.Address.Street'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Address.House" class="control-label">Дом</label>
                 <input type="text" class="form-control input-sm" id="customer.Address.House" ng-model="customer.Address.House">
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.Address.House']" class="material-input error">{{errors['request.Customer.Address.House'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="customer.Address.Flat" class="control-label">Квартира</label>
                 <input type="text" class="form-control input-sm" id="customer.Address.Flat" ng-model="customer.Address.Flat">
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Customer.Address.Flat']" class="material-input error">{{errors['request.Customer.Address.Flat'][0]}}</span>
             </div>
 
         </fieldset>
