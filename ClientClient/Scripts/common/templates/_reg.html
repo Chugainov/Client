@@ -1,73 +1,62 @@
-﻿<div>
-    
-    <table>
-        <tr>
-            <td><p>Nickname</p></td>
-            <td><input type="text" ng-model="info.UserName" required/></td>
-        </tr>
-        <tr>
-            <td><p>E-mail</p></td>
-            <td><input type="email" ng-model="info.Email" required /></td>
-        </tr>
-        <tr>
-            <td><p>Фамилия</p></td>
-            <td><input type="text" ng-model="info.LastName" required /></td>
-        </tr>
-        <tr>
-            <td><p>Имя</p></td>
-            <td><input type="text" ng-model="info.FirstName" required /></td>
-        </tr>
-        
-        <tr>
-            <td><p>Отчество</p></td>
-            <td><input type="text" ng-model="info.Patronymic" /></td>
-        </tr>
-        <tr>
-            <td><p>Дата рождения</p></td>
-            <td class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="info.DateOfBirth" is-open="opened"
-                       ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <td><p>Тип документа</p></td>
-            <td><input type="text" disabled value="Паспорт" required /></td>
-        </tr>
-        <tr>
-            <td><p>Идентификационный номер</p></td>
-            <td><input type="text" ng-model="info.IdentificationNumber" required /></td>
-        </tr>
-        <tr>
-            <td><p>Страна</p></td>
-            <td><input type="text" ng-model="info.Address.Country" required /></td>
-        </tr>
-        <tr>
-            <td><p>Город</p></td>
-            <td><input type="text" ng-model="info.Address.City" required /></td>
-        </tr>
-        <tr>
-            <td><p>Улица</p></td>
-            <td><input type="text" ng-model="info.Address.Street" required /></td>
-        </tr>
-        <tr>
-            <td><p>Дом</p></td>
-            <td><input type="text" ng-model="info.Address.House" required /></td>
-        </tr>
-        <tr>
-            <td><p>Квартира</p></td>
-            <td><input type="text" ng-model="info.Address.Flat" /></td>
-        </tr>
-        <tr>
-            <td><p>Пароль</p></td>
-            <td><input type="text" ng-model="info.Password" required /></td>
-        </tr>
-        <tr>
-            <td><p>Подтверждение пароля</p></td>
-            <td><input type="text" ng-model="info.ConfirmPassword" required /></td>
-        </tr>
-    </table>
-    <button ng-click="register()">Зарегистрироваться</button>
+﻿<div class="container-fluid">
+    <div class="col-md-offset-4 col-sm-offset-2 col-xs-offset-1 col-md-4 col-sm-8 col-xs-10">
+        <div class="well page active">
+            <form class="login">
+                <fieldset ng-show="!isReg">
+                    <legend>Активируйте свой аккаунт</legend>
+
+                    <div class="form-group is-empty">
+                        <label for="inputName" class="control-label">Логин</label>
+                        <input type="text" class="form-control input-sm" id="inputName" ng-model="info.UserName" required>
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputEmail" class="control-label">Адрес электронной почты</label>
+                        <input type="text" class="form-control input-sm" id="inputEmail" ng-model="info.Email" required>
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <label for="IdentificationNumber" class="control-label">Идентификационный номер документа</label>
+                        <input type="text" class="form-control input-sm" id="IdentificationNumber" ng-model="info.IdentificationNumber" required>
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputPassword" class="control-label">Пароль</label>
+                        <input type="password" class="form-control input-sm" id="inputPassword" ng-model="info.Password" required>
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <label for="inputPasswordConfirm" class="control-label">Подтверждение пароля</label>
+                        <input type="password" class="form-control input-sm" id="inputPasswordConfirm" ng-model="info.ConfirmPassword">
+                        <span class="material-input"></span>
+                    </div>
+
+                    <div class="form-group is-empty">
+                        <label for="Code" class="control-label">Секретный код выданный банком</label>
+                        <input type="text" class="form-control input-sm" id="Code" ng-model="info.Code" required>
+                        <span class="material-input"></span>
+                    </div>
+                    <p ng-show="info.ConfirmPassword != info.Password" style="color: red">Пароли не совпадают или невалидные данные</p>
+                    <div class="form-group is-empty">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary" ui-sref="auth">Назад</button>
+                            <button type="button" class="btn btn-primary" ng-click="register()">Активировать</button>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset ng-show="isReg">
+                    <legend>Активация прошла успешно</legend>
+                    <div class="form-group is-empty">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary" ui-sref="auth">Назад</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>          
+        </div>
+    </div>
 </div>

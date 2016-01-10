@@ -27,8 +27,20 @@
             </div>
 
             <div class="form-group is-empty">
+                <label for="requestN.Email" class="control-label">Введите E-mail</label>
+                <input type="email" class="form-control input-sm" id="requestN.Email" ng-model="requestN.Email" required>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
                 <label for="requestN.DocumentType" class="control-label">Тип документа</label>
                 <input type="text" class="form-control input-sm" id="requestN.DocumentType" value="Паспорт" required disabled>
+                <span class="material-input"></span>
+            </div>
+
+            <div class="form-group is-empty">
+                <label for="customer.IdentificationNumber" class="control-label">Идентификационный номер</label>
+                <input type="text" class="form-control input-sm" id="customer.IdentificationNumber" ng-model="customer.IdentificationNumber" ng-blur="Set()" required>
                 <span class="material-input"></span>
             </div>
 
@@ -36,13 +48,6 @@
                 <label for="customer.DocumentNumber" class="control-label">Номер документа</label>
                 <input type="text" class="form-control input-sm" id="customer.DocumentNumber" ng-model="customer.DocumentNumber" required>
                 <span class="material-input"></span>
-            </div>
-
-            <div class="form-group is-empty">
-                <label for="customer.IdentificationNumber" class="control-label">Идентификационный номер</label>
-                <input type="text" class="form-control input-sm" id="customer.IdentificationNumber" ng-model="customer.IdentificationNumber" required>
-                <span class="material-input"></span>
-                <button type="button" class="btn btn-default" ng-click="Set()">Заполнить данные о клиенте</button>
             </div>
 
             <div class="form-group is-empty">

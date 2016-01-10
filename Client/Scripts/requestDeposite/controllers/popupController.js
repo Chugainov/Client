@@ -23,9 +23,15 @@
             $scope.opened3 = true;
         };
         $scope.Set = function () {
-            requestDepositeService.getCustomer($scope.customer.IdentificationNumber).then(function (responce) {
-                $scope.customer = responce.data;
-            })
+            requestDepositeService.getCustomer($scope.customer.IdentificationNumber).then(function(responce) {
+                if (responce.data === null) {
+                    var identNumber = $scope.customer.IdentificationNumber;
+                    $scope.customer = new Object();
+                    $scope.customer.IdentificationNumber = identNumber;
+                } else {
+                    $scope.customer = responce.data;
+                }
+            });
         };
         $scope.set = function () {
             $scope.requestN.Customer = $scope.customer;

@@ -4,9 +4,9 @@
 ], function (module, namespace, app) {
     var name = namespace + '.popupController';
 
-    var dependencies = ['$uibModalInstance', '$scope', 'id'];
+    var dependencies = ['$uibModalInstance', '$scope', namespace + '.depositsService', 'id'];
 
-    var controller = function ($uibModalInstance, $scope, id) {
+    var controller = function ($uibModalInstance, $scope,depositsService, id) {
 
         depositsService.getById(id).then(function (response) {
             $scope.deposit = response.data;
