@@ -6,8 +6,10 @@
     var dependencies = [];
 
     var resources = function () {
-        this.baseURI = 'http://localhost:12715/api/CalculationCredit/';
+        this.calculationCreditURI = 'http://localhost:12715/api/CalculationCredit/';
+        this.calculationDepositURI = 'http://localhost:12715/api/CalculationDeposit/';
         this.creditsURI = 'http://localhost:12715/api/Credit/';
+        this.depositsURI = 'http://localhost:12715/api/Deposit/';
     };
     module.service(name, dependencies.concat(resources));
 });

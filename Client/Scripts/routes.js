@@ -109,12 +109,23 @@
             templateUrl: "Scripts/common/templates/_payments.html"
         })
 
-        .state('calculation', {
-            url: "/calculation",
+        .state('calculationD', {
+            url: "/calculationD",
             resolve: {
                 permissionResource: "authorizationService",
                 permission: function (permissionResource, $stateParams) {
-                    return permissionResource.permissionCheck([roles.Admin, roles.User]);
+                    return permissionResource.permissionCheck([roles.Admin, roles.Operator, roles.CreditCommitteeMember]);
+                }
+            },
+            templateUrl: "Scripts/common/templates/_calculatorD.html"
+        })
+
+        .state('calculationC', {
+            url: "/calculationCredit",
+            resolve: {
+                permissionResource: "authorizationService",
+                permission: function (permissionResource, $stateParams) {
+                    return permissionResource.permissionCheck([roles.Admin, roles.Operator, roles.CreditCommitteeMember]);
                 }
             },
             templateUrl: "Scripts/common/templates/_calculator.html"

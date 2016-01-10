@@ -108,7 +108,7 @@
                         var reader = new FileReader();
                         reader.onload = function (loadEvent) {
                             $scope.$apply(function () {
-                                $scope.military = loadEvent.target.result.substring(23);
+                                $scope.military = loadEvent.target.result.split(",")[1];
                             });
                         }
                         reader.readAsDataURL(e.files[0]);
@@ -120,7 +120,8 @@
                     var reader = new FileReader();
                     reader.onload = function (loadEvent) {
                         $scope.$apply(function () {
-                            $scope.docs = loadEvent.target.result.substring(23);
+                            $scope.docs = loadEvent.target.result.split(",")[1];
+                            
                         });
                     }
                     reader.readAsDataURL(e.files[0]);
@@ -168,7 +169,10 @@
 
                     $scope.done = true;
 
-                    requestService.add($scope.requestN);
+                    requestService.add($scope.requestN).then(function (response) {
+                        var temp = response.data;
+                       // requestService.getContractReq($scope.requestN);
+                    });
                 };
 
                 $scope.pageChanged = function () {

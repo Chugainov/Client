@@ -10,12 +10,37 @@ function (namespace, module) {
     var name = namespace + "." + factoryId;
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
-        var serviceBaseUri = settings.baseURI;
+        var calculationCreditBaseUri = settings.calculationCreditURI;
+        var calculationDepositBaseUri = settings.calculationDepositURI;
         var creditsBaseUri = settings.creditsURI;
+        var depositsBaseUri = settings.depositsURI;
         var creditsServiceFactory = {};
 
-        function _get() {
-            var serviceUri = creditsBaseUri + "/GetAll";
+        function _getCredits() {
+            var serviceUri = creditsBaseUri + "GetAll";
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+            return $http.get(serviceUri, config);
+        }; 
+
+        function _getCapitalizationPlan(data) {
+            var serviceUri = calculationDepositBaseUri + 'capitalizationplan';
+            var data = {
+                params: {
+                    Sum: data.Sum,
+                    PercentRate: data.PercentRate,
+                    MonthPeriod: data.Month,
+                    startDate: new Date()
+                }
+            };
+            return $http.get(serviceUri, data);
+        }
+
+        function _getDeposits() {
+            var serviceUri = depositsBaseUri + "GetAll";
             var config = {
                 headers: {
                     'Accept': 'application/json'
@@ -25,7 +50,7 @@ function (namespace, module) {
         };
 
         function _getMaxSum(data) {
-            var serviceUri = serviceBaseUri + "/maxsum?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
+            var serviceUri = calculationCreditBaseUri + "/maxsum?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
                 "&incomesum=" + data.IncomeSum + "&othercreditpayments=" + data.OtherCreditSum +
                 "&utilitiespayments="+data.UtilSum+"&otherpayments="+ data.UtilSum;
             var config = {
@@ -37,7 +62,7 @@ function (namespace, module) {
         };
 
         function _getIncomeReq(data) {
-            var serviceUri = serviceBaseUri + "/income?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
+            var serviceUri = calculationCreditBaseUri + "/income?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
                 "&sum=" + data.Sum + "&othercreditpayments=" + data.OtherCreditSum +
                 "&utilitiespayments=" + data.UtilSum + "&otherpayments=" + data.UtilSum;
             var config = {
@@ -49,7 +74,7 @@ function (namespace, module) {
         };
 
         function _getPaymentPlan(data) {
-            var serviceUri = serviceBaseUri + 'paymentsplan';
+            var serviceUri = calculationCreditBaseUri + 'paymentsplan';
             var data = {
                 params: {
                     creditId: data.CreditId,
@@ -62,14 +87,16 @@ function (namespace, module) {
         }
 
         function _getById(id) {
-            return $http.get(serviceBaseUri + 'get/' + id);
+            return $http.get(calculationCreditBaseUri + 'get/' + id);
         };
 
         creditsServiceFactory.getById = _getById;
         creditsServiceFactory.getIncomeReq = _getIncomeReq;
-        creditsServiceFactory.get = _get;
+        creditsServiceFactory.getCredits = _getCredits;
+        creditsServiceFactory.getDeposits = _getDeposits;
         creditsServiceFactory.getMaxSum = _getMaxSum;
-        creditsServiceFactory.getPaymentPlan = _getPaymentPlan;
+        creditsServiceFactory.getCapitalizationPlan = _getCapitalizationPlan;
+        creditsServiceFactory.getPaymentPlan = _getPaymentPlan; 
 
 
         return creditsServiceFactory;

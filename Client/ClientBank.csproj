@@ -85,8 +85,9 @@
     <Content Include="Scripts\auth\settings\_index.js" />
     <Content Include="Scripts\auth\templates\auth.html" />
     <Content Include="Scripts\auth\templates\reg.html" />
-    <Content Include="Scripts\calculator\directives\kcCalculator.js" />
+    <Content Include="Scripts\calculator\directives\kcCalculatorCredit.js" />
     <Content Include="Scripts\auth\controllers\menu.js" />
+    <Content Include="Scripts\calculator\directives\kcCalculatorDeposit.js" />
     <Content Include="Scripts\calculator\directives\_index.js" />
     <Content Include="Scripts\calculator\module.js" />
     <Content Include="Scripts\calculator\namespace.js" />
@@ -95,7 +96,8 @@
     <Content Include="Scripts\calculator\services\_index.js" />
     <Content Include="Scripts\calculator\settings\settings.js" />
     <Content Include="Scripts\calculator\settings\_index.js" />
-    <Content Include="Scripts\calculator\templates\calculator.html" />
+    <Content Include="Scripts\calculator\templates\calculatorCredit.html" />
+    <Content Include="Scripts\calculator\templates\calculatorDeposit.html" />
     <Content Include="Scripts\common\controllers\payController.js" />
     <Content Include="Scripts\common\controllers\_index.js" />
     <Content Include="Scripts\common\module.js" />
@@ -103,6 +105,7 @@
     <Content Include="Scripts\common\require.js" />
     <Content Include="Scripts\common\templates\_auth.html" />
     <Content Include="Scripts\common\templates\_calculator.html" />
+    <Content Include="Scripts\common\templates\_calculatorD.html" />
     <Content Include="Scripts\common\templates\_credits.html" />
     <Content Include="Scripts\common\templates\_deposits.html" />
     <Content Include="Scripts\common\templates\_giveCredits.html" />
