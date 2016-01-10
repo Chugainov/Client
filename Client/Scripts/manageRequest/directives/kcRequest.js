@@ -27,6 +27,7 @@
                 function _loadData(page) {
                     $scope.requestN = {};
                     $scope.customer = {};
+                    $scope.credit = {};
                     $scope._gridOptions = [];
                     $scope._currentPage = page;
                     if ($scope.unconfirmed) {
@@ -173,11 +174,11 @@
                     $scope.requestN.Currency = 0;
                     $scope.requestN.CreditId = $scope.credit.Id;
 
-                    $scope.done = true;
+                    
 
                     requestService.add($scope.requestN).then(function (response) {
                         $scope.contractUrl = response.data;
-                        // requestService.getContractReq($scope.requestN);
+                        $scope.done = true;
                     });
                 };
 
