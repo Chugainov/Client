@@ -9,10 +9,14 @@
         var name = namespace + '.' + controllerId;
         var dependencies = ['$scope', 
             namespace + '.authService',
-        'localStorageService'];
-        var controller = function ($scope, authService, localStorageService) {
+        'localStorageService', '$rootScope'];
+        var controller = function ($scope, authService, localStorageService, $rootScope) {
             var vm = this;
-
+            if ($rootScope.isLogin) {
+                $scope.isLogin = true;
+            } else {
+                $scope.isLogin = false;
+            }
             $scope.changeEmail = function () {
 
                 authService.changeEmail($scope.mail).then(function (resp) {
@@ -44,7 +48,7 @@
             $scope.login = function () {
                 var user = { UserName: $scope.Name, Password: $scope.Password };
                 authService.login(user).then(function (response) {
-
+                    $rootScope.isLogin = true;
                     var token = response.data;
                     localStorageService.set('token', token);
                     $scope.isLogin = true;
@@ -57,6 +61,7 @@
                 var data = { Token: token, TokenObj: '' };
                 authService.logout(data).then(function (response) {
                     $scope.pass = {};
+                    $rootScope.isLogin = false;
                     localStorageService.remove('token');
                     $scope.isLogin = false;
                 });

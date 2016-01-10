@@ -16,6 +16,19 @@ function (namespace, module) {
         var depositsBaseUri = settings.depositsURI;
         var creditsServiceFactory = {};
 
+        function _getCapitalizationPlan(data) {
+            var serviceUri = serviceBaseDepositUri + 'capitalizationplan';
+            var data = {
+                params: {
+                    Sum: data.Sum,
+                    PercentRate: data.PercentRate,
+                    MonthPeriod: data.Month,
+                    startDate: new Date()
+                }
+            };
+            return $http.get(serviceUri, data);
+        }
+
         function _getCredits() {
             var serviceUri = creditsBaseUri + "GetAll";
             var config = {
@@ -81,7 +94,8 @@ function (namespace, module) {
         creditsServiceFactory.getIncomeReq = _getIncomeReq;
         creditsServiceFactory.getCredits = _getCredits;
         creditsServiceFactory.getDeposits = _getDeposits;
-        creditsServiceFactory.getMaxSum = _getMaxSum;
+        creditsServiceFactory.getCapitalizationPlan = _getCapitalizationPlan;
+        creditsServiceFactory.getMaxSum = _getMaxSum; 
         creditsServiceFactory.getPaymentPlan = _getPaymentPlan;
 
 
