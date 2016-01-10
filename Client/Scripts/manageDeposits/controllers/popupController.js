@@ -28,10 +28,14 @@
             if (typeof (id) === 'undefined') {
                 depositsService.post($scope.deposit).then(function () {
                     $uibModalInstance.close();
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
                 });
             } else {
                 depositsService.put(id, $scope.deposit).then(function () {
                     $uibModalInstance.close();
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
                 });
             };
         };

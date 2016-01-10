@@ -50,7 +50,7 @@ function (namespace, module) {
         };
 
         function _getMaxSum(data) {
-            var serviceUri = serviceBaseUri + "/maxsum?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
+            var serviceUri = serviceBaseUri + "/maxsum?creditid=" + data.CreditId + "&monthcount=" + data.Month +
                 "&incomesum=" + data.IncomeSum + "&othercreditpayments=" + data.OtherCreditSum +
                 "&utilitiespayments="+data.UtilSum+"&otherpayments="+ data.UtilSum;
             var config = {
@@ -62,7 +62,7 @@ function (namespace, module) {
         };
 
         function _getIncomeReq(data) {
-            var serviceUri = serviceBaseUri + "/income?creditid=" + data.CreditId + "&monthperiod=" + data.Month +
+            var serviceUri = serviceBaseUri + "/income?creditid=" + data.CreditId + "&monthcount=" + data.Month +
                 "&sum=" + data.Sum + "&othercreditpayments=" + data.OtherCreditSum +
                 "&utilitiespayments=" + data.UtilSum + "&otherpayments=" + data.UtilSum;
             var config = {
@@ -79,7 +79,7 @@ function (namespace, module) {
                 params: {
                     creditId: data.CreditId,
                     sum: data.Sum,
-                    monthPeriod: data.Month,
+                    monthCount: data.Month,
                     startDate: new Date()
                 }
             };

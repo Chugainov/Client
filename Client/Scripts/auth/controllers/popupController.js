@@ -26,9 +26,11 @@
         };
 
         $scope.ok = function () {
-            $scope.info.Role = $scope.role.Id;
+            $scope.info.Role = $scope.role ? $scope.role.Id : undefined;
             authService.register($scope.info).then(function () {
                 $uibModalInstance.close();
+            }, function (error) {
+                $scope.errors = error.data.ModelState;
             });
         };
 

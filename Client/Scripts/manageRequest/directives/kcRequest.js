@@ -26,7 +26,9 @@
                 $scope.unconfirmed = true;
                 function _loadData(page) {
                     $scope.requestN = {};
-                    $scope.customer = {};
+                    $scope.customer = {
+                        Address: {}
+                    };
                     $scope.credit = {};
                     $scope._gridOptions = [];
                     $scope._currentPage = page;
@@ -179,6 +181,8 @@
                     requestService.add($scope.requestN).then(function (response) {
                         $scope.contractUrl = response.data;
                         $scope.done = true;
+                    }, function (error) {
+                        $scope.errors = error.data.ModelState;
                     });
                 };
 

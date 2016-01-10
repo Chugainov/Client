@@ -29,10 +29,14 @@
             if (typeof (id) === 'undefined') {
                 creditsService.post($scope.credit).then(function () {
                     $uibModalInstance.close();
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
                 });
             } else {
                 creditsService.put(id, $scope.credit).then(function () {
                     $uibModalInstance.close();
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
                 });
             };
         };

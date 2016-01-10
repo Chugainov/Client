@@ -9,44 +9,44 @@
 
             <div class="form-group is-empty">
                 <label for="inputName" class="control-label">Название</label>
-                <input type="text" class="form-control input-sm" id="inputName" ng-model="deposit.Name" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="inputName" ng-model="deposit.Name">
+                <span ng-show="errors['depositModel.Name']" class="material-input error">{{errors['depositModel.Name'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputPercent" class="control-label">Процентная ставка</label>
-                <input type="text" class="form-control input-sm" id="inputPercent" ng-model="deposit.InterestRate" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="inputPercent" ng-model="deposit.InterestRate">
+                <span ng-show="errors['depositModel.InterestRate']" class="material-input error">{{errors['depositModel.InterestRate'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputMinSum" class="control-label">Минимальная сумма</label>
-                <input type="text" class="form-control input-sm" id="inputMinSum" ng-model="deposit.MinSum" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="inputMinSum" ng-model="deposit.MinSum">
+                <span ng-show="errors['depositModel.MinSum']" class="material-input error">{{errors['depositModel.MinSum'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputMaxSum" class="control-label">Максимальная сумма</label>
-                <input type="text" class="form-control input-sm" id="inputMaxSum" ng-model="deposit.MaxSum" required>
-                <span class="material-input"></span>
+                <input type="text" class="form-control input-sm" id="inputMaxSum" ng-model="deposit.MaxSum">
+                <span ng-show="errors['depositModel.MaxSum']" class="material-input error">{{errors['depositModel.MaxSum'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputMinMonthPeriod" class="control-label">Минимальный срок (в месяцах)</label>
                 <input type="text" class="form-control input-sm" id="inputMinMonthPeriod" ng-model="deposit.MinMonthPeriod" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['depositModel.MinMonthPeriod']" class="material-input error">{{errors['depositModel.MinMonthPeriod'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputMaxMonthPeriod" class="control-label">Максимальный срок (в месяцах)</label>
                 <input type="text" class="form-control input-sm" id="inputMaxMonthPeriod" ng-model="deposit.MaxMonthPeriod" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['depositModel.MaxMonthPeriod']" class="material-input error">{{errors['depositModel.MaxMonthPeriod'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputDescription" class="control-label">Описание</label>
                 <textarea class="form-control input-sm" id="inputDescription" ng-model="deposit.Description" required></textarea>
-                <span class="material-input"></span>
+                <span ng-show="errors['depositModel.Description']" class="material-input error">{{errors['depositModel.Description'][0]}}</span>
             </div>
 
         </fieldset>
