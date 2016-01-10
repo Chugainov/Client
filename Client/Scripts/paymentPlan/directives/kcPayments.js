@@ -41,14 +41,20 @@
                                     var data = response.data.CreditPaymentPlanItems;
                                     
                                     var Payments = [];
-                                    data.forEach(function (item) {
+                                    data.forEach(function (item, index) {
 
                                         if (item.CreditPayments.length != 0) {
-                                            Payments = Payments.concat(item.CreditPayments);
-
+                                            var payment = item.CreditPayments.map(function (obj) {
+                                                var item = obj;
+                                                item.PaymentPlanNumber = index;
+                                                return item;
+                                            });
+                                            Payments = Payments.concat(payment);
                                         }
                                     });
                                     item.Payments = Payments;
+
+                                    console.log(item.Payments);
 
                                 });
                             });

@@ -2,10 +2,17 @@
     vertical-align: middle!important;
 }
 table.custom-table > tbody > tr > td:first-child {
-    text-decoration: underline!important;
+    text-decoration: underline;
 }
 table.custom-table > tbody > tr > td:first-child:hover {
     cursor: pointer
+}
+table.child-table {
+    margin-bottom:0!important;
+}
+td.table-container {
+    padding: 0!important;
+    text-decoration: none!important;
 }
 tr.table-head {
     height: 65px;
