@@ -24,10 +24,8 @@
                 <select class="form-control input-sm" id="deposit" ng-model="deposit" required
                         ng-options="c.Name for c in _deposits"></select>
                 <span ng-show="deposit.Name" class="material-input info-credit-block">
-                    <span>Минимальный срок: {{deposit.MinMonthPeriod}} мес.</span>
-                    <span>Максимальный срок: {{deposit.MaxMonthPeriod}} мес.</span>
-                    <span>Минимальная сумма: {{deposit.MinSum}} BYR</span>
-                    <span>Максимальная сумма: {{deposit.MaxSum}} BYR</span>
+                    <span>Срок: от {{deposit.MinMonthPeriod}} до {{deposit.MaxMonthPeriod}} мес.</span>
+                    <span>Сумма: от {{deposit.MinSum}} до {{deposit.MaxSum}} BYR</span>
                 </span>
                 <span ng-show="errors['request.DepositId']" class="material-input error">{{errors['request.DepositId'][0]}}</span>
             </div>

@@ -8,6 +8,10 @@
                      <label for="inputCredit" class="control-label">Выберите кредит</label>
                      <select class="form-control input-sm" id="inputCredit" ng-model="credit"
                              ng-options="c.Name for c in _credits"></select>
+                     <span ng-show="credit.Name" class="material-input info-credit-block">
+                         <span>Срок: от {{credit.MinMonthPeriod}} до {{credit.MaxMonthPeriod}} мес.</span>
+                         <span>Сумма: от {{credit.MinSum}} до {{credit.MaxSum}} BYR</span>
+                     </span>
                      <span ng-show="errors['CreditId']" class="material-input error">{{errors['CreditId'][0]}}</span>
                  </div>
 

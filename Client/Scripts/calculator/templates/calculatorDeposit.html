@@ -8,6 +8,10 @@
                     <label for="inputCredit" class="control-label">Выберите депозит</label>
                     <select class="form-control input-sm" id="inputCredit" ng-model="deposit" required
                             ng-options="d.Name for d in _deposits"></select>
+                    <span ng-show="deposit.Name" class="material-input info-credit-block">
+                        <span>Срок: от {{deposit.MinMonthPeriod}} до {{deposit.MaxMonthPeriod}} мес.</span>
+                        <span>Сумма: от {{deposit.MinSum}} до {{deposit.MaxSum}} BYR</span>
+                    </span>
                     <span class="material-input"></span>
                 </div>
 
