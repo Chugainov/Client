@@ -24,6 +24,7 @@ function (namespace, module) {
         }; 
 
         function _changePass(data) {
+            data = data || {};
             var serviceUri = serviceBaseUri + "ChangePassword";
             
             return $http.post(serviceUri, data);

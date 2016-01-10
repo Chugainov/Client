@@ -32,7 +32,7 @@ function (namespace, module) {
                 params: {
                     creditId: data.CreditId,
                     sum: data.Sum,
-                    monthPeriod: data.Month,
+                    monthCount: data.Month,
                     startDate: new Date()
                 }
             };

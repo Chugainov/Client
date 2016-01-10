@@ -22,7 +22,7 @@ function (namespace, module) {
             var data = {
                 params: {
                     Sum: data.Sum,
-                    MonthPeriod: data.MonthCount,
+                    MonthCount: data.MonthCount,
                     CreditId: data.CreditId,
                     IncomeSum: data.IncomeSum,
                     OtherCreditPayments: data.OtherCreditPayments,

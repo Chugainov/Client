@@ -9,25 +9,26 @@
             <div class="form-group is-empty">
                 <label for="inputName" class="control-label">Логин</label>
                 <input type="text" class="form-control input-sm" id="inputName" ng-model="info.UserName" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.UserName']" class="material-input error">{{errors['request.UserName'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputEmail" class="control-label">Адрес электронной почты</label>
                 <input type="text" class="form-control input-sm" id="inputEmail" ng-model="info.Email" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Email']" class="material-input error">{{errors['request.Email'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputLastName" class="control-label">Фамилия</label>
                 <input type="text" class="form-control input-sm" id="inputLastName" ng-model="info.LastName" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Lastname']" class="material-input error">{{errors['request.Lastname'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputFirstName" class="control-label">Имя</label>
                 <input type="text" class="form-control input-sm" id="inputFirstName" ng-model="info.FirstName" required>
                 <span class="material-input"></span>
+                <span ng-show="errors['request.Firstname']" class="material-input error">{{errors['request.Firstname'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
@@ -40,25 +41,28 @@
                 <label for="inputRole" class="control-label">Должность</label>
                 <select class="form-control input-sm" id="inputRole" ng-model="role" required 
                         ng-options="c.Display for c in roles"></select>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Role']" class="material-input error">{{errors['request.Role'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputPassword" class="control-label">Пароль</label>
                 <input type="password" class="form-control input-sm" id="inputPassword" ng-model="info.Password" required>
-                <span class="material-input"></span>
+                <span ng-show="errors['request.Password']" class="material-input error">{{errors['request.Password'][0]}}</span>
             </div>
 
             <div class="form-group is-empty">
                 <label for="inputPasswordConfirm" class="control-label">Подтверждение пароля</label>
                 <input type="password" class="form-control input-sm" id="inputPasswordConfirm" ng-model="info.ConfirmPassword">
-                <span class="material-input"></span>
+                <span ng-show="!isValid()" class="material-input error">Пароли не совпадают.</span>
+            </div>
+
+            <div class="has-error" ng-show="errors['']">
+                <label class="control-label">{{errors[''][0]}}</label>
             </div>
 
         </fieldset>
     </form>
 
-    <p ng-show="!isValid()" style="color: red">Пароли не совпадают или невалидные данные</p>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="cancel()">Отмена</button>

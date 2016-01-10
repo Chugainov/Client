@@ -12,12 +12,13 @@
             $scope._deposits = response.data;
         });
 
-        $scope.openCalendar1 = function ($event) {
-            $scope.opened1 = true;
+
+        $scope.requestN = {
+            Customer: {
+                DocumentType: 0
+            }
         };
-        $scope.openCalendar2 = function ($event) {
-            $scope.opened2 = true;
-        };
+
         $scope.openCalendar3 = function ($event) {
             $scope.opened3 = true;
         };
@@ -38,6 +39,8 @@
             $scope.set();
             requestDepositeService.add($scope.requestN).then(function () {
                 $uibModalInstance.close();
+            }, function (error) {
+                $scope.errors = error.data.ModelState;
             });
         };
 

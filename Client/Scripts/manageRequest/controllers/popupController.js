@@ -48,8 +48,11 @@
 
         $scope.ok = function () {
             $scope.decision.CreditRequestId = request.Id;
-            requestService.setStatus($scope.decision);
-            $uibModalInstance.close();
+            requestService.setStatus($scope.decision).then(function () {
+                $uibModalInstance.close();
+            }, function (error) {
+                $scope.errors = error.data.ModelState;
+            });
         };
 
         $scope.cancel = function () {

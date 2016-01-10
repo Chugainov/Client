@@ -52,24 +52,23 @@
                 
                 authService.changePass($scope.pass).then(function (resp) {
                     var resp = resp;
-                    $scope.passField = false;
-                }, function (err) {
-                    $scope.error = err.data.ModelState;
-                    $scope.passField = true;
-                    $scope.passText = "Пароль успешно изменен";
+                    $scope.successInfo = 'Пароль изменен успешно.';
+                    $scope.pass = {};
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
+                    $scope.pass = {};
                 });
-
-                $scope.pass = {};
             };
 
             $scope.login = function () {
                 var user = { UserName: $scope.Name, Password: $scope.Password };
                 authService.login(user).then(function (response) {
-
                     var token = response.data;
                     localStorageService.set('token', token);
                     $scope.isLogin = true;
                     load();
+                }, function (error) {
+                    $scope.errors = error.data.ModelState || error.data;
                 });
                 
             }
