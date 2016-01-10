@@ -19,7 +19,7 @@
                 var temp = scope;
             }
 
-            
+
 
             function controller($scope, $uibModal, $timeout) {
                 $scope.status = 'Посмотреть обработанные';
@@ -31,7 +31,7 @@
                     $scope._currentPage = page;
                     if ($scope.unconfirmed) {
                         $timeout(function () {
-                            
+
                             switch ($scope.Role) {
                                 case 1:
                                     requestService.getCredits().then(function (response) {
@@ -60,7 +60,7 @@
                     };
                     if (!$scope.unconfirmed) {
                         $timeout(function () {
-                            
+
                             switch ($scope.Role) {
                                 case 1:
                                     requestService.getCredits().then(function (response) {
@@ -100,20 +100,26 @@
                 };
                 $scope.Set = function () {
                     requestService.getCustomer($scope.customer.IdentificationNumber).then(function (responce) {
-                        $scope.customer = responce.data;
-                    })
+                        if (responce.data === null) {
+                            var identNumber = $scope.customer.IdentificationNumber;
+                            $scope.customer = new Object();
+                            $scope.customer.IdentificationNumber = identNumber;
+                        } else {
+                            $scope.customer = responce.data;
+                        }
+                    });
                 };
 
                 $scope.loadMilitary = function (e) {
-                        var reader = new FileReader();
-                        reader.onload = function (loadEvent) {
-                            $scope.$apply(function () {
-                                $scope.military = loadEvent.target.result.split(",")[1];
-                            });
-                        }
-                        reader.readAsDataURL(e.files[0]);
-                        
-                   
+                    var reader = new FileReader();
+                    reader.onload = function (loadEvent) {
+                        $scope.$apply(function () {
+                            $scope.military = loadEvent.target.result.split(",")[1];
+                        });
+                    }
+                    reader.readAsDataURL(e.files[0]);
+
+
                 };
 
                 $scope.loadDocs = function (e) {
@@ -121,11 +127,11 @@
                     reader.onload = function (loadEvent) {
                         $scope.$apply(function () {
                             $scope.docs = loadEvent.target.result.split(",")[1];
-                            
+
                         });
                     }
                     reader.readAsDataURL(e.files[0]);
-                    
+
 
                 };
                 $scope.addNew = function () {
@@ -134,7 +140,7 @@
                 };
                 $scope._delete = function (id) {
                     requestService.delete(id).success(function () { _loadData($scope._currentPage); });
-                    
+
                 };
                 requestService.getRole().then(function (response) {
                     switch (response.data.Role) {
@@ -149,7 +155,7 @@
                             break;
                         case 'Security':
                             $scope.Role = 3;
-                            
+
                             break;
                     };
                     _loadData(1);
@@ -171,7 +177,7 @@
 
                     requestService.add($scope.requestN).then(function (response) {
                         $scope.contractUrl = response.data;
-                       // requestService.getContractReq($scope.requestN);
+                        // requestService.getContractReq($scope.requestN);
                     });
                 };
 
@@ -202,7 +208,7 @@
 
                     modalInstance.result.then(function () {
                         $timeout(function () { _loadData($scope._currentPage); });
-                        
+
                     }, function () {
                         //TODO:
                     });
