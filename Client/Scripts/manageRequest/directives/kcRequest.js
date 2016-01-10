@@ -170,7 +170,7 @@
                     $scope.done = true;
 
                     requestService.add($scope.requestN).then(function (response) {
-                        var temp = response.data;
+                        $scope.contractUrl = response.data;
                        // requestService.getContractReq($scope.requestN);
                     });
                 };

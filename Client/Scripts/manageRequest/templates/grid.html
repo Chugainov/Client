@@ -158,8 +158,8 @@
     <div class="col-sm-offset-1 col-sm-8" ng-show="done">
         <h1 class="opacity-header">Заявка оформлена</h1>
         <button type="button" class="btn btn-default" ng-click="addNew()">Оформить новую заявку</button>
-        <a href="javascript:void(0)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="open(request.Id)">
-            <i class="material-icons glyphicon glyphicon-ok"></i>
+        <a ng-href="{{contractUrl}}" class="btn btn-warning btn-fab btn-fab-mini" target="_blank">
+            <i class="material-icons glyphicon glyphicon-cloud-download"></i>
         </a>
     </div>
 </div>
