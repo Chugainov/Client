@@ -8,6 +8,10 @@
 
     var controller = function (authService, $scope, $timeout) {
         $scope.timeShow = false;
+        authService.getTime().then(function (response) {
+            $scope.time = response.data;
+            $scope.timeShow = true;
+        });
         setInterval(function () {
             $scope.$apply(function () {
                 authService.getTime().then(function (response) {
