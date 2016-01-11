@@ -12,7 +12,7 @@
         'localStorageService'];
         var controller = function ($scope, authService, localStorageService) {
             var vm = this;
-
+            $scope.info = {};
             $scope.isReg = false;
 
             $scope.register = function () {
@@ -22,6 +22,8 @@
                     var temp = response;
                     $scope.status = response.status;
                     $scope.isReg = true;
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
                 });
             }
 

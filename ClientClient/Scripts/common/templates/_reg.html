@@ -8,39 +8,42 @@
                     <div class="form-group is-empty">
                         <label for="inputName" class="control-label">Логин</label>
                         <input type="text" class="form-control input-sm" id="inputName" ng-model="info.UserName" required>
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.UserName']" class="material-input error">{{errors['request.UserName'][0]}}</span>
                     </div>
 
                     <div class="form-group is-empty">
                         <label for="inputEmail" class="control-label">Адрес электронной почты</label>
                         <input type="text" class="form-control input-sm" id="inputEmail" ng-model="info.Email" required>
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.Email']" class="material-input error">{{errors['request.Email'][0]}}</span>
                     </div>
 
                     <div class="form-group is-empty">
                         <label for="IdentificationNumber" class="control-label">Идентификационный номер документа</label>
                         <input type="text" class="form-control input-sm" id="IdentificationNumber" ng-model="info.IdentificationNumber" required>
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.IdentificationNumber']" class="material-input error">{{errors['request.IdentificationNumber'][0]}}</span>
                     </div>
 
                     <div class="form-group is-empty">
                         <label for="inputPassword" class="control-label">Пароль</label>
                         <input type="password" class="form-control input-sm" id="inputPassword" ng-model="info.Password" required>
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.Password']" class="material-input error">{{errors['request.Password'][0]}}</span>
                     </div>
 
                     <div class="form-group is-empty">
                         <label for="inputPasswordConfirm" class="control-label">Подтверждение пароля</label>
                         <input type="password" class="form-control input-sm" id="inputPasswordConfirm" ng-model="info.ConfirmPassword">
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.ConfirmPassword']" class="material-input error">{{errors['request.ConfirmPassword'][0]}}</span>
                     </div>
 
                     <div class="form-group is-empty">
-                        <label for="Code" class="control-label">Секретный код выданный банком</label>
+                        <label for="Code" class="control-label">Секретный код, выданный банком</label>
                         <input type="text" class="form-control input-sm" id="Code" ng-model="info.Code" required>
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.Code']" class="material-input error">{{errors['request.Code'][0]}}</span>
                     </div>
-                    <p ng-show="info.ConfirmPassword != info.Password" style="color: red">Пароли не совпадают или невалидные данные</p>
+                    <div class="has-error" ng-show="errors['']">
+                        <label class="control-label">{{errors[''][0]}}</label>
+                    </div>
+
                     <div class="form-group is-empty">
                         <div class="col-sm-12">
                             <button type="button" class="btn btn-primary" ui-sref="auth">Назад</button>

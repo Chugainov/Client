@@ -103,6 +103,7 @@
     <Content Include="Scripts\common\module.js" />
     <Content Include="Scripts\common\namespace.js" />
     <Content Include="Scripts\common\require.js" />
+    <Content Include="Scripts\common\templates\menu.html" />
     <Content Include="Scripts\common\templates\_auth.html" />
     <Content Include="Scripts\common\templates\_calculator.html" />
     <Content Include="Scripts\common\templates\_calculatorD.html" />

@@ -21,28 +21,28 @@
 
                 authService.changeEmail($scope.mail).then(function (resp) {
                     var resp = resp;
-                    $scope.passField = false;
-                }, function (err) {
-                    $scope.error = err.data.ModelState;
-                    $scope.passField = true;
-                    $scope.passText = "Пароль успешно изменен";
+                    $scope.mail = {};
+                    $scope.successInfoE = 'E-mail изменен успешно.';
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
+                    $scope.mail = {};
                 });
 
-                $scope.mail = {};
+                
             };
 
             $scope.changePass = function () {
                 
                 authService.changePass($scope.pass).then(function (resp) {
                     var resp = resp;
-                    $scope.passField = false;
-                }, function (err) {
-                    $scope.error = err.data.ModelState;
-                    $scope.passField = true;
-                    $scope.passText = "Пароль успешно изменен";
+                    $scope.successInfo = 'Пароль изменен успешно.';
+                    $scope.pass = {};
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
+                    $scope.pass = {};
                 });
 
-                $scope.pass = {};
+                
             };
 
             $scope.login = function () {
@@ -53,6 +53,8 @@
                     localStorageService.set('token', token);
                     $scope.isLogin = true;
                     $rootScope.$emit('login');
+                }, function (error) {
+                    $scope.errors = error.data.ModelState || error.data;
                 });
             }
 

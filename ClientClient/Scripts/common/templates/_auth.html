@@ -8,13 +8,17 @@
                     <div class="form-group label-floating is-empty">
                         <label for="inputLogin" class="control-label">Логин</label>
                         <input type="text" class="form-control" id="inputLogin" ng-model="Name">
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.UserName']" class="material-input error">{{errors['request.UserName'][0]}}</span>
                     </div>
 
                     <div class="form-group label-floating is-empty">
                         <label for="inputPassword" class="control-label">Пароль</label>
                         <input type="password" class="form-control" id="inputPassword" ng-model="Password">
-                        <span class="material-input"></span>
+                        <span ng-show="errors['request.Password']" class="material-input error">{{errors['request.Password'][0]}}</span>
+                    </div>
+
+                    <div class="has-error" ng-show="errors.Message">
+                        <label class="control-label">{{errors.Message}}</label>
                     </div>
 
                     <div class="form-group is-empty">
@@ -28,15 +32,23 @@
                     <h4>Добро пожаловать!</h4>
                     <legend class="opacity-header">Сменить E-mail:</legend>
                     <div class="form-group label-floating is-empty">
-                        <label for="pass.OldPassword" class="control-label">Новый E-mail</label>
-                        <input type="email" class="form-control" id="pass.OldPassword" ng-model="mail.NewEmail">
-                        <span class="material-input"></span>
+                        <label for="mail.NewEmail" class="control-label">Новый E-mail</label>
+                        <input type="email" class="form-control" id="mail.NewEmail" ng-model="mail.NewEmail">
+                        <span ng-show="errors['model.NewEmail']" class="material-input error">{{errors['model.NewEmail'][0]}}</span>
                     </div>
 
                     <div class="form-group label-floating is-empty">
-                        <label for="pass.NewPassword" class="control-label">Подтверждение E-mail</label>
-                        <input type="email" class="form-control" id="pass.NewPassword" ng-model="mail.ConfirmEmail">
-                        <span class="material-input"></span>
+                        <label for="mail.ConfirmEmail" class="control-label">Подтверждение E-mail</label>
+                        <input type="email" class="form-control" id="mail.ConfirmEmail" ng-model="mail.ConfirmEmail">
+                        <span ng-show="errors['model.ConfirmEmail']" class="material-input error">{{errors['model.ConfirmEmail'][0]}}</span>
+                    </div>
+
+                    <div class="has-error" ng-show="errors['']">
+                        <label class="control-label">{{errors[''][0]}}</label>
+                    </div>
+
+                    <div class="has-error" ng-show="successInfo">
+                        <label class="control-label">{{successInfoE}}</label>
                     </div>
                     <button type="button" class="btn btn-primary" ng-click="changeEmail()">Сменить E-mail</button>
                     <hr />
@@ -48,19 +60,27 @@
                     <div class="form-group label-floating is-empty">
                         <label for="pass.OldPassword" class="control-label">Старый пароль</label>
                         <input type="password" class="form-control" id="pass.OldPassword" ng-model="pass.OldPassword">
-                        <span class="material-input"></span>
+                        <span ng-show="errors['model.OldPassword']" class="material-input error">{{errors['model.OldPassword'][0]}}</span>
                     </div>
 
                     <div class="form-group label-floating is-empty">
                         <label for="pass.NewPassword" class="control-label">Новый пароль</label>
                         <input type="password" class="form-control" id="pass.NewPassword" ng-model="pass.NewPassword">
-                        <span class="material-input"></span>
+                        <span ng-show="errors['model.NewPassword']" class="material-input error">{{errors['model.NewPassword'][0]}}</span>
                     </div>
 
                     <div class="form-group label-floating is-empty">
                         <label for="pass.ConfirmPassword" class="control-label">Подтверждение нового пароля</label>
                         <input type="password" class="form-control" id="pass.ConfirmPassword" ng-model="pass.ConfirmPassword">
-                        <span class="material-input"></span>
+                        <span ng-show="pass.NewPassword != pass.ConfirmPassword" class="material-input error">Пароли не совпадают</span>
+                    </div>
+
+                    <div class="has-error" ng-show="errors['']">
+                        <label class="control-label">{{errors[''][0]}}</label>
+                    </div>
+
+                    <div class="has-error" ng-show="successInfo">
+                        <label class="control-label">{{successInfo}}</label>
                     </div>
 
                     <p ng-show="pass.NewPassword != pass.ConfirmPassword" style="color: red"> Пароли не совпадают</p>

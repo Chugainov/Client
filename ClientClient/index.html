@@ -10,57 +10,7 @@
 </head>
 <body>
 
-    <nav class="navbar" ng-controller="Client.auth.menuController">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">3 толстяка</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav custom-nav">
-                    <li><a ui-sref="home">На главную</a></li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                            Информация для клиентов <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="credits">Информация о кредитах</a></li>
-                            <li><a ui-sref="deposits">Информация о депозитах</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                            Калькуляторы <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="calculationC">Кредитный калькулятор</a></li>
-                            <li><a ui-sref="calculationD">Депозитный калькулятор</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-                            Информация пользователя <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="creditHistory">Информация по кредитам</a></li>
-                            <li><a ui-sref="depositHistory">Информация по депозитам</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:void(0)" ng-show="timeShow">{{time| date:"d, MMM yyyy"}}</a></li>
-                    <li><a ui-sref="auth">{{loginText}}</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <kc-menu></kc-menu>
 
     <div ui-view></div>
 
