@@ -7,10 +7,10 @@
 
         var controllerId = 'authController';
         var name = namespace + '.' + controllerId;
-        var dependencies = ['$scope', 
+        var dependencies = ['$rootScope','$scope', 
             namespace + '.authService',
         'localStorageService'];
-        var controller = function ($scope, authService, localStorageService) {
+        var controller = function ($rootScope,$scope, authService, localStorageService) {
             var vm = this;
 
             var load = function () {
@@ -67,6 +67,7 @@
                     localStorageService.set('token', token);
                     $scope.isLogin = true;
                     load();
+                    $rootScope.$emit('login');
                 }, function (error) {
                     $scope.errors = error.data.ModelState || error.data;
                 });
@@ -81,6 +82,7 @@
                     $scope.pass = {};
                     localStorageService.remove('token');
                     $scope.isLogin = false;
+                    $rootScope.$emit('logout');
                 });
                 
             }
