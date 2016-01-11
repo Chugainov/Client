@@ -1,7 +1,7 @@
 ﻿<div ng-show="Role == 1" class="container-fluid">
     <div class="col-sm-offset-1 col-sm-8" ng-show="!done">
         <h1 class="opacity-header">Оформить заявку</h1>
-        <form>
+        <form name="form">
             <fieldset>
 
                 <div class="form-group is-empty">
@@ -135,13 +135,13 @@
                 <div class="form-group">
                     <label class="control-label" for="Military">Военный билет</label>
                     <input type="file" id="Military" onchange="angular.element(this).scope().loadMilitary(this)">
-                    <input type="text" readonly class="form-control">
+                    <input type="text" readonly class="form-control" ng-model="filePathToMilitary">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="Info">Справка о доходах</label>
                     <input type="file" id="Info" onchange="angular.element(this).scope().loadDocs(this)">
-                    <input type="text" readonly class="form-control">
+                    <input type="text"  readonly class="form-control" ng-model="filePathToIncomeCertificate">
                     <span ng-show="errors['request.IncomeCertificate']" class="material-input error">{{errors['request.IncomeCertificate'][0]}}</span>
                 </div>
 

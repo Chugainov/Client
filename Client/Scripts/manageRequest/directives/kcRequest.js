@@ -118,6 +118,7 @@
                     reader.onload = function (loadEvent) {
                         $scope.$apply(function () {
                             $scope.military = loadEvent.target.result.split(",")[1];
+                            $scope.filePathToMilitary = e.value;
                         });
                     }
                     reader.readAsDataURL(e.files[0]);
@@ -130,6 +131,7 @@
                     reader.onload = function (loadEvent) {
                         $scope.$apply(function () {
                             $scope.docs = loadEvent.target.result.split(",")[1];
+                            $scope.filePathToIncomeCertificate = e.value;
 
                         });
                     }
