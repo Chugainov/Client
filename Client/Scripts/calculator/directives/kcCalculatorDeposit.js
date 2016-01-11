@@ -39,7 +39,7 @@
                     var data = {
                         DepositId: $scope.deposit ? $scope.deposit.Id : null,
                         PercentRate: $scope.deposit ? $scope.deposit.InterestRate : null,
-                        MonthPeriod: $scope.month,
+                        MonthCount: $scope.month,
                         Sum: $scope.sum
                     };
                     calculatorService.getCapitalizationPlan(data).then(function (response) {
