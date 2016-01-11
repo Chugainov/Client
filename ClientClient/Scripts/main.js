@@ -7,6 +7,7 @@
         'angularLocalStorage': '../libs/angular-local-storage/dist/angular-local-storage',
         'angularUiBootstrap': '../libs/angular-bootstrap/ui-bootstrap-tpls.min',
         'underscoreModule': '../libs/underscore/underscore',
+        'angularLocale': '../libs/angular-i18n/angular-locale_ru-ru',
         'angularResource': '../libs/angular-resource/angular-resource',
         'bootstrap': '../libs/bootstrap/dist/js/bootstrap.min'
     },
@@ -46,6 +47,12 @@
             ]
         },
         'angularLocalStorage': {
+            deps: [
+                'angular',
+                'jquery'
+            ]
+        },
+        'angularLocale': {
             deps: [
                 'angular',
                 'jquery'

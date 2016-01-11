@@ -10,7 +10,7 @@
 
     var resources = function () {
         this.baseURI = 'http://localhost:12715/api/Account/';
-
+        this.timeURI = 'http://localhost:12715/api/Time/';
 
     };
     module.service(name, dependencies.concat(resources));

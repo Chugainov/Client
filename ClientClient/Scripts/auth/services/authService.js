@@ -11,8 +11,14 @@ function (namespace, module) {
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
+        var timeUri = settings.timeURI;
         var authServiceFactory = {};
 
+        function _getTime() {
+            var serviceUri = timeUri + "Get";
+
+            return $http.get(serviceUri);
+        }
 
         function _getRole(data) {
             var serviceUri = serviceBaseUri + "getrole";
@@ -72,6 +78,7 @@ function (namespace, module) {
         authServiceFactory.logout = _logout;
         authServiceFactory.register = _register; 
         authServiceFactory.changePass = _changePass;
+        authServiceFactory.getTime = _getTime;
         authServiceFactory.changeEmail = _changeEmail;
         return authServiceFactory;
     };

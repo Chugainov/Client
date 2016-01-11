@@ -6,6 +6,7 @@
      'angularLocalStorage',
      'angularUiBootstrap',
      'angularResource',
+     'angularLocale',
      './common/require',
      './manageCredits/namespace',
      './manageCredits/require',

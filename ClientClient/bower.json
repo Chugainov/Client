@@ -25,7 +25,8 @@
     "underscore": "latest",
     "angular-permission": "~1.1.0",
     "angular-local-storage": "~0.2.3",
-	"angular-resource": "latest",
-    "bootstrap-material-design": "~0.5.7"
+    "angular-resource": "latest",
+    "bootstrap-material-design": "~0.5.7",
+    "angular-i18n": "~1.4.8"
   }
 }
