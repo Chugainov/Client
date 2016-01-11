@@ -52,6 +52,7 @@
                     var token = response.data;
                     localStorageService.set('token', token);
                     $scope.isLogin = true;
+                    $rootScope.$emit('login');
                 });
             }
 
@@ -64,6 +65,7 @@
                     $rootScope.isLogin = false;
                     localStorageService.remove('token');
                     $scope.isLogin = false;
+                    $rootScope.$emit('logout');
                 });
             }
         };
