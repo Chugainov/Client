@@ -27,7 +27,7 @@
                 $scope.timeShow = true;
             });
             var token = localStorageService.get('token');
-            if ((typeof (token) != "null") || (typeof (token) != "undefined")) {
+            if (token!=null) {
 
                 $scope.loginText = 'Личный кабинет';
             } else {

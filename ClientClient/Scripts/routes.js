@@ -96,8 +96,9 @@
 
                 // we will return a promise .
                 var deferred = $q.defer();
+                var token = localStorageService.get('token');
 
-                if ($rootScope.isLogin) {
+                if (token != null) {
                     deferred.resolve();
                 } else {
                     $location.path(routeForUnauthorizedAccess);

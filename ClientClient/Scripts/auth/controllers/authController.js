@@ -12,7 +12,8 @@
         'localStorageService', '$rootScope'];
         var controller = function ($scope, authService, localStorageService, $rootScope) {
             var vm = this;
-            if ($rootScope.isLogin) {
+            var token = localStorageService.get('token');
+            if (token != null) {
                 $scope.isLogin = true;
             } else {
                 $scope.isLogin = false;

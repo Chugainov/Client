@@ -26,7 +26,13 @@
                 $scope.time = response.data;
                 $scope.timeShow = true;
             });
-            $scope.loginText = 'Войти';
+            var token = localStorageService.get('token');
+            if (token != null) {
+
+                $scope.loginText = 'Личный кабинет';
+            } else {
+                $scope.loginText = 'Войти';
+            }
             $rootScope.$on('login', function () {
                 $scope.loginText = 'Личный кабинет';
             });
