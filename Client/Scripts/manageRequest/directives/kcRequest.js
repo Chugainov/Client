@@ -187,8 +187,8 @@
                         $scope.customer = {
                             Address: {}
                         };
-                        $scope.filePathToIncomeCertificate = {};
-                        $scope.filePathToMilitary = {};
+                        $scope.filePathToIncomeCertificate = '';
+                        $scope.filePathToMilitary = '';
                         $scope.done = true;
                     }, function (error) {
                         $scope.errors = error.data.ModelState;
