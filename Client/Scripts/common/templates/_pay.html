@@ -6,8 +6,9 @@
 
                 <div class="form-group is-empty" ng-show="step == 1">
                     <label for="payment.ContractNumber" class="control-label">Введите номер договора</label>
-                    <input type="number" class="form-control input-sm" id="payment.ContractNumber" ng-model="payment.ContractNumber" required>
-                    <span class="material-input"></span>
+                    <input type="number" class="form-control input-sm" id="payment.ContractNumber" ng-model="payment.ContractNumber" 
+                           ng-blur="next()">
+                    <span ng-show="errors" class="material-input error">{{errors}}</span>
                 </div>
 
                 <div class="form-group is-empty" ng-show="step != 1">
@@ -61,7 +62,7 @@
                 <div class="form-group is-empty" ng-show="step == 2">
                     <label for="payment.Sum" class="control-label">Введите сумму оплаты</label>
                     <input type="number" class="form-control input-sm" id="payment.Sum" ng-model="payment.Sum" required>
-                    <span class="material-input"></span>
+                    <span ng-show="errors['request.Sum']" class="material-input error">{{errors['request.Sum'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty" ng-show="step == 3">
@@ -70,7 +71,7 @@
                     <span class="material-input"></span>
                 </div>
 
-                <button type="button" class="btn btn-default" ng-show="step != 3" ng-click="next()">Продолжить</button>
+                <button type="button" class="btn btn-default" ng-show="step == 2" ng-click="next()">Продолжить</button>
                 <button type="button" class="btn btn-default" ng-show="step != 1" ng-click="cancel()" >Назад</button>
             </fieldset>
         </form>

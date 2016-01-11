@@ -37,13 +37,16 @@
 
                 $scope.calc = function () {
                     var data = {
-                        PercentRate: $scope.deposit.InterestRate,
-                        Month: $scope.month,
+                        DepositId: $scope.deposit ? $scope.deposit.Id : null,
+                        PercentRate: $scope.deposit ? $scope.deposit.InterestRate : null,
+                        MonthPeriod: $scope.month,
                         Sum: $scope.sum
                     };
                     calculatorService.getCapitalizationPlan(data).then(function (response) {
                         $scope.paymentPlan = response.data;
                         $scope.capPlan = true;
+                    }, function (error) {
+                        $scope.errors = error.data.ModelState;
                     });
                     
                 }

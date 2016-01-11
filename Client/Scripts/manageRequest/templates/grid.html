@@ -45,10 +45,8 @@
                     <select class="form-control input-sm" id="inputCredit" ng-model="credit"
                             ng-options="c.Name for c in _credits"></select>
                     <span ng-show="credit.Name" class="material-input info-credit-block">
-                        <span>Минимальный срок: {{credit.MinMonthPeriod}} мес.</span>
-                        <span>Максимальный срок: {{credit.MaxMonthPeriod}} мес.</span>
-                        <span>Минимальная сумма: {{credit.MinSum}} BYR</span>
-                        <span>Максимальная сумма: {{credit.MaxSum}} BYR</span>
+                        <span>Срок: от {{credit.MinMonthPeriod}} до {{credit.MaxMonthPeriod}} мес.</span>
+                        <span>Сумма: от {{credit.MinSum}} до {{credit.MaxSum}} BYR</span>
                     </span>
                     <span ng-show="errors['request.CreditId']" class="material-input error">{{errors['request.CreditId'][0]}}</span>
                 </div>

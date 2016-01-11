@@ -33,7 +33,8 @@ function (namespace, module) {
                     Sum: data.Sum,
                     PercentRate: data.PercentRate,
                     MonthCount: data.Month,
-                    startDate: new Date()
+                    startDate: new Date(),
+                    DepositId: data.DepositId
                 }
             };
             return $http.get(serviceUri, data);

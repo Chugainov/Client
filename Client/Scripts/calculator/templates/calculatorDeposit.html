@@ -8,25 +8,28 @@
                     <label for="inputCredit" class="control-label">Выберите депозит</label>
                     <select class="form-control input-sm" id="inputCredit" ng-model="deposit" required
                             ng-options="d.Name for d in _deposits"></select>
-                    <span class="material-input"></span>
+                    <span ng-show="deposit.Name" class="material-input info-credit-block">
+                        <span>Срок: от {{deposit.MinMonthPeriod}} до {{deposit.MaxMonthPeriod}} мес.</span>
+                        <span>Сумма: от {{deposit.MinSum}} до {{deposit.MaxSum}} BYR</span>
+                    </span>
+                    <span ng-show="errors['request.InitialSum']" class="material-input error">{{errors['request.InitialSum'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="inputPeriod" class="control-label">Введите срок</label>
                     <input type="text" class="form-control input-sm" id="inputPeriod" ng-model="month" required>
-                    <span class="material-input"></span>
+                    <span ng-show="errors['MonthCount']" class="material-input error">{{errors['MonthCount'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="inputPercentRate" class="control-label">Процентная ставка</label>
                     <input type="text" class="form-control input-sm" id="inputPercentRate" ng-model="deposit.InterestRate" disabled>
-                    <span class="material-input"></span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="sum" class="control-label">Сумма вклада</label>
                     <input type="number" class="form-control input-sm" id="sum" ng-model="sum" required>
-                    <span class="material-input"></span>
+                    <span ng-show="errors['Sum']" class="material-input error">{{errors['Sum'][0]}}</span>
                 </div>
 
                 <button type="button" class="btn btn-default" ng-click="calc()">Рассчитать</button>
