@@ -182,6 +182,11 @@
 
                     requestService.add($scope.requestN).then(function (response) {
                         $scope.contractUrl = response.data;
+                        $scope.errors = {};
+                        $scope.requestN = {};
+                        $scope.customer = {
+                            Address: {}
+                        };
                         $scope.done = true;
                     }, function (error) {
                         $scope.errors = error.data.ModelState;
