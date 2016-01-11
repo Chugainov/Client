@@ -104,9 +104,9 @@
                 $scope.Set = function () {
                     requestService.getCustomer($scope.customer.IdentificationNumber).then(function (responce) {
                         if (responce.data === null) {
-                            var identNumber = $scope.customer.IdentificationNumber;
-                            $scope.customer = new Object();
-                            $scope.customer.IdentificationNumber = identNumber;
+//                            var identNumber = $scope.customer.IdentificationNumber;
+//                            $scope.customer = new Object();
+//                            $scope.customer.IdentificationNumber = identNumber;
                         } else {
                             $scope.customer = responce.data;
                         }
