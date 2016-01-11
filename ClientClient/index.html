@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" ng-controller="Client.auth.menuController">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -55,6 +55,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0)" ng-show="timeShow">{{time| date:"medium"}}</a></li>
                     <li><a ui-sref="auth">Войти</a></li>
                 </ul>
             </div>

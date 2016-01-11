@@ -69,6 +69,7 @@
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\auth\controllers\authController.js" />
+    <Content Include="Scripts\auth\controllers\menu.js" />
     <Content Include="Scripts\auth\controllers\regController.js" />
     <Content Include="Scripts\auth\controllers\_index.js" />
     <Content Include="Scripts\auth\module.js" />
@@ -101,6 +102,7 @@
     <Content Include="Scripts\common\templates\_deposits.html" />
     <Content Include="Scripts\common\templates\_mainLayout.html" />
     <Content Include="Scripts\common\templates\_payments.html" />
+    <Content Include="Scripts\common\templates\_paymentsD.html" />
     <Content Include="Scripts\common\templates\_reg.html" />
     <Content Include="Scripts\Credits\controllers\popupController.js" />
     <Content Include="Scripts\Credits\controllers\_index.js" />
@@ -129,6 +131,7 @@
     <Content Include="Scripts\Deposits\templates\grid.html" />
     <Content Include="Scripts\Deposits\templates\popup.html" />
     <Content Include="Scripts\paymentPlan\directives\kcPayments.js" />
+    <Content Include="Scripts\paymentPlan\directives\kcPaymentsD.js" />
     <Content Include="Scripts\paymentPlan\directives\_index.js" />
     <Content Include="Scripts\paymentPlan\module.js" />
     <Content Include="Scripts\paymentPlan\namespace.js" />
@@ -138,6 +141,7 @@
     <Content Include="Scripts\paymentPlan\settings\settings.js" />
     <Content Include="Scripts\paymentPlan\settings\_index.js" />
     <Content Include="Scripts\paymentPlan\templates\grid.html" />
+    <Content Include="Scripts\paymentPlan\templates\gridD.html" />
     <Content Include="Scripts\routes.js" />
     <Content Include="Scripts\common\services\authService.js" />
     <Content Include="Scripts\common\services\_index.js" />

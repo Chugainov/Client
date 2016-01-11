@@ -20,8 +20,8 @@
                 });
             });
         }, 8500);
-        
-        
+
+
     };
     module.controller(name, dependencies.concat(controller));
 })

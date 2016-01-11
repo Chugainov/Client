@@ -11,7 +11,14 @@ function (namespace, module) {
     var dependencies = ['$http', namespace + '.settings'];
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
+        var timeUri = settings.timeURI;
         var authServiceFactory = {};
+
+        function _getTime() {
+            var serviceUri = timeUri + "Get";
+
+            return $http.get(serviceUri);
+        }
 
         var _register = function (data) {
             var serviceUri = serviceBaseUri + "register";
@@ -21,12 +28,11 @@ function (namespace, module) {
                 }
             };
             return $http.post(serviceUri, data, config);
-        }; 
+        };
 
         function _changePass(data) {
-            data = data || {};
             var serviceUri = serviceBaseUri + "ChangePassword";
-            
+
             return $http.post(serviceUri, data);
         }
 
@@ -48,7 +54,7 @@ function (namespace, module) {
                     TokenObj: ''
                 }
             };
-            return $http.get(serviceUri,data);
+            return $http.get(serviceUri, data);
         }
 
         function _login(data) {
@@ -89,12 +95,13 @@ function (namespace, module) {
             };
             return $http.delete(serviceBaseUri + "/delete", data);
         };
-        
+
         authServiceFactory.login = _login;
         authServiceFactory.getRole = _getRole;
         authServiceFactory.logout = _logout;
         authServiceFactory.changePass = _changePass;
-        authServiceFactory.getAll = _getAll; 
+        authServiceFactory.getAll = _getAll;
+        authServiceFactory.getTime = _getTime;
         authServiceFactory.register = _register;
         authServiceFactory.delete = _delete;
         return authServiceFactory;

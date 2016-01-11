@@ -1,4 +1,5 @@
 ﻿define([
     './authController',
-    './regController'
+    './regController',
+    './menu'
 ], function () { })
