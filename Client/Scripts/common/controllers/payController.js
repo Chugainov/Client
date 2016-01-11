@@ -15,20 +15,28 @@
             $scope.step = 1;
 
             $scope.pay = function () {
-                payService.pay($scope.payment);
+                payService.pay($scope.payment).then(function () {
+                    $scope.step = 3;
+                }, function (error) {
+                    $scope.errors = error.data.ModelState;
+                });
             };
 
             $scope.cancel = function () {
                 $scope.step = $scope.step = 1;
+                $scope.errors = null;
                 $scope.info = {};
             };
 
             $scope.next = function () {
-                $scope.step = $scope.step + 1;
-                if ($scope.step == 2) {
+                if ($scope.step == 1 && $scope.payment) {
+                    if (!$scope.payment.ContractNumber) {
+                        return;
+                    }
                     payService.getByContractNumber($scope.payment.ContractNumber).then(function (response) {
                         $scope.info = response.data;
-
+                        $scope.step = 2;
+                        $scope.errors = null;
 
                         $scope.info.FIO = $scope.info.Customer.Lastname + ' ' + $scope.info.Customer.Firstname + ' ' + $scope.info.Customer.Patronymic;
                         for (var i = 0; i < $scope.info.CreditPaymentPlanItems.length - 1; i++) {
@@ -39,10 +47,12 @@
                             };
                         };
 
+                    }, function (error) {
+                        $scope.errors = error.data.Message;
                     });
                 };
 
-                if ($scope.step == 3) {
+                if ($scope.step == 2) {
                     $scope.pay();
                 }
                 
