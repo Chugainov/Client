@@ -39,7 +39,7 @@
                     if ($scope.type == 1) {
                         $scope.paymentsPlan = false;
                         var data = {
-                            CreditId: $scope.credit.Id,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             IncomeSum: $scope.incomeSum,
                             OtherCreditSum: $scope.otherCreditSum,
@@ -48,12 +48,14 @@
                         }
                         calculatorService.getMaxSum(data).then(function (response) {
                             $scope.maxSum = Math.round(response.data);
+                        }, function (error) {
+                            $scope.errors = error.data.ModelState;
                         });
                     };
                     if ($scope.type == 2) {
                         $scope.paymentsPlan = false;
                         var data = {
-                            CreditId: $scope.credit.Id,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             Sum: $scope.sum,
                             OtherCreditSum: $scope.otherCreditSum,
@@ -62,22 +64,25 @@
                         }
                         calculatorService.getIncomeReq(data).then(function (response) {
                             $scope.incomeReq = Math.round(response.data);
+                        }, function (error) {
+                            $scope.errors = error.data.ModelState;
                         });
                     }
                     if ($scope.type == 3) {
                         var data = {
-                            CreditId: $scope.credit.Id,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             Sum: $scope.sum
                         };
                         calculatorService.getPaymentPlan(data).then(function (response) {
                             $scope.paymentPlan = response.data;
                             $scope.paymentsPlan = true;
+                        }, function (error) {
+                            $scope.errors = error.data.ModelState;
                         });
                     }
-                }
+                };
             };
-
         };
 
         module.directive(name, dependencies.concat(directive));

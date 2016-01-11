@@ -6,21 +6,24 @@
 
                 <div class="form-group is-empty">
                     <label for="inputCredit" class="control-label">Выберите кредит</label>
-                    <select class="form-control input-sm" id="inputCredit" ng-model="credit" required
+                    <select class="form-control input-sm" id="inputCredit" ng-model="credit"
                             ng-options="c.Name for c in _credits"></select>
-                    <span class="material-input"></span>
+                    <span ng-show="credit.Name" class="material-input info-credit-block">
+                        <span>Срок: от {{credit.MinMonthPeriod}} до {{credit.MaxMonthPeriod}} мес.</span>
+                        <span>Сумма: от {{credit.MinSum}} до {{credit.MaxSum}} BYR</span>
+                    </span>
+                    <span ng-show="errors['request.CreditId']" class="material-input error">{{errors['request.CreditId'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="inputPeriod" class="control-label">Введите срок</label>
-                    <input type="text" class="form-control input-sm" id="inputPeriod" ng-model="month" required>
-                    <span class="material-input"></span>
+                    <input type="text" class="form-control input-sm" id="inputPeriod" ng-model="month">
+                    <span ng-show="errors['request.MonthCount']" class="material-input error">{{errors['request.MonthCount'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="inputPercentRate" class="control-label">Процентная ставка</label>
                     <input type="text" class="form-control input-sm" id="inputPercentRate" ng-model="credit.PercentRate" disabled>
-                    <span class="material-input"></span>
                 </div>
 
                 <div class="form-group is-empty">
@@ -43,26 +46,26 @@
 
                         <div class="form-group is-empty">
                             <label for="incomeSum" class="control-label">Средняя прибыль за последние 3 месяца</label>
-                            <input type="number" class="form-control input-sm" id="incomeSum" ng-model="incomeSum" required>
-                            <span class="material-input"></span>
+                            <input type="number" class="form-control input-sm" id="incomeSum" ng-model="incomeSum">
+                            <span ng-show="errors['request.IncomeSum']" class="material-input error">{{errors['request.IncomeSum'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="otherCreditSum" class="control-label">Платежи по другим кредитам</label>
-                            <input type="number" class="form-control input-sm" id="otherCreditSum" ng-model="otherCreditSum" required>
-                            <span class="material-input"></span>
+                            <input type="number" class="form-control input-sm" id="otherCreditSum" ng-model="otherCreditSum">
+                            <span ng-show="errors['request.OtherCreditPayments']" class="material-input error">{{errors['request.OtherCreditPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="utilSum" class="control-label">Платежи за коммунальные услуги</label>
-                            <input type="number" class="form-control input-sm" id="utilSum" ng-model="utilSum" required>
-                            <span class="material-input"></span>
+                            <input type="number" class="form-control input-sm" id="utilSum" ng-model="utilSum">
+                            <span ng-show="errors['request.UtilitiesPayments']" class="material-input error">{{errors['request.UtilitiesPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="otherSum" class="control-label">Иные платежи</label>
-                            <input type="number" class="form-control input-sm" id="otherSum" ng-model="otherSum" required>
-                            <span class="material-input"></span>
+                            <input type="number" class="form-control input-sm" id="otherSum" ng-model="otherSum">
+                            <span ng-show="errors['request.OtherPayments']" class="material-input error">{{errors['request.OtherPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
@@ -83,25 +86,25 @@
                         <div class="form-group is-empty">
                             <label for="sum" class="control-label">Необходимая сумма</label>
                             <input type="number" class="form-control input-sm" id="sum" ng-model="sum" required>
-                            <span class="material-input"></span>
+                            <span ng-show="errors['request.Sum']" class="material-input error">{{errors['request.Sum'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="otherCreditSum1" class="control-label">Платежи по другим кредитам</label>
                             <input type="number" class="form-control input-sm" id="otherCreditSum1" ng-model="otherCreditSum" required>
-                            <span class="material-input"></span>
+                            <span ng-show="errors['request.OtherCreditPayments']" class="material-input error">{{errors['request.OtherCreditPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="utilSum1" class="control-label">Платежи за коммунальные услуги</label>
                             <input type="number" class="form-control input-sm" id="utilSum1" ng-model="utilSum" required>
-                            <span class="material-input"></span>
+                            <span ng-show="errors['request.UtilitiesPayments']" class="material-input error">{{errors['request.UtilitiesPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
                             <label for="otherSum1" class="control-label">Иные платежи</label>
                             <input type="number" class="form-control input-sm" id="otherSum1" ng-model="otherSum" required>
-                            <span class="material-input"></span>
+                            <span ng-show="errors['request.OtherPayments']" class="material-input error">{{errors['request.OtherPayments'][0]}}</span>
                         </div>
 
                         <div class="form-group is-empty">
@@ -122,7 +125,7 @@
                         <div class="form-group is-empty">
                             <label for="sum1" class="control-label">Необходимая сумма</label>
                             <input type="number" class="form-control input-sm" id="sum1" ng-model="sum" required>
-                            <span class="material-input"></span>
+                            <span ng-show="errors['request.Sum']" class="material-input error">{{errors['request.Sum'][0]}}</span>
                         </div>
 
                     </fieldset>

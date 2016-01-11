@@ -19,14 +19,18 @@ function (namespace, module) {
         function _getCapitalizationPlan(data) {
             var serviceUri = serviceBaseDepositUri + 'capitalizationplan';
             var data = {
-                params: {
-                    Sum: data.Sum,
-                    PercentRate: data.PercentRate,
-                    MonthPeriod: data.Month,
-                    startDate: new Date()
+                Sum: data.Sum,
+                PercentRate: data.PercentRate,
+                MonthCount: data.MonthCount,
+                startDate: new Date(),
+                DepositId: data.DepositId
+            };
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
                 }
             };
-            return $http.get(serviceUri, data);
+            return $http.post(serviceUri, data, config);
         }
 
         function _getCredits() {
@@ -50,40 +54,55 @@ function (namespace, module) {
         };
 
         function _getMaxSum(data) {
-            var serviceUri = serviceBaseUri + "/maxsum?creditid=" + data.CreditId + "&monthcount=" + data.Month +
-                "&incomesum=" + data.IncomeSum + "&othercreditpayments=" + data.OtherCreditSum +
-                "&utilitiespayments="+data.UtilSum+"&otherpayments="+ data.UtilSum;
+            var serviceUri = serviceBaseUri + "maxsum";
+            var data = {
+                creditId: data.CreditId,
+                monthCount: data.Month,
+                incomeSum: data.IncomeSum,
+                otherCreditPayments: data.OtherCreditSum,
+                utilitiesPayments: data.UtilSum,
+                otherPayments: data.OtherSum
+            };
             var config = {
                 headers: {
                     'Accept': 'application/json'
                 }
             };
-            return $http.get(serviceUri, config);
+            return $http.post(serviceUri, data, config);
         };
 
         function _getIncomeReq(data) {
-            var serviceUri = serviceBaseUri + "/income?creditid=" + data.CreditId + "&monthcount=" + data.Month +
-                "&sum=" + data.Sum + "&othercreditpayments=" + data.OtherCreditSum +
-                "&utilitiespayments=" + data.UtilSum + "&otherpayments=" + data.UtilSum;
+            var serviceUri = serviceBaseUri + "income";
+            var data = {
+                creditId: data.CreditId,
+                sum: data.Sum,
+                monthCount: data.Month,
+                otherCreditPayments: data.OtherCreditSum,
+                utilitiesPayments: data.UtilSum,
+                otherPayments: data.OtherSum
+            };
             var config = {
                 headers: {
                     'Accept': 'application/json'
                 }
             };
-            return $http.get(serviceUri, config);
+            return $http.post(serviceUri, data, config);
         };
 
         function _getPaymentPlan(data) {
             var serviceUri = serviceBaseUri + 'paymentsplan';
             var data = {
-                params: {
-                    creditId: data.CreditId,
-                    sum: data.Sum,
-                    monthCount: data.Month,
-                    startDate: new Date()
+                creditId: data.CreditId,
+                sum: data.Sum,
+                monthCount: data.Month,
+                startDate: new Date()
+            };
+            var config = {
+                headers: {
+                    'Accept': 'application/json'
                 }
             };
-            return $http.get(serviceUri, data);
+            return $http.post(serviceUri, data, config);
         }
 
         function _getById(id) {

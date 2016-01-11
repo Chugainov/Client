@@ -66,3 +66,7 @@ span.info-credit-block {
 span.info-credit-block > span {
     display: block;
 }
+
+.login .btn { 
+padding: 8px 10px; 
+}
