@@ -22,13 +22,13 @@
 
 
             function controller($scope, $uibModal, $timeout) {
-
+                $scope._gridOptions = [];
+                $scope._currentPage = 1;
                 function _loadData(page) {
-                    $scope._gridOptions = [];
-                    $scope._currentPage = page;
+                    
 
                     $timeout(function () {
-                        authService.getAll().then(function (response) {
+                        authService.getAll(page).then(function (response) {
                             $scope._gridOptions = response.data;
                         });
                     }, 1000);
@@ -39,7 +39,7 @@
 
                 };
 
-                _loadData(1);
+                _loadData($scope._currentPage);
 
                 $scope.pageChanged = function () {
                     _loadData($scope._currentPage);

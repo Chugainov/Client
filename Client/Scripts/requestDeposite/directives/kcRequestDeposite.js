@@ -25,7 +25,6 @@
                 function _loadData(page) {
                     $scope.requestN = {};
                     $scope.customer = {};
-                    $scope._gridOptions = [];
                     $scope._currentPage = page;
                         $timeout(function () {
 

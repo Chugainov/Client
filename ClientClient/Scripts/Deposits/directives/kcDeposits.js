@@ -24,7 +24,6 @@
             function controller($scope, $uibModal, $timeout) {
 
                 function _loadData(page) {
-                    $scope._gridOptions = [];
                     $scope._currentPage = page;
 
                     $timeout(function () {

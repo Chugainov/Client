@@ -25,7 +25,6 @@
                 $scope.status = 'Посмотреть выданные кредиты';
                 $scope.unconfirmed = true;
                 function _loadData(page) {
-                    $scope._gridOptions = [];
                     $scope._currentPage = page;
                     if ($scope.unconfirmed) {
                         $timeout(function () {

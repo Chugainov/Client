@@ -30,7 +30,6 @@
                         Address: {}
                     };
                     $scope.credit = {};
-                    $scope._gridOptions = [];
                     $scope._currentPage = page;
                     if ($scope.unconfirmed) {
                         $timeout(function () {
