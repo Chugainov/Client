@@ -37,7 +37,7 @@
             };
             $scope.requestN.Customer.DocumentType = 0;
             $scope.requestN.Currency = 0;
-            $scope.requestN.DepositId = $scope.deposit ? $scope.deposit.Id : null;
+            $scope.requestN.DepositId = $scope.deposit ? $scope.deposit.Id : -1;
             
         };
 
