@@ -12,13 +12,13 @@
                         <span>Срок: от {{deposit.MinMonthPeriod}} до {{deposit.MaxMonthPeriod}} мес.</span>
                         <span>Сумма: от {{deposit.MinSum}} до {{deposit.MaxSum}} BYR</span>
                     </span>
-                    <span ng-show="errors['request.InitialSum']" class="material-input error">{{errors['request.InitialSum'][0]}}</span>
+                    <span ng-show="errors['request.DepositId']" class="material-input error">{{errors['request.DepositId'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
                     <label for="inputPeriod" class="control-label">Введите срок</label>
                     <input type="text" class="form-control input-sm" id="inputPeriod" ng-model="month" required>
-                    <span ng-show="errors['MonthCount']" class="material-input error">{{errors['MonthCount'][0]}}</span>
+                    <span ng-show="errors['request.MonthCount']" class="material-input error">{{errors['request.MonthCount'][0]}}</span>
                 </div>
 
                 <div class="form-group is-empty">
@@ -29,7 +29,7 @@
                 <div class="form-group is-empty">
                     <label for="sum" class="control-label">Сумма вклада</label>
                     <input type="number" class="form-control input-sm" id="sum" ng-model="sum" required>
-                    <span ng-show="errors['Sum']" class="material-input error">{{errors['Sum'][0]}}</span>
+                    <span ng-show="errors['request.Sum']" class="material-input error">{{errors['request.Sum'][0]}}</span>
                 </div>
 
                 <button type="button" class="btn btn-default" ng-click="calc()">Рассчитать</button>

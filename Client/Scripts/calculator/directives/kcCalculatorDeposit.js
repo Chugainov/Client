@@ -37,7 +37,7 @@
 
                 $scope.calc = function () {
                     var data = {
-                        DepositId: $scope.deposit ? $scope.deposit.Id : null,
+                        DepositId: $scope.deposit ? $scope.deposit.Id : -1,
                         PercentRate: $scope.deposit ? $scope.deposit.InterestRate : null,
                         MonthCount: $scope.month,
                         Sum: $scope.sum

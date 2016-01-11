@@ -39,7 +39,7 @@
                     if ($scope.type == 1) {
                         $scope.paymentsPlan = false;
                         var data = {
-                            CreditId: $scope.credit ? $scope.credit.Id : null,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             IncomeSum: $scope.incomeSum,
                             OtherCreditSum: $scope.otherCreditSum,
@@ -55,7 +55,7 @@
                     if ($scope.type == 2) {
                         $scope.paymentsPlan = false;
                         var data = {
-                            CreditId: $scope.credit ? $scope.credit.Id : null,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             Sum: $scope.sum,
                             OtherCreditSum: $scope.otherCreditSum,
@@ -70,7 +70,7 @@
                     }
                     if ($scope.type == 3) {
                         var data = {
-                            CreditId: $scope.credit ? $scope.credit.Id : null,
+                            CreditId: $scope.credit ? $scope.credit.Id : -1,
                             Month: $scope.month,
                             Sum: $scope.sum
                         };
