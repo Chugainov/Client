@@ -7,6 +7,7 @@
                     <tr class="table-head">
                         <td>Номер контракта</td>
                         <td>Начальная сумма</td>
+                        <td>Текущая сумма</td>
                         <td>Дата начала</td>
                         <td>Дата востребования</td>
                         <td>Статус</td>
@@ -16,13 +17,14 @@
                     <tr ng-repeat-start="deposit in deposits">
                         <td ng-click="details(deposit.ContractNumber, deposit.Payments)">{{deposit.ContractNumber}}</td>
                         <td>{{deposit.InitialSum + ' BYR'}}</td>
-                        <td>{{deposit.StartDate| date: "MMMM d, y"}}</td>
-                        <td>{{deposit.EndDate| date: "MMMM d, y"}}</td>
+                        <td>{{deposit.Sum + ' BYR'}}</td>
+                        <td>{{deposit.StartDate| date: "d MMMM, y"}}</td>
+                        <td>{{deposit.EndDate| date: "d MMMM, y"}}</td>
                         <td>{{deposit.Status}}</td>
                     </tr>
                     <tr ng-repeat-end ng-show="showDetails == deposit.ContractNumber">
-                        <td colspan="5" ng-show="!hasPayments" class="table-container">На этот кредит еще не было зачислений</td>
-                        <td colspan="5" ng-show="hasPayments" class="table-container">
+                        <td colspan="6" ng-show="!hasPayments" class="table-container">На этот кредит еще не было зачислений</td>
+                        <td colspan="6" ng-show="hasPayments" class="table-container">
                             <table class="table child-table" ng-show="hasPayments">
                                 <tr class="table-head">
                                     <td>Дата зачисления</td>

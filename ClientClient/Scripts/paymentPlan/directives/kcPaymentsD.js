@@ -36,8 +36,11 @@
                                 item.Status = item.IsPaid ? "Завершён" : "Действует";
                                 paymentsService.getByContractNumberD(item.ContractNumber).then(function (response) {
                                     var data = response.data.DepositPayments;
-
-                                    
+                                    var sum = 0;
+                                    data.forEach(function (item) {
+                                        sum += item.Sum;
+                                    });
+                                    item.Sum = sum;
                                     item.Payments = data;
 
 
