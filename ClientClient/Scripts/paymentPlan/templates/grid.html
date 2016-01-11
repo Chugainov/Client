@@ -6,18 +6,21 @@
                 <thead>
                     <tr class="table-head">
                         <td>Номер контракта</td>
-                        <td>Сумма</td>
+                        <td>Выданная сумма</td>
+                        <td>Оставшаяся сумма</td>
                         <td>Дата начала</td>
                         <td>Дата окончания</td>
-                        <td>Статус</td>
+                        <td>Cледующий непогашенны платеж</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat-start="credit in credits">
                         <td ng-click="details(credit.ContractNumber, credit.Payments)">{{credit.ContractNumber}}</td>
                         <td>{{credit.CreditSum + ' BYR'}}</td>
+                        <td>{{credit.RemainSum + ' BYR'}}</td>
                         <td>{{credit.StartDate| date: "MMMM d, y"}}</td>
                         <td>{{credit.EndDate| date: "MMMM d, y"}}</td>
+                        <td>{{credit.nextPayment.StartDate| date: "MMMM d, y"}}</td>
                         <td></td>
                     </tr>
                     <tr ng-repeat-end ng-show="showDetails == credit.ContractNumber">

@@ -37,9 +37,11 @@
                                 paymentsService.getByContractNumber(item.ContractNumber).then(function (response) {
                                     var data = response.data.CreditPaymentPlanItems;
 
-                                    var Payments = [];
+                                    var Payments = [],
+                                        nextPayment;
                                     data.forEach(function (item, index) {
 
+                                        nextPayment = item.CreditPayments[index];
                                         if (item.CreditPayments.length != 0) {
                                             var payment = item.CreditPayments.map(function (obj) {
                                                 var item = obj;
@@ -49,7 +51,14 @@
                                             Payments = Payments.concat(payment);
                                         }
                                     });
+                                    for (var i = 0; i < data.length - 1; i++) {
+                                        if (!data[i].IsPaid) {
+                                            item.nextPayment = data[i];
+                                            break;
+                                        };
+                                    };
                                     item.Payments = Payments;
+                                    
 
                                     console.log(item.Payments);
 

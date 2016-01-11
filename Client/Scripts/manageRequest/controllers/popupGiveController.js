@@ -8,12 +8,16 @@
 
     var controller = function ($uibModalInstance, $scope, requestService, id) {
 
-        
+        $scope.hasError = false;
         
 
         $scope.ok = function () {
             requestService.giveCredit(id).then(function () {
                 $uibModalInstance.close();
+
+            }, function (error) {
+                $scope.hasError = true;
+                $scope.error = error.data.Message;
             });
         };
 

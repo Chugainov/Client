@@ -1,11 +1,12 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
     <h4 class="modal-title">Вы точно хотите выдать этот кредит?</h4>
+    <p class="has-error">{{error}}</p>
 </div>
 <div class="modal-body">
 
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-primary" ng-click="ok()">Да</button>
-    <button type="button" class="btn btn-warning" ng-click="cancel()">Нет</button>
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Отмена</button>
 </div>

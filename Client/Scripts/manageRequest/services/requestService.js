@@ -12,7 +12,7 @@ function (namespace, module) {
     var service = function ($http, settings) {
         var serviceBaseUri = settings.baseURI;
         var authUri = settings.authURI;
-        var creditUri = settings.creditURI; 
+        var creditUri = settings.creditURI;
         var customerUri = settings.customerURI;
         var customerCreditUri = settings.customerCreditURI;
         var requestServiceFactory = {};
@@ -20,17 +20,15 @@ function (namespace, module) {
         function _getSolvencyRate(data) {
             var serviceUri = "http://localhost:12715/api/calculationcredit/solvencyrate";
             var data = {
-                params: {
-                    Sum: data.Sum,
-                    MonthCount: data.MonthCount,
-                    CreditId: data.CreditId,
-                    IncomeSum: data.IncomeSum,
-                    OtherCreditPayments: data.OtherCreditPayments,
-                    UtilitiesPayments: data.UtilitiesPayments,
-                    OtherPayments: data.OtherPayments
-                }
+                Sum: data.Sum,
+                MonthCount: data.MonthCount,
+                CreditId: data.CreditId,
+                IncomeSum: data.IncomeSum,
+                OtherCreditPayments: data.OtherCreditPayments,
+                UtilitiesPayments: data.UtilitiesPayments,
+                OtherPayments: data.OtherPayments
             };
-            return $http.get(serviceUri, data);
+            return $http.post(serviceUri, data);
         };
 
         function _getAll() {
@@ -92,7 +90,7 @@ function (namespace, module) {
                 }
             };
             return $http.get(serviceUri, data);
-        } 
+        }
 
         function _getByCustomer(customerId, page) {
             var serviceUri = customerCreditUri + "/GetByCustomerId";
@@ -202,8 +200,8 @@ function (namespace, module) {
         requestServiceFactory.giveCredit = _giveCredit;
         requestServiceFactory.getCredits = _getCredits;
         requestServiceFactory.getCustomerCredits = _getCustomerCredits;
-        requestServiceFactory.getCustomer = _getCustomer; 
-        requestServiceFactory.getSolvencyRate = _getSolvencyRate; 
+        requestServiceFactory.getCustomer = _getCustomer;
+        requestServiceFactory.getSolvencyRate = _getSolvencyRate;
         requestServiceFactory.getContract = _getContract;
         requestServiceFactory.getContractReq = _getContractReq;
 
