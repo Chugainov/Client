@@ -18,11 +18,11 @@
                     <tr ng-repeat-start="credit in credits">
                         <td ng-click="details(credit.ContractNumber, credit.Payments)">{{credit.ContractNumber}}</td>
                         <td>{{credit.CreditSum + ' BYR'}}</td>
-                        <td>{{credit.RemainSum + ' BYR'}}</td>
+                        <td>{{credit.RemainSum| number}} BYR</td>
                         <td>{{credit.StartDate| date: "d MMMM, y"}}</td>
                         <td>{{credit.EndDate| date: "d MMMM, y"}}</td>
                         <td>{{credit.nextPayment.StartDate| date: " d MMMM, y"}}</td>
-                        <td></td>
+
                     </tr>
                     <tr ng-repeat-end ng-show="showDetails == credit.ContractNumber">
                         <td colspan="5" ng-show="!hasPayments" class="table-container">По этому кредиту не было платежей</td>
