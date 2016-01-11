@@ -95,7 +95,7 @@
                 <div class="form-group is-empty date-input">
                     <label for="customer.DateOfBirth" class="control-label">Дата рождения</label>
                     <input type="text" uib-datepicker-popup="dd/MM/yyyy" ng-model="customer.DateOfBirth" is-open="opened"
-                           ng-required="true" close-text="Close" class="form-control input-sm" id="customer.DateOfBirth" />
+                           readonly ng-click="openCalendar($event)" close-text="Close" class="form-control input-sm" id="customer.DateOfBirth" />
                     <span class="input-group-btn input-group-sm">
                         <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
