@@ -1,0 +1,21 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+    <h4 class="modal-title">Плановые платежи</h4>
+</div>
+<div class="modal-body">
+    <table class="table child-table">
+        <tr class="table-head">
+            <td>Дата</td>
+            <td>Основной долг</td>
+            <td>Долг по процентам</td>
+        </tr>
+        <tr ng-repeat="payment in data" class="{{payment.IsPaid ? 'paid' : ''}}">
+            <td>{{payment.StartDate | date: "d MMMM, y"}}</td>
+            <td>{{payment.MainSum | number:0}} BYR</td>
+            <td>{{payment.PercentSum | number:0}} BYR</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Назад</button>
+</div>

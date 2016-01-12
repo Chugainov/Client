@@ -55,10 +55,11 @@
 
                 $scope.details = function (ContractNumber, Payments) {
                     if ($scope.showDetails != ContractNumber) {
-                        if (Payments.length == 0) {
+                        if (!Payments) {
+                            $scope.hasPayments = false;
+                        } else if (!Payments.length) {
                             $scope.hasPayments = false;
                         } else {
-
                             $scope.hasPayments = true;
                         }
                         $scope.showDetails = ContractNumber;

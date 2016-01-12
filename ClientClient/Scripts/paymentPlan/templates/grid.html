@@ -10,8 +10,9 @@
                         <td>Оставшаяся сумма</td>
                         <td>Дата начала</td>
                         <td>Дата окончания</td>
-                        <td>Cледующий непогашенный 
+                        <td>Следующий неоплаченный
                             <br/>платеж</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,11 +23,15 @@
                         <td>{{credit.StartDate| date: "d MMMM, y"}}</td>
                         <td>{{credit.EndDate| date: "d MMMM, y"}}</td>
                         <td>{{credit.nextPayment.StartDate| date: " d MMMM, y"}}</td>
-
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="open(credit.ContractNumber)">
+                                <i class="material-icons glyphicon glyphicon-info-sign"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr ng-repeat-end ng-show="showDetails == credit.ContractNumber">
-                        <td colspan="6" ng-show="!hasPayments" class="table-container">По этому кредиту не было платежей</td>
-                        <td colspan="6" ng-show="hasPayments" class="table-container">
+                        <td colspan="7" ng-show="!hasPayments" class="table-container">По этому кредиту не было платежей</td>
+                        <td colspan="7" ng-show="hasPayments" class="table-container">
                             <table class="table child-table" ng-show="hasPayments">
                                 <tr class="table-head">
                                     <td>Плановый <br /> платеж</td>

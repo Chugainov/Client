@@ -17,6 +17,9 @@ td.table-container {
 tr.table-head {
     height: 65px;
 }
+tr.paid {
+    background-color: #f9f9f9;
+}
 .btn-add {
     position: fixed!important;
     right: 20px;

@@ -58,9 +58,6 @@
                                         };
                                     };
                                     item.Payments = Payments;
-                                    
-
-                                    console.log(item.Payments);
 
                                 });
                             });
@@ -73,10 +70,11 @@
 
                 $scope.details = function (ContractNumber, Payments) {
                     if ($scope.showDetails != ContractNumber) {
-                        if (Payments.length == 0) {
+                        if (!Payments) {
+                            $scope.hasPayments = false;
+                        } else if (!Payments.length){
                             $scope.hasPayments = false;
                         } else {
-
                             $scope.hasPayments = true;
                         }
                         $scope.showDetails = ContractNumber;
@@ -85,6 +83,29 @@
                         $scope.hasPayments = false;
                     }
 
+                };
+
+                $scope.animationsEnabled = true;
+
+                $scope.open = function (contractNumber) {
+
+                    var modalInstance = $uibModal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'scripts/paymentPlan/templates/popup.html',
+                        controller: 'Client.payments.popupController',
+                        resolve: {
+                            contractNumber: function () {
+                                return contractNumber;
+                            }
+                        }
+                    });
+
+                    modalInstance.result.then(function () {
+                        $timeout(function () { return; });
+
+                    }, function () {
+                        //TODO:
+                    });
                 };
             };
         };
