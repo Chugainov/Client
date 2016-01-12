@@ -37,11 +37,39 @@
                         $scope.info = response.data;
                         $scope.step = 2;
                         $scope.errors = null;
+                        $scope.payment.Sum = undefined;
 
                         $scope.info.FIO = $scope.info.Customer.Lastname + ' ' + $scope.info.Customer.Firstname + ' ' + $scope.info.Customer.Patronymic;
                         for (var i = 0; i < $scope.info.CreditPaymentPlanItems.length - 1; i++) {
                             if (!$scope.info.CreditPaymentPlanItems[i].IsPaid) {
                                 $scope.info.currentPay = $scope.info.CreditPaymentPlanItems[i];
+
+                                var paidMainSum = $scope.info.CreditPaymentPlanItems[i].CreditPayments
+                                    .reduce(function (sum, item) {
+                                        return sum + item.MainSum;
+                                    }, 0);
+                                $scope.info.currentPay.MainSum = $scope.info.currentPay.MainSum - paidMainSum;
+
+                                var paidPercentSum = $scope.info.CreditPaymentPlanItems[i].CreditPayments
+                                    .reduce(function (sum, item) {
+                                        return sum + item.PercentSum;
+                                    }, 0);
+                                $scope.info.currentPay.PercentSum = $scope.info.currentPay.PercentSum - paidPercentSum;
+
+                                if ($scope.info.currentPay.Debt) {
+                                    var paidDelayMainSum = $scope.info.CreditPaymentPlanItems[i].CreditPayments
+                                    .reduce(function (sum, item) {
+                                        return sum + item.DelayMainSum;
+                                    }, 0);
+                                    $scope.info.currentPay.Debt.MainSum = $scope.info.currentPay.Debt.MainSum - paidDelayMainSum;
+
+                                    var paidDelayPercentSum = $scope.info.CreditPaymentPlanItems[i].CreditPayments
+                                    .reduce(function (sum, item) {
+                                        return sum + item.DelayPercentSum;
+                                    }, 0);
+                                    $scope.info.currentPay.Debt.PercentSum = $scope.info.currentPay.Debt.PercentSum - paidDelayPercentSum;
+                                }
+
                                 $scope.info.currentPayDate = $scope.info.currentPay.StartDate;
                                 break;
                             };
