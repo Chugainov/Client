@@ -65,6 +65,10 @@
                     <span ng-show="errors['request.Sum']" class="material-input error">{{errors['request.Sum'][0]}}</span>
                 </div>
 
+                <div class="has-error" ng-show="errors.Message">
+                    <label class="control-label">{{errors.Message}}</label>
+                </div>
+
                 <div class="form-group is-empty" ng-show="step == 3">
                     <label for="payment.Sum" class="control-label">Оплатил</label>
                     <input type="text" class="form-control input-sm" id="payment.Sum" readonly ng-model="payment.Sum" required>

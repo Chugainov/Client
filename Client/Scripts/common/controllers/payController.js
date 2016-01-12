@@ -18,7 +18,7 @@
                 payService.pay($scope.payment).then(function () {
                     $scope.step = 3;
                 }, function (error) {
-                    $scope.errors = error.data.ModelState;
+                    $scope.errors = error.data.ModelState || error.data;
                 });
             };
 
